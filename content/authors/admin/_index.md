@@ -2,8 +2,7 @@
 title: Giovanni Lion
 role: ""
 avatar_filename: img_20170508_080034-copy.jpg
-bio: My research interests include distributed robotics, mobile computing and
-  programmable matter.
+bio: ""
 interests:
   - Artificial Intelligence
   - Computational Linguistics
@@ -31,8 +30,8 @@ social:
     icon_pack: ai
     link: uploads/resume.pdf
 organizations:
-  - name: Stanford University
-    url: https://www.stanford.edu/
+  - name: The Hong Kong Polytechnic University
+    url: https://www.polyu.edu.hk/
 education:
   courses:
     - course: PhD in Artificial Intelligence
