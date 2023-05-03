@@ -1,7 +1,7 @@
 ---
 title: Giovanni Lion
 role: ""
-avatar_filename: img_20170508_080034-copy.jpg
+avatar_filename: avatar.jpg
 bio: ""
 interests:
   - Computational Creativity
