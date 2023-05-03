@@ -1,5 +1,5 @@
 ---
-widget: https://wowchemy.com/docs/page-builder
+widget: landing
 widget_id: homepage
 headless: true
 weight: 10
