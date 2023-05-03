@@ -4,28 +4,26 @@ role: ""
 avatar_filename: img_20170508_080034-copy.jpg
 bio: ""
 interests:
-  - Artificial Intelligence
-  - Computational Linguistics
-  - Information Retrieval
+  - ComputationalCreativity
 social:
   - icon: envelope
     icon_pack: fas
     link: /#contact
   - icon: twitter
     icon_pack: fab
-    link: https://twitter.com/GeorgeCushen
+    link: https://twitter.com/venetanji
     label: Follow me on Twitter
     display:
       header: true
   - icon: graduation-cap
     icon_pack: fas
-    link: https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ
+    link: https://scholar.google.co.uk/citations?user=4QbQW8AAAAAJ&hl=en
   - icon: github
     icon_pack: fab
-    link: https://github.com/gcushen
+    link: https://github.com/venetanji
   - icon: linkedin
     icon_pack: fab
-    link: https://www.linkedin.com/
+    link: https://www.linkedin.com/in/giovannilion/
   - icon: cv
     icon_pack: ai
     link: uploads/resume.pdf
@@ -34,15 +32,18 @@ organizations:
     url: https://www.polyu.edu.hk/
 education:
   courses:
-    - course: PhD in Artificial Intelligence
-      institution: Stanford University
-      year: 2012
-    - course: MEng in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2009
-    - course: BSc in Artificial Intelligence
-      institution: Massachusetts Institute of Technology
-      year: 2008
+    - course: PhD Candidate
+      institution: The Hong Kong Kong Polytechnic University - School of Design
+      year: 2023
+    - course: MSc in Multimedia & Entertainment Technologies
+      institution: The Hong Kong Polytechnic University
+      year: 2015
+    - course: MSc in Organization Science and Information Systems
+      institution: Bocconi University
+      year: 2007
+    - course: BSc in Economics
+      institution: Bocconi University
+      year: 2005
 superuser: true
 status:
   icon: ☕️
@@ -51,6 +52,5 @@ highlight_name: true
 first_name: Alice
 email: ""
 ---
-
-Alice Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+Giovanni Lion is a versatile researcher with a strong programming background and a passion for machine learning, artificial intelligence, robotics, and generative multimodal creativity. He possesses technical proficiency in various programming languages and platforms, including Python, Javascript, Max/MSP, Arduino IDE, Docker, Linux and Windows system administration, SBC (RaspberryPi), Leap Motion, Muse (EEG), and openvibe.
 {style="text-align: justify;"}
