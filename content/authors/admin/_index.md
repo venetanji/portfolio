@@ -4,7 +4,9 @@ role: ""
 avatar_filename: img_20170508_080034-copy.jpg
 bio: ""
 interests:
-  - ComputationalCreativity
+  - Computational Creativity
+  - Design
+  - Artificialintelligenc
 social:
   - icon: envelope
     icon_pack: fas
