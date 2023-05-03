@@ -6,7 +6,7 @@ bio: ""
 interests:
   - Computational Creativity
   - Design
-  - Artificialintelligenc
+  - Artificial Intelligence
 social:
   - icon: envelope
     icon_pack: fas
