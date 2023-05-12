@@ -9,6 +9,4 @@ image:
   focal_point: Smart
   preview_only: false
 ---
-This project
-
-{{< gallery album="3dsnd" >}}
+T﻿his project
