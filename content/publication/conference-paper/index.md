@@ -19,9 +19,7 @@ author_notes:
   - Equal contribution
   - Equal contribution
 publication: "IASDR 2021: [ ] With Design: Reinventing Design Modes"
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis posuere
-  tellus ac convallis placerat. Proin tincidunt magna sed ex sollicitudin
-  condimentum.
+summary: A pictorial investigating reflective practices in dataset building.
 url_dataset: https://github.com/wowchemy/wowchemy-hugo-themes
 url_project: ""
 publication_short: ""
