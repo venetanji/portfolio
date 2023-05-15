@@ -4,19 +4,6 @@ subtitle: A 32-speaker ambisonic installation
 date: 2017-04-05T04:55:08.233Z
 draft: false
 featured: false
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-weight: 1
-=======
->>>>>>> 4fd9c14ade508ecc46f6789b1e3fa49202cd4981
-=======
->>>>>>> 4fd9c14ade508ecc46f6789b1e3fa49202cd4981
-=======
->>>>>>> 4fd9c14ade508ecc46f6789b1e3fa49202cd4981
->>>>>>> Stashed changes
 image:
   filename: featured.jpg
   focal_point: Smart
