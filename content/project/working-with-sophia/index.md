@@ -9,3 +9,21 @@ image:
   focal_point: Smart
   preview_only: false
 ---
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+
+<!--StartFragment-->
+
+{{< gallery album="sophia" >}}
+
+<!--EndFragment-->
+=======
+>>>>>>> 4fd9c14ade508ecc46f6789b1e3fa49202cd4981
+=======
+>>>>>>> 4fd9c14ade508ecc46f6789b1e3fa49202cd4981
+=======
+>>>>>>> 4fd9c14ade508ecc46f6789b1e3fa49202cd4981
+>>>>>>> Stashed changes

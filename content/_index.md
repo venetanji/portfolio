@@ -15,18 +15,24 @@ sections:
     content:
       title: Skills
       items:
-        - name: R
-          description: 90%
-          icon: r-project
+        - name: Python
+          description: 80%
+          icon: python
           icon_pack: fab
-        - name: Statistics
-          description: 100%
-          icon: chart-line
-          icon_pack: fas
-        - name: Photography
-          description: 10%
-          icon: camera-retro
-          icon_pack: fas
+        - name: Javascript
+          description: 90%
+          icon: node-js
+          icon_pack: fab       
+        - name: Docker
+          description: 80%
+          icon: docker
+          icon_pack: fab
+        - name: Linux
+          description: 90%
+          icon: linux
+          icon_pack: fab
+    design:
+      columns: '4'
   - block: experience
     content:
       title: Experience
@@ -36,63 +42,73 @@ sections:
       items:
         - title: Part-time Visiting Lecturer
           company: The Hong Kong Polytechnic University, School of Design
-          company_url: ''
-          company_logo: ''
+          company_url: 'https://www.sd.polyu.edu.hk/en/'
+          company_logo: 'polyu'
           location: Hong Kong
           date_start: 2022-09-01
           date_end: ''
           description: |2-
-              Lectured in two elective master courses, Sound Design (SD5933) and Transformative Technologies (SD5969), and delivered a workshop on AI & Imaging to students in the MscMET master program.
+              As a Part-time Visiting Lecturer at The Hong Kong Polytechnic University's School of Design, I am responsible for teaching and delivering lectures in two elective master courses: Sound Design (SD5933) and Transformative Technologies (SD5969). Additionally, I have been invited to deliver a workshop on AI & Imaging to students in the MscMET master program. By providing engaging lectures and hands-on workshops, I hope to inspire students to think creatively and critically about the subject matter.
 
         - title: Project Associate
           company: The Hong Kong Polytechnic University, School of Design
-          company_url: ''
-          company_logo: ''
+          company_url: 'https://www.sd.polyu.edu.hk/en/'
+          company_logo: 'polyu'
           location: Hong Kong
           date_start: 2017-09-01
           date_end: 2019-08-01
           description: |2-
-              Coordinated several aspects of the MScMET program, including orientation, cohort events, workshops, as well as lectured in Sound Design (SD5933) and Interactive Multimedia Environment (SD5965) courses.
+              As a Project Associate at The Hong Kong Polytechnic University's School of Design, I was responsible for coordinating and managing various aspects of the MScMET program. This included organizing orientation events, cohort activities, and workshops to ensure that the program ran smoothly. Additionally, I had the opportunity to teach two courses: Sound Design (SD5933) and Interactive Multimedia Environment (SD5965). In these classes, I shared my knowledge and expertise with students to help them develop their skills in these fields.
 
         - title: Robot Operator
           company: Hanson Robotics
-          company_url: ''
-          company_logo: ''
+          company_url: 'https://www.hansonrobotics.com/'
+          company_logo: 'hansonrobotics'
           location: Hong Kong
           date_start: 2017-12-01
           date_end: 2019-06-01
           description: |2-
-              Handled performance scripting, transportation, setup, and operation of Sophia, the humanoid robot in several high-profile events, including commercial shooting with Cristiano Ronaldo, a YouTube video with Will Smith, and an appearance at the World Investment Forum 2018 at UN in Geneva.
+              As a Robot Operator for Hanson Robotics from December 2017 to June 2019, I was responsible for overseeing the performance scripting, transportation, setup, and operation of Sophia, the world-renowned humanoid robot. In this role, I worked on several high-profile events such as a commercial shooting with Cristiano Ronaldo. Additionally, I had the opportunity to showcase Sophia's capabilities at the World Investment Forum 2018 at UN in Geneva.
 
-        - title: CEO and Lead Programmer
+        - title: Founder CEO and Lead Programmer
           company: Hagao Studio
           company_url: ''
-          company_logo: ''
+          company_logo: 'hagao'
           location: Hong Kong
           date_start: 2015-02-01
           date_end: 2016-05-01
           description: |2-
-              Founded and developed the game Featherman, an attempt to raise consciousness on environmental issues related to migratory birds in collaboration with WWF Mai Po Reservoir.
+              As the CEO and Lead Programmer at Hagao Studio, I played a pivotal role in overseeing all aspects of game development and management. Our team created Featherman, an innovative game that aimed to raise awareness about migratory birds' environmental issues by partnering with WWF Mai Po Reservoir.
+
+        - title: Founder CEO and Lead Programmer
+          company: 83bits
+          company_url: ''
+          company_logo: '83'
+          location: Hong Kong
+          date_start: 2011-09-01
+          date_end: 2014-09-01
+          description: |2-
+               As the founder of 83bits, a web app development company, I have successfully established and managed the primary product AllIn1Social. This innovative platform serves as a comprehensive solution for managing content being published on Facebook pages along with their advertising campaigns.
 
         - title: Social Media Specialist
           company: 77Agency
-          company_url: ''
-          company_logo: ''
+          company_url: 'https://www.77agency.com/'
+          company_logo: '77'
           location: Milan
           date_start: 2008-09-01
-          date_end: 2012-08-01
+          date_end: 2011-08-01
           description: |2-
-              Developed and deployed Facebook applications for marketing purposes for influential Italian companies such as Lavazza, Repubblica, RCA, CondèNast, Mondadori, and others. In the last two years of employment, was in charge of developing an analytics and management webapp for Facebook pages called Allin1Social.
+              As a Social Media Specialist at 77Agency, I was responsible for developing and deploying Facebook applications for marketing purposes for some of the most influential Italian companies like Lavazza, Repubblica, RCA, CondèNast, and Mondadori.
 
         - title: Teaching Assistant
           company: SDA Bocconi
           company_url: ''
-          company_logo: ''
+          company_logo: 'bocconi'
           location: Milan
           date_start: 2007-02-01
           date_end: 2008-06-01
           description: |2-
-              Worked for TeD+ lab specializing in e-learning platforms and teaching over distance. Also had the opportunity to actively partake in the teaching of the course 8340 “Organizational Dynamics and Technical Change” of EMIT Master of Science.
+              As a Teaching Assistant at SDA Bocconi, I worked for the TeD+ lab which was dedicated to developing e-learning platforms and teaching over distance. During my time there, I had the opportunity to actively participate in the teaching of the course 8340 “Organizational Dynamics and Technical Change” of EMIT Master of Science. This experience allowed me to hone my skills as an educator by working closely with students and professors alike.
     design:
       columns: '2'
   # - block: accomplishments
@@ -168,34 +184,34 @@ sections:
       filters:
         folders:
           - project
-      # Default filter index (e.g. 0 corresponds to the first `filter_button` instance below).
-      default_button_index: 0
-      # Filter toolbar (optional).
-      # Add or remove as many filters (`filter_button` instances) as you like.
-      # To show all items, set `tag` to "*".
-      # To filter by a specific tag, set `tag` to an existing tag name.
-      # To remove the toolbar, delete the entire `filter_button` block.
-      buttons:
-        - name: All
-          tag: '*'
-        - name: Deep Learning
-          tag: Deep Learning
-        - name: Other
-          tag: Demo
+      # # Default filter index (e.g. 0 corresponds to the first `filter_button` instance below).
+      # default_button_index: 0
+      # # Filter toolbar (optional).
+      # # Add or remove as many filters (`filter_button` instances) as you like.
+      # # To show all items, set `tag` to "*".
+      # # To filter by a specific tag, set `tag` to an existing tag name.
+      # # To remove the toolbar, delete the entire `filter_button` block.
+      # buttons:
+      #   - name: All
+      #     tag: '*'
+      #   - name: Deep Learning
+      #     tag: Deep Learning
+      #   - name: Other
+      #     tag: Demo
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '1'
       view: showcase
       # For Showcase view, flip alternate rows?
       flip_alt_rows: false
-  - block: markdown
-    content:
-      title: Gallery
-      subtitle: ''
-      text: |-
-        {{< gallery album="demo" >}}
-    design:
-      columns: '1'
+  # - block: markdown
+  #   content:
+  #     title: Gallery
+  #     subtitle: ''
+  #     text: |-
+  #       {{< gallery album="demo" >}}
+  #   design:
+  #     columns: '1'
   - block: collection
     id: featured
     content:

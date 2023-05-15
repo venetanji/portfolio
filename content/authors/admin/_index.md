@@ -35,10 +35,10 @@ organizations:
 education:
   courses:
     - course: PhD Candidate
-      institution: The Hong Kong Kong Polytechnic University - School of Design
+      institution: The Hong Kong Polytechnic University - School of Design
       year: 2023
     - course: MSc in Multimedia & Entertainment Technologies
-      institution: The Hong Kong Polytechnic University
+      institution: The Hong Kong Polytechnic University - School of Design
       year: 2015
     - course: MSc in Organization Science and Information Systems
       institution: Bocconi University
