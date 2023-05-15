@@ -11,11 +11,14 @@ image:
   preview_only: false
 ---
 
-{{< youtube BWvFXbOAUBM >}}
 
-# yeah
+Musical Fruitstand is a unique and interactive installation that uses fruit as its interface for generative music. The installation provides a fun and engaging way for users to create their own music by simply touching the fruits on the table. The [capacitive touch sensing algorithm](https://satomunehiko.com/works/touche/) used in this installation is highly advanced, capable of detecting various degrees of contact based on capacitive touch sensing over a range of frequencies, which makes it highly responsive to the user's touch.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam risus, sollicitudin pellentesque erat eget, gravida condimentum purus. Cras vestibulum, libero at dignissim tincidunt, purus orci hendrerit elit, non faucibus nulla lectus sed eros. Pellentesque accumsan nisl sed enim mattis efficitur. Nam condimentum venenatis ligula, nec aliquam purus convallis in. Maecenas a tortor hendrerit, cursus nulla non, aliquam tellus. Quisque turpis tellus, consequat et augue vitae, scelerisque rhoncus sem. Fusce vitae diam et magna blandit venenatis sit amet vel orci. Donec sodales orci quis aliquet ultricies. Fusce nec ante suscipit, volutpat elit et, ullamcorper velit. Sed hendrerit felis arcu, eu finibus magna rutrum ut. Nullam facilisis justo sit amet magna iaculis cursus. Nunc elementum lacinia nunc, eu scelerisque dolor convallis non. Donec lacinia dui ut nisl ultricies commodo nec sit amet turpis.
+<div class="mb-3">
+  {{< youtube BWvFXbOAUBM >}}
+</div>
+
+The implementation of Musical Fruitstand was done using Arduino, Max/MSP, and Ableton Live, which allowed for seamless integration between the hardware and software components. Despite not having any visual elements, the installation still manages to captivate users with its unique concept and immersive sound experience. Each fruit presents different sounds and effects such as change of pitch, filter sweep, drums and upbeat quantization making every interaction with Musical Fruitstand feel like a new musical adventure. Overall, Musical Fruitstand is an excellent example of how technology can be used creatively to bring people together through music.
 
 <!--StartFragment-->
 
