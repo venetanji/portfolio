@@ -49,10 +49,9 @@ education:
 superuser: true
 status:
   icon: ☕️
-last_name: Wu
+last_name: Lion
 highlight_name: true
-first_name: Alice
-email: ""
+first_name: Giovanni
+email: "giovanni.lion@gmail.com"
 ---
 Giovanni Lion is a versatile researcher with a strong programming background and a passion for machine learning, artificial intelligence, robotics, and generative multimodal creativity. He possesses technical proficiency in various programming languages and platforms, including Python, Javascript, Max/MSP, Arduino IDE, Docker, Linux and Windows system administration, SBC (RaspberryPi), Leap Motion, Muse (EEG), and openvibe.
-{style="text-align: justify;"}

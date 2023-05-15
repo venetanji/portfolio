@@ -15,11 +15,29 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
+   xmlns:svg="http://www.w3.org/2000/svg"><defs
+   id="defs17" /><sodipodi:namedview
+   id="namedview15"
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1.0"
+   inkscape:pageshadow="2"
+   inkscape:pageopacity="0.0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="1.5585938"
+   inkscape:cx="255.6792"
+   inkscape:cy="256.3208"
+   inkscape:window-width="1920"
+   inkscape:window-height="991"
+   inkscape:window-x="-9"
+   inkscape:window-y="-9"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_1" />
 
 <g
    id="g467"
-   transform="matrix(8,0,0,8,-79.999982,-8.000058)"><path
+   transform="matrix(6.51605,0,0,6.51605,-17.674086,40.970302)"><path
      fill="#d12127"
      opacity="1"
      stroke="none"
