@@ -28,7 +28,7 @@ social:
     link: https://www.linkedin.com/in/giovannilion/
   - icon: cv
     icon_pack: ai
-    link: uploads/resume.pdf
+    link: media/resume.pdf
 organizations:
   - name: The Hong Kong Polytechnic University
     url: https://www.polyu.edu.hk/
