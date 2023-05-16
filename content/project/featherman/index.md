@@ -1,6 +1,7 @@
 ---
 title: Featherman
-url_pdf: 'media/featherman.pdf'
+date: 2015-08-28T04:55:08.233Z
+url_pdf: docs/featherman.pdf
 image:
   filename: featured.jpg
   focal_point: Smart

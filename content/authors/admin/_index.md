@@ -5,8 +5,13 @@ avatar_filename: avatar.jpg
 bio: ""
 interests:
   - Computational Creativity
-  - Design
+  - Sound Design
   - Artificial Intelligence
+  - Robotics
+  - Algorithmic composition
+  - Sailing
+  - Ultimate Frisbee
+  - Indie games
 social:
   - icon: envelope
     icon_pack: fas
@@ -28,7 +33,7 @@ social:
     link: https://www.linkedin.com/in/giovannilion/
   - icon: cv
     icon_pack: ai
-    link: media/resume.pdf
+    link: docs/resume.pdf
 organizations:
   - name: The Hong Kong Polytechnic University
     url: https://www.polyu.edu.hk/

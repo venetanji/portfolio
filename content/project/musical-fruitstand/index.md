@@ -1,7 +1,7 @@
 ---
 title: Musical fruitstand
 subtitle: A touch-fruit interface for generative music
-date: 2017-04-05T04:55:08.233Z
+date: 2015-04-05T04:55:08.233Z
 draft: false
 featured: false
 weight: 1
