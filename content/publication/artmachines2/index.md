@@ -6,6 +6,7 @@ title: Co-creating Musical Compositions with an Artificial Agent
 # 7 = Thesis; 8 = Patent
 publication_types:
   - "1"
+url_pdf: "https://www.cityu.edu.hk/sites/g/files/asqsls5796/files/2021-05/Co-creating%20Musical%20Compositions%20with%20an%20Artificial%20Agent%20Time-travel%20through%20Machine%20Learning.pdf"
 authors:
   - admin
   - Vicky Fung

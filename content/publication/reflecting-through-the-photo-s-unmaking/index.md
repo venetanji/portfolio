@@ -9,7 +9,7 @@ abstract: This pictorial investigates how overlooked personal habits and
   of reflection. Simultaneously, the technology provides a window into its
   functioning and its potential integration into on-site image-taking practices.
 slides: ""
-url_pdf: ""
+url_pdf: "https://link.springer.com/chapter/10.1007/978-981-19-4472-7_130"
 publication_types:
   - "1"
 authors:
