@@ -52,6 +52,12 @@ status:
 last_name: Lion
 highlight_name: true
 first_name: Giovanni
-email: "giovanni.lion@gmail.com"
+email: giovanni.lion@gmail.com
 ---
-Giovanni Lion is a versatile researcher with a strong programming background and a passion for machine learning, artificial intelligence, robotics, and generative multimodal creativity. He possesses technical proficiency in various programming languages and platforms, including Python, Javascript, Max/MSP, Arduino IDE, Docker, Linux and Windows system administration, SBC (RaspberryPi), Leap Motion, Muse (EEG), and openvibe.
+Giovanni's interest in machine learning and AI stems from his fascination with the way these technologies can be used to create intelligent systems that can autonomously learn and adapt. Through his research, he has explored various applications of these technologies in creative practices.
+
+He possesses technical proficiency in various programming languages and platforms, including Python, Javascript, Max/MSP, Arduino IDE, Docker, Linux and Windows system administration, SBC (RaspberryPi), Leap Motion, Muse (EEG), and openvibe.
+
+He is an avid frisbee player and loves spending time outdoors playing pickup games with friends. He also enjoys making music with his OP-Z portable sequencer and synthesizer, experimenting with different sounds and beats to create unique compositions.
+
+Giovanni's passion for technology is matched only by his love for learning new things. He is always eager to explore new ideas and concepts, whether it's through attending conferences or reading academic papers on the latest developments in AI and robotics.
