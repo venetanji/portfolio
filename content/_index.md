@@ -247,11 +247,11 @@ sections:
   #   design:
   #     columns: '2'
   #     view: compact
-  - block: tag_cloud
-    content:
-      title: Popular Topics
-    design:
-      columns: '2'
+  # - block: tag_cloud
+  #   content:
+  #     title: Popular Topics
+  #   design:
+  #     columns: '2'
   - block: contact
     id: contact
     content:
@@ -267,15 +267,15 @@ sections:
       # Contact (add or remove contact options as necessary)
 
 
-      contact_links:
-        - icon: twitter
-          icon_pack: fab
-          name: DM Me
-          link: 'https://twitter.com/venetanji'
-        - icon: linkedin 
-          icon_pack: fab
-          name: Connect
-          link: 'https://www.linkedin.com/in/giovannilion/'
+      # contact_links:
+      #   - icon: twitter
+      #     icon_pack: fab
+      #     name: DM Me
+      #     link: 'https://twitter.com/venetanji'
+      #   - icon: linkedin 
+      #     icon_pack: fab
+      #     name: Connect
+      #     link: 'https://www.linkedin.com/in/giovannilion/'
       # Automatically link email and phone or display as text?
       autolink: true
       # Email form provider
