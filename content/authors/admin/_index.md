@@ -40,10 +40,12 @@ organizations:
 education:
   courses:
     - course: PhD Candidate
-      institution: The Hong Kong Polytechnic University - School of Design
+      institution: The Hong Kong Polytechnic University
+      school: School of Design
       year: 2023
     - course: MSc in Multimedia & Entertainment Technologies
-      institution: The Hong Kong Polytechnic University - School of Design
+      institution: The Hong Kong Polytechnic University
+      school: School of Design
       year: 2015
     - course: MSc in Organization Science and Information Systems
       institution: Bocconi University
@@ -59,5 +61,4 @@ highlight_name: true
 first_name: Giovanni
 email: giovanni.lion@gmail.com
 ---
-Giovanni has a keen interest in machine learning and AI, fueled by his fascination with the ways in which these technologies can be harnessed to create intelligent systems capable of autonomous learning and adaptation. His research has explored diverse applications of these technologies within creative practices. In addition, he boasts technical proficiency across multiple programming languages and platforms, including Python, Javascript, Max/MSP, Arduino IDE, Docker, Linux and Windows system administration, SBC (RaspberryPi), Leap Motion, Muse (EEG), and openvibe.
-Furthermore, Giovanni has a passion for indie games and enjoys exploring the latest developments in the gaming industry. He also competes at an international level in Ultimate Frisbee, where he showcases his skills and leadership abilities. In his spare time, he loves spending time making music with his OP-Z portable sequencer and synthesizer to experiment with different sounds and beats to create unique compositions. As an enthusiastic learner, Giovanni is always eager to explore new ideas and concepts through attending conferences or reading academic papers on the latest advancements in AI and robotics.
+Giovanni has a keen interest in machine learning and AI, fueled by his fascination with the ways in which these technologies can be harnessed to create intelligent systems capable of autonomous learning and adaptation. His research has explored diverse applications of these technologies within creative practices. In addition, he boasts technical proficiency across multiple programming languages and platforms, including Python, Javascript, Max/MSP, Arduino IDE, Docker, Linux and Windows system administration, SBC (RaspberryPi), Leap Motion, Muse (EEG), and openvibe. Giovanni has a passion for indie games and enjoys exploring the latest developments in the gaming industry. He also competes at an international level in Ultimate Frisbee, where he showcases his skills and leadership abilities. In his spare time, he loves spending time making music with his OP-Z portable sequencer and synthesizer to experiment with different sounds and beats to create unique compositions. As an enthusiastic learner, Giovanni is always eager to explore new ideas and concepts through attending conferences or reading academic papers on the latest advancements in AI and robotics.
