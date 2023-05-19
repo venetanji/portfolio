@@ -5,7 +5,7 @@ date: 2017-04-05T04:55:08.233Z
 summary: 3DSND is a system that is capable of low-latency ambisonic rendering.
   This platform is designed to provide an immersive sound experience to the
   users, enabling them to hear sound from all directions. [Read
-  more...]\(/project/working-with-sophia/)
+  more...](/project/3dsnd/)
 draft: false
 featured: false
 image:
