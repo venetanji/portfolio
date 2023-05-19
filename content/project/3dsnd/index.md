@@ -2,9 +2,10 @@
 title: 3DSND
 subtitle: A 32-speaker ambisonic installation
 date: 2017-04-05T04:55:08.233Z
-summary: "3DSND is a system that is capable of low-latency ambisonic rendering.
+summary: 3DSND is a system that is capable of low-latency ambisonic rendering.
   This platform is designed to provide an immersive sound experience to the
-  users, enabling them to hear sound from all directions. "
+  users, enabling them to hear sound from all directions. (Read
+  more...)\[/project/working-with-sophia/]
 draft: false
 featured: false
 image:
