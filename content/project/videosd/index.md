@@ -5,7 +5,7 @@ date: 2023-02-21T04:55:08.233Z
 draft: false
 featured: false
 weight: 1
-description: TensorRT accelerated diffusion pipeline, combined with webrtc frontend for camera input and speech recognition.
+summary: TensorRT accelerated diffusion pipeline, combined with webrtc frontend for camera input and speech recognition.
 image:
   filename: featured
   focal_point: Smart
