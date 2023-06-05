@@ -2,6 +2,11 @@
 title: Working with Sophia
 subtitle: Life as a robot operator
 date: 2017-12-12T06:05:36.924Z
+summary: Working with Sophia the humanoid robot was an extraordinary experience
+  that allowed me to gain valuable insights into the world of robotics and
+  human-robot interaction. As a robot operator, I was responsible for animating
+  scripts, setting up the robot for events, and puppeteering the robot during
+  public appearances. [Read more...](/project/working-with-sophia/)
 draft: false
 featured: false
 image:

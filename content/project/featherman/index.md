@@ -2,6 +2,11 @@
 title: Featherman
 date: 2015-08-28T04:55:08.233Z
 url_pdf: docs/featherman.pdf
+summary: The Featherman game project is a mobile game designed to raise
+  awareness of environmental issues, specifically the importance of wetlands for
+  migratory birds. The team behind the project consists of international
+  students in Hong Kong who are passionate about local environmental issues.
+  [Read more...](/projects/featherman)
 image:
   filename: featured.jpg
   focal_point: Smart
