@@ -5,7 +5,7 @@ date: 2015-04-05T04:55:08.233Z
 summary: Musical Fruitstand is a unique and interactive installation that uses
   fruit as its interface for generative music. The installation provides a fun
   and engaging way for users to create their own music by simply touching the
-  fruits on the table. [Read more...](/projects/musical-fruitstand)
+  fruits on the table. [Read more...](/project/musical-fruitstand)
 draft: false
 featured: false
 weight: 1
