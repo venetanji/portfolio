@@ -8,6 +8,9 @@ summary: 3DSND is a system that is capable of low-latency ambisonic rendering.
   more...](/project/3dsnd/)
 draft: false
 featured: false
+links:
+  - name: Sonar+D Hong Kong
+    url: https://sonarhongkong.com/en/2018/artists/the-immersive-sound-stage-marketlab-sonar-d
 image:
   filename: featured.jpg
   focal_point: Smart
@@ -20,7 +23,7 @@ The design and implementation of this system aims to address some important limi
 
 The low-latency ambisonic rendering algorithms used by 3DSND allow for the creation of three-dimensional soundscapes that accurately reproduce sounds from all directions, creating an immersive sonic experience for listeners. Users can interact with the sound field using their hands with Kinect or through integration with Vive VR environments, allowing for fully immersive experiences.The system is also highly scalable, making it possible to increase the number of speakers and extend the listening area if needed.
 
-The use of open-source software allows for easy customization and modification to suit specific user needs. Additionally, the raspberry pi-based design makes it cost-effective and energy-efficient, allowing for easy installation in various settings.
+The use of open-source software allows for easy customization and modification to suit specific user needs. Additionally, the raspberry pi-based design makes it cost-effective and energy-efficient, allowing for easy installation in various settings. The system was presented at [Sonar+D](https://sonarhongkong.com/en/2018/artists/the-immersive-sound-stage-marketlab-sonar-d) Hong Kong in 2017 and 2018.
 
 <!--StartFragment-->
 

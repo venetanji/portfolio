@@ -1,6 +1,6 @@
 ---
 title: Videosd
-subtitle: TensorRT accelerated diffusion pipeline, combined with webrtc frontend for camera input and speech recognition.
+subtitle: TensorRT accelerated diffusion pipeline, combined with webrtc frontend for camera input and speech recognition. [Read more...](/project/videosd)
 date: 2023-02-21T04:55:08.233Z
 draft: false
 featured: false
@@ -8,8 +8,14 @@ weight: 1
 summary: |-
   TensorRT accelerated diffusion pipeline, combined with webrtc frontend for camera input and speech recognition.
 
-url_video: /project/videosd
-url_code: https://github.com/venetanji/videosd
+links:
+  - icon: github
+    icon_pack: fab
+    name: Code
+    url: https://github.com/venetanji/videosd
+  - name: Watch Video
+    url: /project/videosd
+
 image:
   filename: featured
   focal_point: Smart

@@ -9,6 +9,11 @@ summary: Musical Fruitstand is a unique and interactive installation that uses
 draft: false
 featured: false
 weight: 1
+links:
+  - icon: youtube
+    icon_pack: fab
+    name: Watch video
+    url: https://youtube.com/watch?v=BWvFXbOAUBM
 image:
   filename: featured.jpg
   focal_point: Smart
