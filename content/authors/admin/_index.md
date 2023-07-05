@@ -25,6 +25,9 @@ social:
   - icon: graduation-cap
     icon_pack: fas
     link: https://scholar.google.co.uk/citations?user=4QbQW8AAAAAJ&hl=en
+  - icon: orcid
+    icon_pack: ai
+    link: https://orcid.org/0000-0003-4526-0642
   - icon: github
     icon_pack: fab
     link: https://github.com/venetanji
@@ -34,6 +37,7 @@ social:
   - icon: cv
     icon_pack: ai
     link: docs/resume.pdf
+
 organizations:
   - name: The Hong Kong Polytechnic University
     url: https://www.polyu.edu.hk/
