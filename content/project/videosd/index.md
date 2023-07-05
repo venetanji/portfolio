@@ -21,4 +21,4 @@ Github repo: [https://github.com/venetanji/videosd](https://github.com/venetanji
 
 See the full video below:
 
-{{< video src="/videos/videosd.mp4" controls="yes" >}}
+{{< video src="/videos/videosd.mp4" controls="yes" poster="/project/videosd/featured.png">}}
