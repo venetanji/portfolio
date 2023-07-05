@@ -11,28 +11,28 @@ sections:
       title: Biography
       # Choose a user profile to display (a folder name within `content/authors/`)
       username: admin
-  - block: features
-    content:
-      title: Skills
-      items:
-        - name: Python
-          description: 80%
-          icon: python
-          icon_pack: fab
-        - name: Javascript
-          description: 90%
-          icon: node-js
-          icon_pack: fab       
-        - name: Docker
-          description: 80%
-          icon: docker
-          icon_pack: fab
-        - name: Linux
-          description: 90%
-          icon: linux
-          icon_pack: fab
-    design:
-      columns: '4'
+  # - block: features
+  #   content:
+  #     title: Skills
+  #     items:
+  #       - name: Python
+  #         description: 80%
+  #         icon: python
+  #         icon_pack: fab
+  #       - name: Javascript
+  #         description: 90%
+  #         icon: node-js
+  #         icon_pack: fab       
+  #       - name: Docker
+  #         description: 80%
+  #         icon: docker
+  #         icon_pack: fab
+  #       - name: Linux
+  #         description: 90%
+  #         icon: linux
+  #         icon_pack: fab
+  #   design:
+  #     columns: '4'
   - block: experience
     content:
       title: Experience
