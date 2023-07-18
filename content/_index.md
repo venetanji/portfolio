@@ -48,7 +48,9 @@ sections:
           date_start: 2022-09-01
           date_end: ''
           description: |2-
-              As a Part-time Visiting Lecturer at The Hong Kong Polytechnic University's School of Design, I am responsible for teaching and delivering lectures in two elective master courses: Sound Design (SD5933) and Transformative Technologies (SD5969). Additionally, I have been invited to deliver a workshop on AI & Imaging to students in the MscMET master program. By providing engaging lectures and hands-on workshops, I hope to inspire students to think creatively and critically about the subject matter.
+            *	Conducted research and published scholarly papers on the topic of Generative AI, resulting in invitations to present at international conferences.
+            *	Mentored and tutored students one-on-one, helping them to better integrate Generative AI tools in products and services.
+            * Coordinated and facilitated group projects, teaching students how to work together and communicate effectively.
 
         - title: Project Associate
           company: The Hong Kong Polytechnic University, School of Design
@@ -58,7 +60,9 @@ sections:
           date_start: 2017-09-01
           date_end: 2019-08-01
           description: |2-
-              As a Project Associate at The Hong Kong Polytechnic University's School of Design, I was responsible for coordinating and managing various aspects of the MScMET program. This included organizing orientation events, cohort activities, and workshops to ensure that the program ran smoothly. Additionally, I had the opportunity to teach two courses: Sound Design (SD5933) and Interactive Multimedia Environment (SD5965). In these classes, I shared my knowledge and expertise with students to help them develop their skills in these fields.
+            *	Collaborated with school staff to develop and implement extracurricular activities and resources to support student learning.
+            *	Developed and taught innovative courses in the field of computer science and maker education, resulting in higher student engagement and improved learning outcomes.
+            *	Collaborated with other teachers to develop interdisciplinary projects that integrated computer science topics with other subjects.
 
         - title: Robot Operator
           company: Hanson Robotics
@@ -68,7 +72,21 @@ sections:
           date_start: 2017-12-01
           date_end: 2019-06-01
           description: |2-
-              As a Robot Operator for Hanson Robotics from December 2017 to June 2019, I was responsible for overseeing the performance scripting, transportation, setup, and operation of Sophia, the world-renowned humanoid robot. In this role, I worked on several high-profile events such as a commercial shooting with Cristiano Ronaldo. Additionally, I had the opportunity to showcase Sophia's capabilities at the World Investment Forum 2018 at UN in Geneva.
+            *	Responsible for overseeing performance scripting, transportation, setup, and operation of Sophia, the world-renowned humanoid robot.
+            *	Worked on high-profile events, including a commercial shoot with Cristiano Ronaldo.
+            *	Showcased Sophia's capabilities at the World Investment Forum 2018 at UN in Geneva.
+        
+        - title: IT Manager
+          company: Ambulatorio San Massimo
+          company_url: 'https://ambulatoriosanmassimo.it'
+          company_logo: 'asm'
+          location: Remote
+          date_start: 2018-09-01
+          date_end: 2022-12-31
+          description: |2-
+            * Lead the design and implementation of the network architecture and RemoteApp services (database, VoIP, appointment booking API) of a medical clinic with two sites.
+            * Automated backup and routine system administration tasks using docker to reduce manual effort.
+            * Streamlined and automated system administration tasks, resulting in a 60% reduction in operational costs.
 
         - title: Founder CEO and Lead Programmer
           company: Hagao Studio
@@ -78,7 +96,9 @@ sections:
           date_start: 2015-02-01
           date_end: 2016-05-01
           description: |2-
-              As the CEO and Lead Programmer at Hagao Studio, I played a pivotal role in overseeing all aspects of game development and management. Our team created Featherman, an innovative game that aimed to raise awareness about migratory birds' environmental issues by partnering with WWF Mai Po Reservoir.
+            *	Created Featherman, an innovative game aimed at raising awareness about migratory birds' environmental issues.
+            * Oversaw all aspects of mobile game development and management as team leader.
+            * Partnered with WWF Mai Po Reservoir.
 
         - title: Founder CEO and Lead Programmer
           company: 83bits
@@ -88,7 +108,19 @@ sections:
           date_start: 2011-09-01
           date_end: 2014-09-01
           description: |2-
-               As the founder of 83bits, a web app development company, I have successfully established and managed the primary product AllIn1Social. This innovative platform serves as a comprehensive solution for managing content being published on Facebook pages along with their advertising campaigns.
+            * Successfully established and managed the primary product, AllIn1Social, a web application for managing content and advertising campaigns on Facebook pages.
+            * Developed front-end and back-end development using Ruby on Rails.
+            *	Worked with Facebook Advertising API.
+        - title: Founder CEO
+          company: Shi Cheng Trading
+          company_logo: 'shicheng'
+          location: Hong Kong
+          date_start: 2009-12-01
+          date_end: ''
+          description: |2-
+            * Established and led Shi Cheng Trading Limited, a successful import company specializing in innovative gel material and foam pillows and mattresses for the Hong Kong and China markets.
+            * Managed the end-to-end operations of the company, including procurement, sales, logistics, and customer service, to ensure smooth and efficient business processes.
+            * Oversaw the company's Enterprise Resource Planning (ERP) system, utilizing OpenERP (now Odoo) and currently ERPNext, to maintain accurate records of sales, purchases, stock, and accounting.
 
         - title: Social Media Specialist
           company: 77Agency
@@ -98,7 +130,8 @@ sections:
           date_start: 2008-09-01
           date_end: 2011-08-01
           description: |2-
-              As a Social Media Specialist at 77Agency, I was responsible for developing and deploying Facebook applications for marketing purposes for some of the most influential Italian companies like Lavazza, Repubblica, RCA, CondèNast, and Mondadori.
+            * Responsible for developing and deploying Facebook applications for marketing purposes.
+            *	Worked with influential Italian companies including Lavazza, Repubblica, RCA, CondèNast, and Mondadori.
 
         - title: Teaching Assistant
           company: SDA Bocconi
@@ -108,7 +141,10 @@ sections:
           date_start: 2007-02-01
           date_end: 2008-06-01
           description: |2-
-              As a Teaching Assistant at SDA Bocconi, I worked for the TeD+ lab which was dedicated to developing e-learning platforms and teaching over distance. During my time there, I had the opportunity to actively participate in the teaching of the course 8340 “Organizational Dynamics and Technical Change” of EMIT Master of Science. This experience allowed me to hone my skills as an educator by working closely with students and professors alike.
+            * Teaching Assistant at SDA Bocconi, working for the TeD+ lab focused on e-learning platforms and remote teaching.
+            * Actively participated in teaching the course 8340 "Organizational Dynamics and Technical Change" of EMIT Master of Science.
+            * Honed skills as an educator through hands-on involvement in teaching activities and providing support to students.
+
     design:
       columns: '2'
   # - block: accomplishments
