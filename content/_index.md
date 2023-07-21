@@ -40,16 +40,18 @@ sections:
       #   Refer to https://wowchemy.com/docs/customization/#date-format
       date_format: Jan 2006     
       items:
-        - title: Part-time Visiting Lecturer
+        - title: Ph.D. - Part-time Visiting Lecturer
           company: The Hong Kong Polytechnic University, School of Design
           company_url: 'https://www.sd.polyu.edu.hk/en/'
           company_logo: 'polyu'
           location: Hong Kong
-          date_start: 2022-09-01
+          date_start: 2019-09-01
           date_end: ''
           description: |2-
             *	Conducted research and published scholarly papers on the topic of Generative AI, resulting in invitations to present at international conferences.
-            *	Mentored and tutored students one-on-one, helping them to better integrate Generative AI tools in products and services.
+            * Developed a real-time TensorRT accelerated img2img pipeline using webrtc, StableDiffusion and docker ([Read more...](/project/videosd)).
+            *	Developed workshops and tutored students and professionals, helping them to better integrate Generative AI tools in their creative workflow ([Read more...](/project/mediabots)).
+            * Taught elective courses in Sound Design, Interactive Multimedia Environment and Transformative Technologies.
             * Coordinated and facilitated group projects, teaching students how to work together and communicate effectively.
 
         - title: Project Associate
