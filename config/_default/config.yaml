@@ -32,7 +32,8 @@ module:
 
 enableGitInfo: false
 summaryLength: 30
-paginate: 10
+pagination:
+  pagerSize: 10
 enableEmoji: true
 enableRobotsTXT: true
 footnotereturnlinkcontents: <sup>^</sup>
@@ -73,3 +74,6 @@ sitemap:
   _merge: deep
 minify:
   _merge: deep
+
+# Legacy Google Analytics for older themes
+googleAnalytics: 'G-PSFKGSRS0H'

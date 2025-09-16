@@ -46,12 +46,13 @@ sections:
           company_logo: 'polyu'
           location: Hong Kong
           date_start: 2019-09-01
-          date_end: ''
+          date_end: 2025-05-01
           description: |2-
-            *	Conducted research and published scholarly papers on the topic of Generative AI, resulting in invitations to present at international conferences.
+            *	Completed Ph.D. research on Generative AI and creativity, with focus on agents, automation, and their impact on design practices (awarded May 2025).
             * Developed a real-time TensorRT accelerated img2img pipeline using webrtc, StableDiffusion and docker ([Read more...](/project/videosd)).
             *	Developed workshops and tutored students and professionals, helping them to better integrate Generative AI tools in their creative workflow ([Read more...](/project/mediabots)).
             * Taught elective courses in Sound Design, Interactive Multimedia Environment and Transformative Technologies.
+            * Created A-Eye, an interactive AI installation that reimagines audiences in realtime, premiered at M+ private party for Art Basel ([Read more...](/project/a-eye)).
             * Coordinated and facilitated group projects, teaching students how to work together and communicate effectively.
 
         - title: Project Associate
