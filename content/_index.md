@@ -48,10 +48,10 @@ sections:
           date_start: 2019-09-01
           date_end: ''
           description: |2-
-            *	Conducted research and published scholarly papers on the topic of Generative AI, resulting in invitations to present at international conferences.
+            *	Published scholarly papers on the topic of generative AI, resulting in invitations to present at international conferences.
+            * Conducted quantitative and qualitative research by delivering workshops to students and professionals and evaluating their use of generative AI tools ([Read more...](/project/mediabots)).
             * Developed a real-time TensorRT accelerated img2img pipeline using webrtc, StableDiffusion and docker ([Read more...](/project/videosd)).
-            *	Developed workshops and tutored students and professionals, helping them to better integrate Generative AI tools in their creative workflow ([Read more...](/project/mediabots)).
-            * Taught elective courses in Sound Design, Interactive Multimedia Environment and Transformative Technologies.
+            * Lectured in MSc elective courses Sound Design, Interactive Multimedia Environment and Transformative Technologies.
             * Coordinated and facilitated group projects, teaching students how to work together and communicate effectively.
 
         - title: Project Associate
@@ -62,10 +62,10 @@ sections:
           date_start: 2017-09-01
           date_end: 2019-08-01
           description: |2-
-            *	Collaborated with school staff to develop and implement extracurricular activities and resources to support student learning.
-            *	Developed and taught innovative courses in the field of computer science and maker education, resulting in higher student engagement and improved learning outcomes.
-            *	Collaborated with other teachers to develop interdisciplinary projects that integrated computer science topics with other subjects.
-
+            *	Collaborated with school staff to develop and implement extracurricular activities and workshops to support student learning.
+            *	Developed a 32-speaker ambisonics system capable of real-time spatialization of audio content ([Read more...](/project/3dsnd/)).
+            * Developed and taught specialized lectures in the field of computer science and maker education, resulting in higher student engagement and improved learning outcomes.
+            * Lectured in MSc elective courses Sound Design, Interactive Multimedia Environment and Transformative Technologies.
         - title: Robot Operator
           company: Hanson Robotics
           company_url: 'https://www.hansonrobotics.com/'
@@ -74,7 +74,8 @@ sections:
           date_start: 2017-12-01
           date_end: 2019-06-01
           description: |2-
-            *	Responsible for overseeing performance scripting, transportation, setup, and operation of Sophia, the world-renowned humanoid robot.
+            *	Responsible for overseeing performance scripting, transportation, setup, and operation of Sophia, the world-renowned humanoid robot ([Read more...](/project/working-with-sophia/)).
+            * Gained in depth knowledge of [ROS](https://ros.org) (Robot operative system), and its servo motor, computer vision and chat-bot components.
             *	Worked on high-profile events, including a commercial shoot with Cristiano Ronaldo.
             *	Showcased Sophia's capabilities at the World Investment Forum 2018 at UN in Geneva.
         
@@ -82,7 +83,7 @@ sections:
           company: Ambulatorio San Massimo
           company_url: 'https://ambulatoriosanmassimo.it'
           company_logo: 'asm'
-          location: Remote
+          location: Padova, Italy - Remote
           date_start: 2018-09-01
           date_end: 2022-12-31
           description: |2-
@@ -98,7 +99,7 @@ sections:
           date_start: 2015-02-01
           date_end: 2016-05-01
           description: |2-
-            *	Created Featherman, an innovative game aimed at raising awareness about migratory birds' environmental issues.
+            *	Created Featherman, an innovative game aimed at raising awareness about migratory birds' environmental issues ([Read more...](/project/featherman)).
             * Oversaw all aspects of mobile game development and management as team leader.
             * Partnered with WWF Mai Po Reservoir.
 
