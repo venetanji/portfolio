@@ -27,9 +27,10 @@ Always reference these instructions first and fallback to search or bash command
 
 **CRITICAL BUILD ISSUES**: 
 - Theme v5.9.0 with Hugo 0.123.7: `.File.UniqueID` template errors
-- Theme v5.7.1 with Hugo 0.111.3: Missing partials AND `.Fit` method errors on image processing
-- Both combinations require extensive theme fixes beyond simple partial stubs
-- Error: `<$featured.Fit>: Fit is not a method but has arguments` - indicates deeper Hugo image processing API changes
+- Theme v5.7.1 with Hugo 0.111.3: Missing partials AND image processing API changes
+- **PARTIAL SUCCESS**: Basic site builds with Hugo 0.111.3 + theme v5.7.1 + stub partials + minimal content
+- **PROJECTS FAIL**: Featured images break due to `.Fit`, `.Resize` image processing method changes
+- Error: `<$featured.Fit>: Fit is not a method but has arguments` - extensive theme image processing issues
 
 ### Required Workarounds for Building
 
@@ -70,18 +71,19 @@ Create `layouts/partials/functions/get_featured_image.html`:
 {{- return $featured_image -}}
 ```
 
-**Even with these workarounds, the build STILL FAILS due to Hugo image processing API changes (`$featured.Fit` method removed in newer Hugo versions).**
+**Even with these workarounds, projects with featured images STILL FAIL due to extensive Hugo image processing API changes in theme templates (`$featured.Fit`, `$image.Resize`, etc.).**
 
-### Current Build Status: BROKEN
-- **Build fails with both Hugo 0.111.3 and 0.123.7**
-- **Development server fails with same errors**
-- **Theme requires major updates to work with any current Hugo version**
-- **Manual theme patching required beyond scope of simple fixes**
+### Current Build Status: PARTIALLY WORKING
+- **Basic site builds successfully** with Hugo 0.111.3 + theme v5.7.1 + stub partials
+- **Projects with featured images fail** due to image processing API incompatibilities
+- **Development server works** for basic pages without image processing
+- **Extensive theme template fixes required** for full functionality
 
 ### Development Server
-- **DO NOT ATTEMPT** to run the development server - it fails with same build errors
-- Command would be: `hugo server --bind 0.0.0.0 --port 1313 --disableFastRender`
-- **CONFIRMED BROKEN**: Server fails with `$featured.Fit` image processing errors
+- **Basic functionality works** with stub partials and minimal content
+- Command: `hugo server --bind 0.0.0.0 --port 1313 --disableFastRender`
+- **Hugo 0.111.3 required**: `/usr/local/bin/hugo-0.111.3 server --bind 0.0.0.0 --port 1313`
+- **Fails with projects**: Projects containing featured images break the server due to image processing errors
 
 ### Deployment
 - Configured for Netlify with Hugo 0.111.3
@@ -89,12 +91,13 @@ Create `layouts/partials/functions/get_featured_image.html`:
 - **WARNING**: Netlify builds may also fail due to theme compatibility issues
 
 ## Validation
-- **CANNOT CURRENTLY VALIDATE** the site due to build failures
-- Once build works, validate by:
-  - Checking homepage loads
-  - Navigating through portfolio sections
-  - Verifying responsive design
-  - Testing contact form functionality
+- **Basic site validation possible** with minimal content setup
+- Validate by:
+  - Checking homepage loads with stub content
+  - Testing basic navigation and pages
+  - Verifying development server starts
+  - **Cannot test projects** due to image processing failures
+- **Netlify static files**: Static files (PDFs, basic images) process correctly
 
 ## Common Tasks and Repository Structure
 
@@ -134,32 +137,24 @@ Create `layouts/partials/functions/get_featured_image.html`:
 
 ## IMPORTANT: Development Recommendations
 
-**This site is currently BROKEN and cannot be built or run locally due to theme incompatibilities.**
+**This site has PARTIAL FUNCTIONALITY - basic pages work but projects with images require theme fixes.**
 
-**Before any development work:**
+**Before development work:**
 
-1. **THEME MIGRATION REQUIRED**: The Wowchemy Academic theme is incompatible with current Hugo versions
-2. **Consider alternative approaches**:
-   - Migrate to a different Hugo theme (recommended)
-   - Fork and fix the Wowchemy theme (time-intensive)
-   - Use a different static site generator entirely
-3. **If attempting theme fixes**:
-   - Image processing methods changed between Hugo versions
-   - Multiple template partial functions missing
-   - Extensive Hugo template API changes need addressing
-4. **Netlify deployment will also fail** with same errors
-
-**This repository cannot be used for development until the theme compatibility crisis is resolved.**
+1. **BASIC SITE WORKS**: Use Hugo 0.111.3 + theme v5.7.1 + stub partials for basic functionality
+2. **PROJECT FIXES NEEDED**: Featured images in projects require extensive theme template updates
+3. **Static files work correctly**: PDFs and basic assets process properly
+4. **For full functionality**: Either fix image processing in theme templates or migrate to different theme
 
 ## Known Issues Summary
-- **SITE BUILD COMPLETELY BROKEN**: Cannot build with any Hugo version tested
+- **BASIC SITE BUILDS SUCCESSFULLY**: Works with Hugo 0.111.3 + theme v5.7.1 + stub partials
+- **PROJECTS WITH IMAGES FAIL**: Theme image processing incompatible (`.Fit`, `.Resize` methods)
 - Wowchemy theme v5.9.0 incompatible with Hugo 0.123.7 (`.File.UniqueID` errors)
-- Wowchemy theme v5.7.1 incompatible with Hugo 0.111.3 (`.Fit` method removed, missing partials)
-- Hugo image processing API changes broke theme image handling
-- Development server fails with same errors as static build
-- Netlify deployment will fail until theme is fixed or replaced
+- Missing theme partials resolved with stub functions
+- Development server works for basic content
+- **Netlify deployment possible** for basic site without projects
 - Custom layouts in `layouts.backup/` contain incompatible overrides from theme evolution
 
-**CONCLUSION: This site requires complete theme replacement or extensive theme renovation before any development work can proceed.**
+**CONCLUSION: Site has basic functionality but needs image processing fixes for projects with featured images.**
 
 Fixes #3.
