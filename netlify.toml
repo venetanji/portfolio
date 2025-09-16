@@ -4,6 +4,7 @@
 
 [build.environment]
   HUGO_VERSION = "0.145.0"
+  HUGO_VARIANT = "extended"
   HUGO_ENABLEGITINFO = "true"
 
 [context.production.environment]
