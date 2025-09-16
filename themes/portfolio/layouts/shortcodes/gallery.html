@@ -1,0 +1,6 @@
+<!-- Simple replacement for gallery shortcode -->
+<div class="gallery">
+    {{ range .Site.Params.gallery }}
+    <img src="{{ . }}" alt="Gallery image">
+    {{ end }}
+</div>

@@ -1,0 +1,86 @@
+# Configuration of Hugo
+# This is a minimal config for the custom portfolio theme
+
+title: "Giovanni Lion"
+baseURL: "https://example.com/"
+
+# Language
+defaultContentLanguage: "en"
+languageCode: "en-us"
+
+# Theme
+theme: "portfolio"
+
+# Build settings
+enableGitInfo: false
+enableEmoji: true
+enableRobotsTXT: true
+
+# Permalinks
+permalinks:
+  posts: "/:year/:month/:slug/"
+  projects: "/project/:slug/"
+  publications: "/publication/:slug/"
+
+# Imaging
+imaging:
+  resampleFilter: "lanczos"
+  quality: 85
+  anchor: "smart"
+
+# Taxonomies
+taxonomies:
+  tag: "tags"
+  category: "categories"
+
+# Output formats
+outputs:
+  home: ["HTML", "RSS"]
+  section: ["HTML", "RSS"]
+
+# Markup
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    style: "github"
+    lineNos: true
+
+# Params
+params:
+  description: "Giovanni Lion - Researcher specializing in generative AI and creativity"
+  bio: "Giovanni's research focuses on generative AI and creativity, which is also the topic of his PhD awarded in May 2025. His recent work explores agents, automation, and their transformative impact on design practices."
+  role: "Researcher & Developer"
+  
+  # Contact form
+  contact_form_netlify: true
+  
+  # Social links
+  social:
+    - name: "Email"
+      icon: "✉️"
+      url: "mailto:giovanni.lion@gmail.com"
+    - name: "Twitter"
+      icon: "🐦"
+      url: "https://twitter.com/venetanji"
+    - name: "GitHub"
+      icon: "💻"
+      url: "https://github.com/venetanji"
+    - name: "LinkedIn"
+      icon: "💼"
+      url: "https://www.linkedin.com/in/giovannilion/"
+    - name: "Google Scholar"
+      icon: "🎓"
+      url: "https://scholar.google.co.uk/citations?user=4QbQW8AAAAAJ&hl=en"
+    - name: "Music"
+      icon: "🎵"
+      url: "https://suno.com/@venetanji?page=songs"
+
+# Google Analytics
+googleAnalytics: "G-PSFKGSRS0H"
+
+# Security
+security:
+  funcs:
+    getenv: ["^HUGO_", "^WC_"]
