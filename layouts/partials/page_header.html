@@ -1,0 +1,29 @@
+{{/*
+Basic page header with title and featured image (no processing)
+Provides safe header rendering without Hugo image processing methods
+*/}}
+{{- $page := . -}}
+{{- $title := partial "functions/get_page_title" $page -}}
+{{- $featured_image := partial "functions/get_featured_image" $page -}}
+
+<header class="page-header">
+  {{- if $featured_image -}}
+  <div class="page-header-image">
+    <img src="{{ $featured_image }}" alt="{{ $title }}" class="img-responsive" loading="lazy">
+  </div>
+  {{- end -}}
+  
+  <div class="page-header-content">
+    <h1 class="page-title">{{ $title }}</h1>
+    
+    {{- with $page.Params.subtitle -}}
+    <p class="page-subtitle">{{ . | markdownify | emojify }}</p>
+    {{- end -}}
+    
+    {{- with $page.Summary -}}
+    <div class="page-summary">
+      {{ . | markdownify | emojify }}
+    </div>
+    {{- end -}}
+  </div>
+</header>
