@@ -1,6 +1,6 @@
 # IDEs
 .idea/
-
+_vendor/
 # Hugo
 resources/
 public/
