@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ site.Language.Lang | default "en-us" }}" {{ if site.Params.features.night_mode.enable }}class="no-js"{{ end }}>
+<head>
+  {{ partial "site_head" . }}
+</head>
+<body id="top" data-spy="scroll" data-offset="70" data-target="#navbar-main" {{ if not (.Scratch.Get "light") }}class="dark"{{ end }}>
+
+  {{ block "main" . }}{{ end }}
+
+  <div class="container">
+    {{ partial "site_footer" . }}
+  </div>
+
+</body>
+</html>
