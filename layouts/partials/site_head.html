@@ -53,3 +53,8 @@
 {{ template "_internal/twitter_cards.html" . }}
 
 {{/* Disable Google Analytics for now to fix build issues */}}
+{{/* Include generated CSS and JS so the site renders correctly */}}
+<link rel="stylesheet" href="/css/vendor-bundle.min.css">
+<link rel="stylesheet" href="/css/wowchemy.css">
+<link rel="stylesheet" href="/css/libs/chroma/dracula.min.css">
+<script defer src="/js/wowchemy-init.min.js"></script>
