@@ -1,0 +1,11 @@
+{{/* 
+Stub for get_featured_image function - returns featured image if available
+*/}}
+{{- $page := . -}}
+{{- $featured_image := "" -}}
+{{- if $page.Params.image -}}
+{{- $featured_image = $page.Params.image -}}
+{{- else if $page.Params.header.image -}}
+{{- $featured_image = $page.Params.header.image -}}
+{{- end -}}
+{{- return $featured_image -}}
