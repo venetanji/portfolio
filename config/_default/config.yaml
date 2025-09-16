@@ -74,3 +74,6 @@ sitemap:
   _merge: deep
 minify:
   _merge: deep
+
+# Legacy Google Analytics for older themes
+googleAnalytics: 'G-PSFKGSRS0H'
