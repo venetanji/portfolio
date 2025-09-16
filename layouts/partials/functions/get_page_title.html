@@ -1,0 +1,8 @@
+{{/* 
+Stub for get_page_title function - returns page title
+*/}}
+{{- $page_title := .Title -}}
+{{- if not $page_title -}}
+{{- $page_title = site.Title -}}
+{{- end -}}
+{{- return $page_title -}}
