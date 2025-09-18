@@ -78,7 +78,9 @@ params:
       url: "https://suno.com/@venetanji?page=songs"
 
 # Google Analytics
-googleAnalytics: "G-PSFKGSRS0H"
+services:
+  googleAnalytics:
+    ID: "G-PSFKGSRS0H"
 
 # Security
 security:

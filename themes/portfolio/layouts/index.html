@@ -58,27 +58,36 @@
         <h2 class="section-title">Experience</h2>
         <div class="timeline">
             {{ $experiences := slice 
-                (dict "title" "Ph.D. - Part-time Visiting Lecturer" "company" "The Hong Kong Polytechnic University, School of Design" "company_url" "https://www.sd.polyu.edu.hk/en/" "location" "Hong Kong" "date_start" "2019-09-01" "date_end" "2025-05-01" "description" "Completed Ph.D. research on Generative AI and creativity, with focus on agents, automation, and their impact on design practices (awarded May 2025).|Developed a real-time TensorRT accelerated img2img pipeline using webrtc, StableDiffusion and docker.|Developed workshops and tutored students and professionals, helping them to better integrate Generative AI tools in their creative workflow.|Taught elective courses in Sound Design, Interactive Multimedia Environment and Transformative Technologies.|Created A-Eye, an interactive AI installation that reimagines audiences in realtime, premiered at M+ private party for Art Basel.|Coordinated and facilitated group projects, teaching students how to work together and communicate effectively.")
-                (dict "title" "Project Associate" "company" "The Hong Kong Polytechnic University, School of Design" "company_url" "https://www.sd.polyu.edu.hk/en/" "location" "Hong Kong" "date_start" "2017-09-01" "date_end" "2019-08-01" "description" "Collaborated with school staff to develop and implement extracurricular activities and workshops to support student learning.|Developed a 32-speaker ambisonics system capable of real-time spatialization of audio content.|Developed and taught specialized lectures in the field of computer science and maker education, resulting in higher student engagement and improved learning outcomes.|Lectured in MSc elective courses Sound Design, Interactive Multimedia Environment and Transformative Technologies.")
-                (dict "title" "Robot Operator" "company" "Hanson Robotics" "company_url" "https://www.hansonrobotics.com/" "location" "Hong Kong" "date_start" "2017-12-01" "date_end" "2019-06-01" "description" "Responsible for overseeing performance scripting, transportation, setup, and operation of Sophia, the world-renowned humanoid robot.|Gained in depth knowledge of ROS (Robot operative system), and its servo motor, computer vision and chat-bot components.|Worked on high-profile events, including a commercial shoot with Cristiano Ronaldo.|Showcased Sophia's capabilities at the World Investment Forum 2018 at UN in Geneva.")
-                (dict "title" "IT Manager" "company" "Ambulatorio San Massimo" "company_url" "https://ambulatoriosanmassimo.it" "location" "Padova, Italy - Remote" "date_start" "2018-09-01" "date_end" "2022-12-31" "description" "Lead the design and implementation of the network architecture and RemoteApp services (database, VoIP, appointment booking API) of a medical clinic with two sites.|Automated backup and routine system administration tasks using docker to reduce manual effort.|Streamlined and automated system administration tasks, resulting in a 60% reduction in operational costs.")
-                (dict "title" "Founder CEO and Lead Programmer" "company" "Hagao Studio" "location" "Hong Kong" "date_start" "2015-02-01" "date_end" "2016-05-01" "description" "Created Featherman, an innovative game aimed at raising awareness about migratory birds' environmental issues.|Oversaw all aspects of mobile game development and management as team leader.|Partnered with WWF Mai Po Reservoir.")
-                (dict "title" "Founder CEO and Lead Programmer" "company" "83bits" "location" "Hong Kong" "date_start" "2011-09-01" "date_end" "2014-09-01" "description" "Successfully established and managed the primary product, AllIn1Social, a web application for managing content and advertising campaigns on Facebook pages.|Developed front-end and back-end development using Ruby on Rails.|Worked with Facebook Advertising API.")
-                (dict "title" "Founder CEO" "company" "Shi Cheng Trading" "location" "Hong Kong" "date_start" "2009-12-01" "description" "Established and led Shi Cheng Trading Limited, a successful import company specializing in innovative gel material and foam pillows and mattresses for the Hong Kong and China markets.|Managed the end-to-end operations of the company, including procurement, sales, logistics, and customer service, to ensure smooth and efficient business processes.|Oversaw the company's Enterprise Resource Planning (ERP) system, utilizing OpenERP (now Odoo) and currently ERPNext, to maintain accurate records of sales, purchases, stock, and accounting.")
-                (dict "title" "Social Media Specialist" "company" "77Agency" "company_url" "https://www.77agency.com/" "location" "Milan" "date_start" "2008-09-01" "date_end" "2011-08-01" "description" "Responsible for developing and deploying Facebook applications for marketing purposes.|Worked with influential Italian companies including Lavazza, Repubblica, RCA, CondèNast, and Mondadori.")
-                (dict "title" "Teaching Assistant" "company" "SDA Bocconi" "location" "Milan" "date_start" "2007-02-01" "date_end" "2008-06-01" "description" "Teaching Assistant at SDA Bocconi, working for the TeD+ lab focused on e-learning platforms and remote teaching.|Actively participated in teaching the course 8340 \"Organizational Dynamics and Technical Change\" of EMIT Master of Science.|Honed skills as an educator through hands-on involvement in teaching activities and providing support to students.")
+                (dict "title" "Ph.D. - Part-time Visiting Lecturer" "company" "The Hong Kong Polytechnic University, School of Design" "company_url" "https://www.sd.polyu.edu.hk/en/" "company_logo" "polyu.svg" "location" "Hong Kong" "date_start" "2019-09-01" "date_end" "2025-05-01" "description" "Completed Ph.D. research on Generative AI and creativity, with focus on agents, automation, and their impact on design practices (awarded May 2025).|Developed a real-time TensorRT accelerated img2img pipeline using webrtc, StableDiffusion and docker.|Developed workshops and tutored students and professionals, helping them to better integrate Generative AI tools in their creative workflow.|Taught elective courses in Sound Design, Interactive Multimedia Environment and Transformative Technologies.|Created A-Eye, an interactive AI installation that reimagines audiences in realtime, premiered at M+ private party for Art Basel.|Coordinated and facilitated group projects, teaching students how to work together and communicate effectively.")
+                (dict "title" "Project Associate" "company" "The Hong Kong Polytechnic University, School of Design" "company_url" "https://www.sd.polyu.edu.hk/en/" "company_logo" "polyu.svg" "location" "Hong Kong" "date_start" "2017-09-01" "date_end" "2019-08-01" "description" "Collaborated with school staff to develop and implement extracurricular activities and workshops to support student learning.|Developed a 32-speaker ambisonics system capable of real-time spatialization of audio content.|Developed and taught specialized lectures in the field of computer science and maker education, resulting in higher student engagement and improved learning outcomes.|Lectured in MSc elective courses Sound Design, Interactive Multimedia Environment and Transformative Technologies.")
+                (dict "title" "Robot Operator" "company" "Hanson Robotics" "company_url" "https://www.hansonrobotics.com/" "company_logo" "hansonrobotics.svg" "location" "Hong Kong" "date_start" "2017-12-01" "date_end" "2019-06-01" "description" "Responsible for overseeing performance scripting, transportation, setup, and operation of Sophia, the world-renowned humanoid robot.|Gained in depth knowledge of ROS (Robot operative system), and its servo motor, computer vision and chat-bot components.|Worked on high-profile events, including a commercial shoot with Cristiano Ronaldo.|Showcased Sophia's capabilities at the World Investment Forum 2018 at UN in Geneva.")
+                (dict "title" "IT Manager" "company" "Ambulatorio San Massimo" "company_url" "https://ambulatoriosanmassimo.it" "company_logo" "asm.svg" "location" "Padova, Italy - Remote" "date_start" "2018-09-01" "date_end" "2022-12-31" "description" "Lead the design and implementation of the network architecture and RemoteApp services (database, VoIP, appointment booking API) of a medical clinic with two sites.|Automated backup and routine system administration tasks using docker to reduce manual effort.|Streamlined and automated system administration tasks, resulting in a 60% reduction in operational costs.")
+                (dict "title" "Founder CEO and Lead Programmer" "company" "Hagao Studio" "company_logo" "hagao.svg" "location" "Hong Kong" "date_start" "2015-02-01" "date_end" "2016-05-01" "description" "Created Featherman, an innovative game aimed at raising awareness about migratory birds' environmental issues.|Oversaw all aspects of mobile game development and management as team leader.|Partnered with WWF Mai Po Reservoir.")
+                (dict "title" "Founder CEO and Lead Programmer" "company" "83bits" "company_logo" "83.svg" "location" "Hong Kong" "date_start" "2011-09-01" "date_end" "2014-09-01" "description" "Successfully established and managed the primary product, AllIn1Social, a web application for managing content and advertising campaigns on Facebook pages.|Developed front-end and back-end development using Ruby on Rails.|Worked with Facebook Advertising API.")
+                (dict "title" "Founder CEO" "company" "Shi Cheng Trading" "company_logo" "shicheng.svg" "location" "Hong Kong" "date_start" "2009-12-01" "description" "Established and led Shi Cheng Trading Limited, a successful import company specializing in innovative gel material and foam pillows and mattresses for the Hong Kong and China markets.|Managed the end-to-end operations of the company, including procurement, sales, logistics, and customer service, to ensure smooth and efficient business processes.|Oversaw the company's Enterprise Resource Planning (ERP) system, utilizing OpenERP (now Odoo) and currently ERPNext, to maintain accurate records of sales, purchases, stock, and accounting.")
+                (dict "title" "Social Media Specialist" "company" "77Agency" "company_url" "https://www.77agency.com/" "company_logo" "77.svg" "location" "Milan" "date_start" "2008-09-01" "date_end" "2011-08-01" "description" "Responsible for developing and deploying Facebook applications for marketing purposes.|Worked with influential Italian companies including Lavazza, Repubblica, RCA, CondèNast, and Mondadori.")
+                (dict "title" "Teaching Assistant" "company" "SDA Bocconi" "company_logo" "bocconi.svg" "location" "Milan" "date_start" "2007-02-01" "date_end" "2008-06-01" "description" "Teaching Assistant at SDA Bocconi, working for the TeD+ lab focused on e-learning platforms and remote teaching.|Actively participated in teaching the course 8340 \"Organizational Dynamics and Technical Change\" of EMIT Master of Science.|Honed skills as an educator through hands-on involvement in teaching activities and providing support to students.")
             }}
             {{ range $experiences }}
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3 class="job-title">{{ .title }}</h3>
-                    <h4 class="company">
-                        {{ if .company_url }}
-                        <a href="{{ .company_url }}" target="_blank" rel="noopener">{{ .company }}</a>
-                        {{ else }}
-                        {{ .company }}
+                    <div class="job-header">
+                        {{ if .company_logo }}
+                        <div class="company-logo">
+                            <img src="{{ printf "/images/logos/%s" .company_logo | relURL }}" alt="{{ .company }}" class="logo">
+                        </div>
                         {{ end }}
-                    </h4>
+                        <div class="job-info">
+                            <h3 class="job-title">{{ .title }}</h3>
+                            <h4 class="company">
+                                {{ if .company_url }}
+                                <a href="{{ .company_url }}" target="_blank" rel="noopener">{{ .company }}</a>
+                                {{ else }}
+                                {{ .company }}
+                                {{ end }}
+                            </h4>
+                        </div>
+                    </div>
                     <div class="job-meta">
                         <span class="job-date">{{ dateFormat "January 2006" (time .date_start) }}{{ if .date_end }} – {{ dateFormat "January 2006" (time .date_end) }}{{ else }} – Present{{ end }}</span>
                         <span class="job-location">{{ .location }}</span>
@@ -100,10 +109,20 @@
         <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
             {{ range (where site.RegularPages "Section" "project") }}
+            {{ $image := "" }}
+            {{ if .Params.image }}
+                {{ if reflect.IsMap .Params.image }}
+                    {{ if .Params.image.filename }}
+                        {{ $image = printf "/project/%s/%s" (path.Base .File.Dir) .Params.image.filename }}
+                    {{ end }}
+                {{ else }}
+                    {{ $image = .Params.image }}
+                {{ end }}
+            {{ end }}
             <div class="project-card">
-                {{ if .Params.image }}
+                {{ if and $image (not (eq $image "")) }}
                 <div class="project-image">
-                    <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+                    <img src="{{ $image | relURL }}" alt="{{ .Title }}">
                 </div>
                 {{ end }}
                 <div class="project-content">

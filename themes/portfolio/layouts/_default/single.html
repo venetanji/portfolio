@@ -21,9 +21,20 @@
                 </div>
             </header>
             
+            
+            {{ $image := "" }}
             {{ if .Params.image }}
+                {{ if reflect.IsMap .Params.image }}
+                    {{ if .Params.image.filename }}
+                        {{ $image = printf "/%s/%s/%s" .Section (path.Base .File.Dir) .Params.image.filename }}
+                    {{ end }}
+                {{ else }}
+                    {{ $image = .Params.image }}
+                {{ end }}
+            {{ end }}
+            {{ if and $image (not (eq $image "")) }}
             <div class="single-image">
-                <img src="{{ .Params.image | relURL }}" alt="{{ .Title }}">
+                <img src="{{ $image | relURL }}" alt="{{ .Title }}">
             </div>
             {{ end }}
             
