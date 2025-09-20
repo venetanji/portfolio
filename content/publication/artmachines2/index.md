@@ -1,5 +1,5 @@
 ---
-title: Co-creating Musical Compositions with an Artificial Agent
+title: "Co-creating Musical Compositions with an Artificial Agent: Time-travel through Machine Learning"
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
 # 3 = Preprint / Working Paper; 4 = Report; 5 = Book; 6 = Book section;
@@ -8,8 +8,8 @@ publication_types:
   - "1"
 url_pdf: "https://www.cityu.edu.hk/sites/g/files/asqsls5796/files/2021-05/Co-creating%20Musical%20Compositions%20with%20an%20Artificial%20Agent%20Time-travel%20through%20Machine%20Learning.pdf"
 authors:
-  - admin
   - Vicky Fung
+  - admin
 author_notes:
   - Equal contribution
   - Equal contribution
