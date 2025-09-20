@@ -1,0 +1,9 @@
+<!-- Simple replacement for video shortcode -->
+{{ $src := .Get "src" }}
+{{ $poster := .Get "poster" }}
+<div class="video-container">
+    <video controls {{ if $poster }}poster="{{ $poster }}"{{ end }}>
+        <source src="{{ $src }}" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</div>

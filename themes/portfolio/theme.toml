@@ -1,0 +1,12 @@
+name = "Portfolio"
+license = "MIT"
+licenselink = "LICENSE"
+description = "A clean, modern Hugo portfolio theme"
+homepage = "https://example.com"
+tags = ["portfolio", "personal", "clean", "modern", "responsive"]
+features = ["responsive", "single-page", "contact-form"]
+min_version = "0.110.0"
+
+[author]
+  name = "Giovanni Lion"
+  homepage = "https://example.com"

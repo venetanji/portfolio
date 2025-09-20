@@ -6,7 +6,7 @@ featured: false
 external_link: https://artdaily.cc/news/92023/Pearl-Lam-Galleries-presents-a-whimsical-multi-sensory-art-exhibition#.ZF3YtnZBy5c
 weight: 2
 image:
-  filename: featured
+  filename: featured.jpg
   focal_point: Smart
   preview_only: false
 ---
