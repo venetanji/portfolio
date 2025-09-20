@@ -186,9 +186,9 @@
                     
                     {{/* DOI or URL */}}
                     {{ if $doi }}
-                    <span class="apa-doi"><a href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">https://doi.org/{{ $doi }}</a></span>
+                    <span class="apa-doi"><a href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">DOI</a></span>
                     {{ else if $url_pdf }}
-                    <span class="apa-url"><a href="{{ $url_pdf }}" target="_blank" rel="noopener">{{ $url_pdf }}</a></span>
+                    <span class="apa-url"><a href="{{ $url_pdf }}" target="_blank" rel="noopener">PDF</a></span>
                     {{ end }}
                 </div>
             </div>
