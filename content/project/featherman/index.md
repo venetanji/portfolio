@@ -8,7 +8,7 @@ summary: The Featherman game project is a mobile game designed to raise
   students in Hong Kong who are passionate about local environmental issues.
   [Read more...](/project/featherman)
 image:
-  filename: featured.jpg
+  filename: featured.jpeg
   focal_point: Smart
   preview_only: false
 ---
