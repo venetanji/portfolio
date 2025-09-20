@@ -1,5 +1,5 @@
 ---
-title: "Concept Formation in Computational Creativity: A Comparative Study of Algorithmic Approaches"
+title: "Concept Formation in Computational Creativity: a Comparative Study of Algorithmic Approaches"
 # Publication type.
 # Legend: 0 = Uncategorized; 1 = Conference paper; 2 = Journal article;
 # 3 = Preprint / Working Paper; 4 = Report; 5 = Book; 6 = Book section;
@@ -8,7 +8,7 @@ abstract: The doctoral thesis presented in this paper addresses the latest advan
 publication_types:
   - "1"
 authors:
-  - admin
+  - Giovanni Lion
 publication: Creativity and Cognition 2021-2022
 doi: 10.1145/3450741.3467466
 url_pdf: "https://dl.acm.org/doi/10.1145/3450741.3467466"
@@ -18,5 +18,5 @@ image:
   filename: featured
   focal_point: Smart
   preview_only: false
-date: 2021-06-12T04:51:50.301Z
+date: 2021-06-22T04:51:50.301Z
 ---

@@ -150,26 +150,47 @@
         <div class="publications">
             {{ range (where site.RegularPages "Section" "publication") }}
             <div class="publication-item">
-                <h3 class="publication-title">
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
-                </h3>
-                <div class="publication-meta">
-                    {{ if .Params.authors }}
-                    <span class="publication-authors">{{ delimit .Params.authors ", " }}</span>
+                <div class="publication-apa">
+                    {{ $authors := .Params.authors }}
+                    {{ $year := .Date.Format "2006" }}
+                    {{ $title := .Title }}
+                    {{ $venue := .Params.publication }}
+                    {{ $doi := .Params.doi }}
+                    {{ $url_pdf := .Params.url_pdf }}
+                    
+                    {{/* Format authors */}}
+                    {{ if $authors }}
+                    <span class="apa-authors">
+                        {{- range $index, $author := $authors -}}
+                            {{- if eq $index 0 -}}
+                                {{ $author }}
+                            {{- else if eq $index (sub (len $authors) 1) -}}
+                                , & {{ $author }}
+                            {{- else -}}
+                                , {{ $author }}
+                            {{- end -}}
+                        {{- end -}}
+                    </span>
                     {{ end }}
-                    <span class="publication-date">{{ .Date.Format "2006" }}</span>
-                    {{ if .Params.publication }}
-                    <span class="publication-venue">{{ .Params.publication }}</span>
+                    
+                    {{/* Year */}}
+                    <span class="apa-year"> ({{ $year }}). </span>
+                    
+                    {{/* Title */}}
+                    <span class="apa-title"><em>{{ $title }}</em>. </span>
+                    
+                    {{/* Publication venue */}}
+                    {{ if $venue }}
+                    <span class="apa-venue">{{ $venue }}. </span>
+                    {{ end }}
+                    
+                    {{/* DOI or URL */}}
+                    {{ if $doi }}
+                    <span class="apa-doi"><a href="https://doi.org/{{ $doi }}" target="_blank" rel="noopener">DOI</a></span>
+                    {{ else if $url_pdf }}
+                    <span class="apa-url"><a href="{{ $url_pdf }}" target="_blank" rel="noopener">PDF</a></span>
                     {{ end }}
                 </div>
-                <p class="publication-summary">{{ .Summary }}</p>
-                {{ if .Params.links }}
-                <div class="publication-links">
-                    {{ range .Params.links }}
-                    <a href="{{ .url }}" class="publication-link" target="_blank" rel="noopener">{{ .name }}</a>
-                    {{ end }}
-                </div>
-                {{ end }}
             </div>
             {{ end }}
         </div>
