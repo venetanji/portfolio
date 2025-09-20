@@ -9,7 +9,7 @@ publication_types:
 url_pdf: "https://www.cityu.edu.hk/sites/g/files/asqsls5796/files/2021-05/Co-creating%20Musical%20Compositions%20with%20an%20Artificial%20Agent%20Time-travel%20through%20Machine%20Learning.pdf"
 authors:
   - Vicky Fung
-  - admin
+  - Giovanni Lion
 author_notes:
   - Equal contribution
   - Equal contribution

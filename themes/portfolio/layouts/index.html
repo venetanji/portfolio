@@ -151,7 +151,7 @@
             {{ range (where site.RegularPages "Section" "publication") }}
             <div class="publication-item">
                 <h3 class="publication-title">
-                    <a href="{{ .Permalink }}">{{ .Title }}</a>
+                    {{ .Title }}
                 </h3>
                 <div class="publication-meta">
                     {{ if .Params.authors }}
@@ -163,13 +163,18 @@
                     {{ end }}
                 </div>
                 <p class="publication-summary">{{ .Summary }}</p>
-                {{ if .Params.links }}
                 <div class="publication-links">
+                    {{ if .Params.doi }}
+                    <a href="https://doi.org/{{ .Params.doi }}" class="publication-link" target="_blank" rel="noopener">DOI: {{ .Params.doi }}</a>
+                    {{ else if .Params.url_pdf }}
+                    <a href="{{ .Params.url_pdf }}" class="publication-link" target="_blank" rel="noopener">PDF</a>
+                    {{ end }}
+                    {{ if .Params.links }}
                     {{ range .Params.links }}
                     <a href="{{ .url }}" class="publication-link" target="_blank" rel="noopener">{{ .name }}</a>
                     {{ end }}
+                    {{ end }}
                 </div>
-                {{ end }}
             </div>
             {{ end }}
         </div>

@@ -8,7 +8,7 @@ abstract: The doctoral thesis presented in this paper addresses the latest advan
 publication_types:
   - "1"
 authors:
-  - admin
+  - Giovanni Lion
 publication: Creativity and Cognition 2021-2022
 doi: 10.1145/3450741.3467466
 url_pdf: "https://dl.acm.org/doi/10.1145/3450741.3467466"

@@ -7,7 +7,7 @@ url_pdf: "https://computationalcreativity.net/iccc23/papers/ICCC-2023_paper_112.
 publication_types:
   - "1"
 authors:
-  - admin
+  - Giovanni Lion
 publication: "ICCC 2023: 13th International Conference on Computational Creativity"
 summary: Exploring a post-phenomenology understanding of creativity.
 #url_dataset: https://github.com/wowchemy/wowchemy-hugo-themes

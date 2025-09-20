@@ -10,7 +10,7 @@ authors:
   - J. Derek Lomas
   - Willem van der Maden
   - Sohhom Bandyopadhyay
-  - admin
+  - Giovanni Lion
   - Nirmal Patel
   - Gyanesh Jain
   - Yanna Litowsky

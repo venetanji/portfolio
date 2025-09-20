@@ -14,7 +14,7 @@ publication_types:
   - "1"
 authors:
   - Marty Miller
-  - admin
+  - Giovanni Lion
 author_notes:
   - Equal contribution
   - Equal contribution
