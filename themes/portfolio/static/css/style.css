@@ -237,12 +237,11 @@ body {
 .timeline:before {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 30px;
     top: 0;
     bottom: 0;
     width: 2px;
     background: #3498db;
-    transform: translateX(-50%);
 }
 
 .timeline-item {
@@ -250,14 +249,9 @@ body {
     margin-bottom: 50px;
 }
 
-.timeline-item:nth-child(odd) .timeline-content {
-    margin-right: calc(50% + 20px);
-    padding-right: 40px;
-}
-
-.timeline-item:nth-child(even) .timeline-content {
-    margin-left: calc(50% + 20px);
-    padding-left: 40px;
+.timeline-item .timeline-content {
+    margin-left: 60px;
+    padding-left: 20px;
 }
 
 .timeline-content {
@@ -297,34 +291,10 @@ body {
     flex: 1;
 }
 
-.timeline-item:nth-child(odd) .timeline-content:after {
-    content: '';
-    position: absolute;
-    right: -10px;
-    top: 30px;
-    width: 0;
-    height: 0;
-    border-left: 10px solid white;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-}
-
-.timeline-item:nth-child(even) .timeline-content:after {
-    content: '';
-    position: absolute;
-    left: -10px;
-    top: 30px;
-    width: 0;
-    height: 0;
-    border-right: 10px solid white;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-}
-
 .timeline-item:before {
     content: '';
     position: absolute;
-    left: 50%;
+    left: 30px;
     top: 30px;
     width: 15px;
     height: 15px;
@@ -911,6 +881,20 @@ body {
         text-align: center;
     }
     
+    /* Timeline responsive adjustments */
+    .timeline:before {
+        left: 20px;
+    }
+    
+    .timeline-item .timeline-content {
+        margin-left: 40px;
+        padding-left: 15px;
+    }
+    
+    .timeline-item:before {
+        left: 20px;
+    }
+    
     .company-logo {
         align-self: center;
     }
@@ -952,6 +936,22 @@ body {
     
     .timeline-content {
         padding: 20px;
+    }
+    
+    /* Even smaller timeline for mobile */
+    .timeline:before {
+        left: 15px;
+    }
+    
+    .timeline-item .timeline-content {
+        margin-left: 30px;
+        padding-left: 10px;
+    }
+    
+    .timeline-item:before {
+        left: 15px;
+        width: 12px;
+        height: 12px;
     }
     
     .contact-form {
