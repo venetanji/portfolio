@@ -1,0 +1,21 @@
+---
+import { social, site } from "@/data/site";
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="wrap row">
+    <div>
+      <p class="kicker" style="margin:0 0 .8rem">Find me</p>
+      <div class="links">
+        {social.map((s) => (
+          <a href={s.url} target="_blank" rel="noopener noreferrer">{s.name}</a>
+        ))}
+      </div>
+    </div>
+    <p class="colophon">
+      © {year} {site.title} · Built with Astro · Hero animation ported from
+      <a href="https://observablehq.com/@venetanji/friendly-poligons">Friendly Polygons</a>
+    </p>
+  </div>
+</footer>

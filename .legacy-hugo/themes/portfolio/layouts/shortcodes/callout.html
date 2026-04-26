@@ -1,0 +1,4 @@
+<!-- Simple replacement for callout shortcode -->
+<div class="callout callout-{{ .Get 0 | default "note" }}">
+    {{ .Inner | markdownify }}
+</div>

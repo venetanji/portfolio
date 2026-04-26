@@ -1,0 +1,225 @@
+---
+import { getCollection } from "astro:content";
+import { Image } from "astro:assets";
+import Base from "@/layouts/Base.astro";
+import PolygonField from "@/components/PolygonField.astro";
+import { site, interests, education, experience, social, sketches } from "@/data/site";
+import { fmtRange, getYear, authorList, getProjectImage } from "@/lib/format";
+
+const projects = (await getCollection("projects", ({ data }) => !data.draft))
+  .sort((a, b) => {
+    const wa = a.data.weight ?? 999;
+    const wb = b.data.weight ?? 999;
+    if (wa !== wb) return wa - wb;
+    const da = a.data.date?.getTime() ?? 0;
+    const db = b.data.date?.getTime() ?? 0;
+    return db - da;
+  });
+
+const publications = (await getCollection("publications", ({ data }) => !data.draft))
+  .sort((a, b) => (b.data.date?.getTime() ?? 0) - (a.data.date?.getTime() ?? 0));
+
+// Layout pattern for the project grid (looped):
+// big | med + med | sm + sm + sm
+const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "size-sm"];
+---
+
+<Base description={site.description}>
+  <section class="hero">
+    <div class="bg"></div>
+    <div class="grid"></div>
+    <div class="stage">
+      <PolygonField count={14} rings={4} intensity={0.55} speed={1} />
+    </div>
+    <div class="content">
+      <p class="tag">Researcher · Generative AI · Creative Code</p>
+      <h1>
+        Giovanni <span class="marked">Lion</span><br />
+        builds with code,<br />
+        agents and noise.
+      </h1>
+      <p class="lede">{site.bio}</p>
+      <div class="meta">
+        <span>Hong Kong &nbsp;/&nbsp; Padova</span>
+        <a href="/#work">See the work →</a>
+        <a href="/lab">Visit the lab →</a>
+      </div>
+    </div>
+    <div class="hint">scroll</div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="wrap">
+      <p class="eyebrow">About</p>
+      <div class="split">
+        <div class="bio-prose">
+          <p style="font-family:var(--serif); font-size:clamp(1.3rem,2.5vw,1.8rem); line-height:1.4;">
+            {site.longBio}
+          </p>
+          <p class="muted">
+            PhD in Design from The Hong Kong Polytechnic University (2025). I build
+            interactive AI installations, teach, and write about how generative
+            systems re-shape design practice. I also play Ultimate at international
+            level and write music with an OP-Z.
+          </p>
+        </div>
+        <aside>
+          <p class="kicker" style="margin-bottom:.8rem">Interests</p>
+          <div class="tag-cloud">
+            {interests.map((i) => <span>{i}</span>)}
+          </div>
+          <p class="kicker" style="margin: 2rem 0 .4rem">Education</p>
+          <ul class="edu">
+            {education.map((e) => (
+              <li>
+                <span class="y">{e.year}</span>
+                <span>
+                  <strong>{e.course}</strong>
+                  <small>{e.institution}{e.school ? `, ${e.school}` : ""}</small>
+                </span>
+              </li>
+            ))}
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="wrap">
+      <p class="eyebrow">Selected work</p>
+      <h2 style="max-width:18ch; margin-bottom:3rem;">
+        Installations, tools and games — built between research and practice.
+      </h2>
+      <div class="projects">
+        {projects.map((p, i) => {
+          const sz = sizePattern[i % sizePattern.length];
+          const img = getProjectImage(p.id);
+          return (
+            <a class:list={["project", sz]} href={`/projects/${p.id}`}>
+              {img && (
+                <div class="img">
+                  <Image src={img} alt={p.data.title} widths={[480, 800, 1200]} sizes="(max-width: 800px) 100vw, 50vw" />
+                </div>
+              )}
+              <div class="meta-row" style="margin-top:1rem">
+                <span>{getYear(p.data.date) || "—"}</span>
+                <span>{p.data.featured ? "★ Featured" : "Project"}</span>
+              </div>
+              <h3>{p.data.title}</h3>
+              <p>{p.data.subtitle ?? p.data.summary ?? ""}</p>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="cv">
+    <div class="wrap">
+      <p class="eyebrow">CV</p>
+      <h2 style="max-width:22ch; margin-bottom:3rem;">
+        Across research, robotics, agencies and a few small companies.
+      </h2>
+      <div class="timeline">
+        {experience.map((x) => (
+          <div class="tl-item">
+            <div>
+              <div class="tl-when">{fmtRange(x.start, x.end)}</div>
+              <span class="tl-where">{x.location}</span>
+            </div>
+            <div>
+              <h3 class="tl-title">{x.title}</h3>
+              <p class="tl-co">
+                {x.companyUrl ? (
+                  <a href={x.companyUrl} target="_blank" rel="noopener">{x.company}</a>
+                ) : (
+                  x.company
+                )}
+              </p>
+              <ul class="tl-bullets">
+                {x.bullets.map((b) => <li>{b}</li>)}
+              </ul>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="publications">
+    <div class="wrap">
+      <p class="eyebrow">Writing</p>
+      <h2 style="margin-bottom:3rem;">Publications</h2>
+      <div class="pubs">
+        {publications.map((p) => (
+          <article class="pub">
+            <div class="yr">{getYear(p.data.date)}</div>
+            <div>
+              <h3 class="pub-title">
+                <a href={`/publications/${p.id}`}>{p.data.title}</a>
+              </h3>
+              <p class="pub-authors">{authorList(p.data.authors)}</p>
+              {p.data.publication && <p class="pub-venue">{p.data.publication}</p>}
+              <div class="pub-links">
+                {p.data.url_pdf && <a href={p.data.url_pdf} target="_blank" rel="noopener">PDF</a>}
+                {p.data.doi && <a href={`https://doi.org/${p.data.doi}`} target="_blank" rel="noopener">DOI</a>}
+                <a href={`/publications/${p.id}`}>Read</a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="lab-preview">
+    <div class="wrap">
+      <p class="eyebrow">Lab</p>
+      <h2 style="max-width:20ch; margin-bottom:1rem;">
+        Sketches & experiments — generative geometry, sound, agents.
+      </h2>
+      <p class="lede muted" style="margin-bottom:3rem;">
+        A growing index of sketches, notebooks and small tools.
+        <a href="/lab" style="color:var(--accent); border-bottom:1px solid currentColor; margin-left:.4rem">See all →</a>
+      </p>
+      <div class="lab-grid">
+        {sketches.map((s) => (
+          <a class="lab" href={s.href} target="_blank" rel="noopener noreferrer">
+            <span class="kind">{s.kind}</span>
+            <h3>{s.title}</h3>
+            <p>{s.blurb}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2 style="max-width:18ch;">Open to collaborations and conversations.</h2>
+      <p class="lede" style="margin-top:1.5rem; max-width:55ch;">
+        The fastest way to reach me is by email.
+        I’m especially keen on projects at the intersection of
+        AI, design and live performance.
+      </p>
+      <p style="margin-top:2rem; font-family:var(--mono); font-size:1rem;">
+        <a href={`mailto:${site.email}`} style="color:var(--accent); border-bottom:1px solid currentColor; padding-bottom:2px;">
+          {site.email}
+        </a>
+      </p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // Pointer-following highlight on lab cards.
+  document.addEventListener("pointermove", (e) => {
+    const target = (e.target as HTMLElement)?.closest(".lab") as HTMLElement | null;
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    target.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    target.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  });
+</script>

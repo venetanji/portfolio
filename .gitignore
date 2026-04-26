@@ -1,10 +1,23 @@
-# IDEs
-.idea/
-_vendor/
-# Hugo
-resources/
-public/
-jsconfig.json
+# Astro
+dist/
+.astro/
+
+# Dependencies
 node_modules/
-go.sum
+
+# Editors / IDEs
+.idea/
+.vscode/
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Hugo (legacy build artefacts — kept while we migrate)
+resources/
 .hugo_build.lock
+go.sum
+_vendor/
+jsconfig.json

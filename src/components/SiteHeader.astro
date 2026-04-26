@@ -1,0 +1,17 @@
+---
+import { site } from "@/data/site";
+const { pathname } = Astro.url;
+---
+
+<header class="site-header">
+  <div class="wrap row">
+    <a href="/" class="brand">{site.firstName} <span>{site.lastName}</span></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/#work" data-active={pathname === "/"}>Work</a>
+      <a href="/#publications">Writing</a>
+      <a href="/lab">Lab</a>
+      <a href="/#cv">CV</a>
+      <a href="/#contact">Contact</a>
+    </nav>
+  </div>
+</header>

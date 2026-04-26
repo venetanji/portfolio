@@ -1,0 +1,68 @@
+---
+import Base from "@/layouts/Base.astro";
+import PolygonField from "@/components/PolygonField.astro";
+import { sketches } from "@/data/site";
+---
+
+<Base title="Lab" description="Sketches, experiments and notebooks.">
+  <section class="hero" style="min-height:70vh;">
+    <div class="bg"></div>
+    <div class="grid"></div>
+    <div class="stage">
+      <PolygonField count={9} rings={5} intensity={0.7} speed={0.6} />
+    </div>
+    <div class="content">
+      <p class="tag">The Lab</p>
+      <h1 style="font-size:clamp(2.5rem,6vw,4.5rem);">
+        Sketches,<br />
+        notebooks &<br />
+        small <span class="marked">tools</span>.
+      </h1>
+      <p class="lede" style="margin-top:1.5rem; max-width:55ch;">
+        A growing index of generative experiments — some old, some new.
+        The hero on the homepage is a port of one of these:
+        <a href="https://observablehq.com/@venetanji/friendly-poligons"
+           style="color:var(--accent); border-bottom:1px solid currentColor;">Friendly Polygons</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Index</p>
+      <h2 style="margin-bottom:3rem;">External sketches</h2>
+      <div class="lab-grid">
+        {sketches.map((s) => (
+          <a class="lab" href={s.href} target="_blank" rel="noopener noreferrer">
+            <span class="kind">{s.kind} ↗</span>
+            <h3>{s.title}</h3>
+            <p>{s.blurb}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <p class="eyebrow">Up next</p>
+      <h2 style="max-width:24ch;">Porting selected p5 sketches inline.</h2>
+      <p class="lede muted" style="margin-top:1.5rem; max-width:55ch;">
+        I’ll be moving the most interesting p5 sketches in here as native canvas
+        components — playable, embeddable, hackable. Send me your favourite from the
+        <a href="https://editor.p5js.org/venetanji/sketches/" style="color:var(--accent); border-bottom:1px solid currentColor;">archive</a>
+        and I’ll port that one first.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<script>
+  document.addEventListener("pointermove", (e) => {
+    const target = (e.target as HTMLElement)?.closest(".lab") as HTMLElement | null;
+    if (!target) return;
+    const rect = target.getBoundingClientRect();
+    target.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+    target.style.setProperty("--my", `${e.clientY - rect.top}px`);
+  });
+</script>
