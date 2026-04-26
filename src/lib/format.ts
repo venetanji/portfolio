@@ -8,6 +8,20 @@ const publicationImages = import.meta.glob<{ default: ImageMetadata }>(
   "/src/assets/publications/*.{jpg,jpeg,png,webp}",
   { eager: true }
 );
+const galleryImages = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/assets/galleries/**/*.{jpg,jpeg,png,webp}",
+  { eager: true }
+);
+
+export function getGallery(slug: string): ImageMetadata[] {
+  const out: ImageMetadata[] = [];
+  for (const [path, mod] of Object.entries(galleryImages)) {
+    const parts = path.split("/");
+    const proj = parts[parts.length - 2];
+    if (proj === slug) out.push(mod.default);
+  }
+  return out.sort((a, b) => a.src.localeCompare(b.src));
+}
 
 function findImage(
   map: Record<string, { default: ImageMetadata }>,

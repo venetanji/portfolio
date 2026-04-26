@@ -2,7 +2,8 @@
 import { getCollection, render } from "astro:content";
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
-import { getProjectImage, getYear } from "@/lib/format";
+import Gallery from "@/components/Gallery.astro";
+import { getGallery, getProjectImage, getYear } from "@/lib/format";
 
 export async function getStaticPaths() {
   const projects = await getCollection("projects", ({ data }) => !data.draft);
@@ -12,6 +13,7 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await render(project);
 const img = getProjectImage(project.id);
+const gallery = getGallery(project.id);
 ---
 
 <Base title={project.data.title} description={project.data.subtitle ?? project.data.summary}>
@@ -45,5 +47,14 @@ const img = getProjectImage(project.id);
         </>
       )}
     </div>
+
+    {gallery.length > 0 && (
+      <>
+        <div class="prose" style="margin-top:4rem;">
+          <h2>Gallery</h2>
+        </div>
+        <Gallery images={gallery} alt={project.data.title} />
+      </>
+    )}
   </article>
 </Base>

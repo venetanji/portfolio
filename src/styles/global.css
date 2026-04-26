@@ -623,6 +623,71 @@ img {
   padding-bottom: 2px;
 }
 
+/* ---------- Repo cards ---------- */
+
+.repo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 1.5rem;
+}
+
+.repo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  padding: 1.8rem;
+  border: 1px solid var(--rule);
+  background: linear-gradient(180deg, rgba(124, 92, 255, 0.05), transparent 50%);
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+  transition: border-color 200ms, transform 200ms, background 200ms;
+}
+
+.repo:hover {
+  border-color: var(--accent-4);
+  transform: translateY(-2px);
+}
+
+.repo-tag {
+  font-family: var(--mono);
+  font-size: .7rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent-4);
+}
+
+.repo h3 {
+  margin: .2rem 0 .4rem;
+  font-family: var(--mono);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  color: var(--accent);
+}
+
+.repo p {
+  color: var(--fg-mute);
+  margin: 0;
+  font-size: .96rem;
+  line-height: 1.55;
+}
+
+.repo-cta {
+  margin-top: 1rem;
+  font-family: var(--mono);
+  font-size: .74rem;
+  letter-spacing: .1em;
+  color: var(--fg-dim);
+  word-break: break-all;
+}
+
+.repo:hover .repo-cta {
+  color: var(--accent);
+}
+
 /* ---------- Lab cards ---------- */
 
 .lab-grid {

@@ -1,24 +1,31 @@
 ---
 // Friendly Polygons — vanilla Canvas port of
 // https://observablehq.com/@venetanji/friendly-poligons
-// Concentric polygons morph through simplex noise, hue cycles around the wheel.
+//
+// Faithful to the original math: every polygon in a ring shares the same
+// `sides` and `scale`, both driven by ONE simplex sample noise2D(t/1000, 1).
+// scale can go negative (mirroring). Hue per polygon, position around a
+// circle. This is what makes the polygons "breathe" together.
+//
+// Optional embellishment: `rings > 1` stacks concentric copies offset in
+// time so they cascade.
 interface Props {
-  /** Number of polygons in each ring. */
+  /** Number of polygons in each ring. Original used `num_poly` slider. */
   count?: number;
-  /** Number of rings, drawn from large (background) to small (foreground). */
+  /** Concentric rings. 1 = faithful to the original. */
   rings?: number;
-  /** Base alpha multiplier for strokes. */
+  /** Stroke alpha multiplier. */
   intensity?: number;
   /** Animation speed, multiplier on internal time. */
   speed?: number;
-  /** Apply a soft additive blend mode for a glow look. */
+  /** Apply additive blending for a glow look. */
   glow?: boolean;
   class?: string;
 }
 const {
-  count = 14,
-  rings = 3,
-  intensity = 0.55,
+  count = 20,
+  rings = 1,
+  intensity = 1,
   speed = 1,
   glow = true,
   class: className = "",
@@ -59,18 +66,14 @@ const {
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
-    const count = Number(canvas.dataset.count ?? 14);
-    const rings = Number(canvas.dataset.rings ?? 3);
-    const intensity = Number(canvas.dataset.intensity ?? 0.55);
+    const count = Number(canvas.dataset.count ?? 20);
+    const rings = Number(canvas.dataset.rings ?? 1);
+    const intensity = Number(canvas.dataset.intensity ?? 1);
     const speed = Number(canvas.dataset.speed ?? 1);
     const glow = canvas.dataset.glow === "1";
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    // One noise field per dimension we drive (sides, scale, hue jitter).
-    const noiseSides = createNoise2D();
-    const noiseScale = createNoise2D();
-    const noiseHue = createNoise2D();
+    const noise = createNoise2D();
 
     let dpr = Math.min(window.devicePixelRatio || 1, 2);
     let width = 0;
@@ -87,37 +90,19 @@ const {
     }
 
     resize();
-
-    let pointer = { x: 0, y: 0, active: false };
-    canvas.parentElement?.addEventListener("pointermove", (e) => {
-      const rect = canvas.getBoundingClientRect();
-      pointer.x = (e.clientX - rect.left) / rect.width - 0.5;
-      pointer.y = (e.clientY - rect.top) / rect.height - 0.5;
-      pointer.active = true;
-    });
-    canvas.parentElement?.addEventListener("pointerleave", () => {
-      pointer.active = false;
-    });
+    new ResizeObserver(resize).observe(canvas);
 
     let visible = true;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        visible = entry.isIntersecting;
-      },
-      { threshold: 0 }
-    );
-    io.observe(canvas);
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(canvas);
 
-    const ro = new ResizeObserver(resize);
-    ro.observe(canvas);
-
-    function polygon(cx: number, cy: number, r: number, sides: number, rotation: number) {
+    function polygon(cx: number, cy: number, scale: number, sides: number) {
+      // Faithful to original: points start at angle 0, no rotation offset.
       const s = Math.max(3, Math.floor(sides));
       ctx!.beginPath();
       for (let i = 0; i <= s; i++) {
-        const a = rotation + (TAU * i) / s;
-        const x = cx + Math.cos(a) * r;
-        const y = cy + Math.sin(a) * r;
+        const a = (TAU * i) / s;
+        const x = cx + Math.cos(a) * scale;
+        const y = cy + Math.sin(a) * scale;
         if (i === 0) ctx!.moveTo(x, y);
         else ctx!.lineTo(x, y);
       }
@@ -128,60 +113,52 @@ const {
     let lastFrame = performance.now();
 
     function frame(now: number) {
-      if (!document.body.contains(canvas)) {
-        io.disconnect();
-        ro.disconnect();
-        return;
-      }
+      if (!document.body.contains(canvas)) return;
 
       const dt = Math.min(64, now - lastFrame);
       lastFrame = now;
 
       if (visible) {
-        t += dt * 0.06 * speed;
+        // The original uses `slow_iterator` which increments every 50ms.
+        // We track an equivalent in the same units so the noise scaling matches.
+        t += (dt / 50) * speed;
 
         ctx!.globalCompositeOperation = "source-over";
-        // Trail: clear with low-opacity rect for a smooth fade rather than a hard wipe.
-        ctx!.fillStyle = "rgba(8, 9, 14, 0.14)";
+        ctx!.fillStyle = "rgba(8, 9, 14, 0.16)";
         ctx!.fillRect(0, 0, width, height);
 
         if (glow) ctx!.globalCompositeOperation = "lighter";
 
-        const cx = width * 0.5 + (pointer.active ? pointer.x * width * 0.08 : 0);
-        const cy = height * 0.5 + (pointer.active ? pointer.y * height * 0.08 : 0);
-        const baseRadius = Math.min(width, height) * 0.18;
+        // Frame the ring inside the viewport. Original was 100px radius
+        // around (300, 200) on a 500-wide svg → ~20% of width.
+        const cx = width * 0.5;
+        const cy = height * 0.5;
+        const ringRadius = Math.min(width, height) * 0.22;
+        const baseScale = Math.min(width, height) * 0.5;
 
-        ctx!.lineWidth = 1.1;
+        ctx!.lineWidth = 1.4;
 
         for (let r = 0; r < rings; r++) {
-          const ringPhase = r * 0.37;
-          const ringRadius = baseRadius * (1 + r * 1.05);
+          // For multi-ring mode, offset each ring in time so they breathe out of phase.
+          const tr = t + r * 80;
+
+          // SHARED across the whole ring — this is the key insight.
+          const sample = noise(tr / 1000, 1);
+          const sides = sample * 7 + 6;          // [-1, 13] → clamped to ≥3 inside polygon()
+          const scale = baseScale * sample;       // can be negative (mirrors), looks great
 
           for (let d = 0; d < count; d++) {
-            const angle = (TAU * d) / count + t * 0.0015 * (r % 2 === 0 ? 1 : -1);
+            const px = cx + Math.cos((TAU * d) / count) * ringRadius;
+            const py = cy + Math.sin((TAU * d) / count) * ringRadius;
 
-            const px = cx + Math.cos(angle) * ringRadius;
-            const py = cy + Math.sin(angle) * ringRadius;
-
-            const sides =
-              noiseSides(t / 1000 + ringPhase, d * 0.21) * 7 + 6;
-
-            const scale =
-              ringRadius *
-              0.55 *
-              (0.6 +
-                noiseScale(t / 1200 + ringPhase, d * 0.13 + r) * 0.55);
-
-            const hue =
-              (t * 0.4 + d * (360 / count) + r * 35 +
-                noiseHue(d * 0.5, r + t / 2000) * 40) %
-              360;
-            const sat = 70 + noiseHue(d, r) * 20;
-            const lit = 55 + r * 4;
-            const alpha = intensity * (0.35 + 0.65 * (1 - r / rings));
+            // Original: h = slow_iterator + d*20/255 (visually wraps modulo 360).
+            const hue = (tr + d * (360 / count)) % 360;
+            const sat = 60 + Math.abs(noise(d * 0.2, r)) * 30;
+            const lit = 55 + (rings > 1 ? r * 4 : 0);
+            const alpha = intensity * (rings > 1 ? 0.4 + 0.6 * (1 - r / rings) : 0.85);
 
             ctx!.strokeStyle = `hsla(${hue.toFixed(1)}, ${sat.toFixed(0)}%, ${lit.toFixed(0)}%, ${alpha.toFixed(3)})`;
-            polygon(px, py, scale, sides, t * 0.0009 + d);
+            polygon(px, py, scale, sides);
           }
         }
       }
@@ -189,20 +166,13 @@ const {
       if (!reduced) requestAnimationFrame(frame);
     }
 
-    if (reduced) {
-      // Render a single static frame and stop.
-      frame(performance.now());
-    } else {
-      requestAnimationFrame(frame);
-    }
+    if (reduced) frame(performance.now());
+    else requestAnimationFrame(frame);
   }
 
   function init() {
-    document
-      .querySelectorAll<FieldEl>("canvas.polygon-field")
-      .forEach(setup);
+    document.querySelectorAll<FieldEl>("canvas.polygon-field").forEach(setup);
   }
-
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {

@@ -200,6 +200,23 @@ export type Sketch = {
   kind: "observable" | "p5" | "video" | "code";
 };
 
+export type Repo = {
+  name: string;
+  href: string;
+  blurb: string;
+  tag: string;
+};
+
+export const repos: Repo[] = [
+  {
+    name: "pfad",
+    href: "https://github.com/venetanji/pfad",
+    blurb:
+      "SD5913 — Programming for Art and Design. Weekly exercises and examples for the elective at PolyU School of Design. Python, p5.js, generative art, and getting comfortable with code as a creative material.",
+    tag: "Teaching · PolyU",
+  },
+];
+
 // A handful of pointers; expand as you migrate sketches into the site itself.
 export const sketches: Sketch[] = [
   {
