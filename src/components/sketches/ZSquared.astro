@@ -1,0 +1,136 @@
+---
+// "Z-squared" — port of https://editor.p5js.org/venetanji/sketches/8jfAE91dT
+// Iterates z² in the complex plane on a slowly rotating unit-circle seed.
+// Each frame: r advances → z = e^(-ir) → square it `iterations` times,
+// drawing decreasing rectangles at each landing.
+interface Props {
+  iterations?: number;
+  speed?: number;
+  class?: string;
+}
+const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
+---
+
+<div class:list={["z2-wrap", className]}>
+  <canvas
+    class="z2"
+    data-iterations={iterations}
+    data-speed={speed}
+  ></canvas>
+</div>
+
+<style>
+  .z2-wrap {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    background: #1a1c25;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+  }
+  .z2 {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+
+<script>
+  type ZEl = HTMLCanvasElement & { __zInit?: boolean };
+
+  function setup(canvas: ZEl) {
+    if (canvas.__zInit) return;
+    canvas.__zInit = true;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    const iterations = Number(canvas.dataset.iterations ?? 20);
+    const speed = Number(canvas.dataset.speed ?? 1);
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    let dpr = Math.min(window.devicePixelRatio || 1, 2);
+    let size = 0;
+
+    function resize() {
+      const rect = canvas.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      size = Math.max(1, Math.floor(Math.min(rect.width, rect.height)));
+      canvas.width = size * dpr;
+      canvas.height = size * dpr;
+      ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    new ResizeObserver(resize).observe(canvas);
+
+    let visible = true;
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(canvas);
+
+    let iter = 0;
+
+    function frame() {
+      if (!document.body.contains(canvas)) return;
+
+      if (visible) {
+        iter += speed;
+        // Original: r = -PI/4 + iter * (PI/2) / 1e8 — extremely slow.
+        // We bump it into the visible range while keeping the spiral feel.
+        const r = -Math.PI / 4 + iter * 0.0009;
+
+        ctx!.fillStyle = "rgba(26, 28, 37, 0.18)"; // soft trail
+        ctx!.fillRect(0, 0, size, size);
+
+        ctx!.save();
+        ctx!.translate(size / 2, size / 2);
+        const scale = size / 4;
+
+        // Initial seed point on the unit circle.
+        let zr = Math.cos(r);
+        let zi = -Math.sin(r);
+
+        // Highlight dot at the seed.
+        ctx!.fillStyle = `hsl(20, 100%, 60%)`;
+        ctx!.beginPath();
+        ctx!.arc(zr * scale, zi * scale, iterations * 0.6, 0, Math.PI * 2);
+        ctx!.fill();
+
+        // Connecting line through landings.
+        ctx!.strokeStyle = `hsla(${(iter / 10) % 360}, 60%, 70%, 0.7)`;
+        ctx!.lineWidth = 1;
+        ctx!.beginPath();
+        ctx!.moveTo(zr * scale, zi * scale);
+
+        for (let i = 0; i < iterations; i++) {
+          // z = z * z  for complex z.
+          const nzr = zr * zr - zi * zi;
+          const nzi = 2 * zr * zi;
+          zr = nzr;
+          zi = nzi;
+
+          const half = (iterations - i) * 0.4;
+          const hue = (iter / 10 + i * 4) % 360;
+          ctx!.fillStyle = `hsla(${hue}, 70%, 55%, 0.85)`;
+          ctx!.fillRect(zr * scale - half, zi * scale - half, half * 2, half * 2);
+
+          ctx!.lineTo(zr * scale, zi * scale);
+        }
+
+        ctx!.stroke();
+        ctx!.restore();
+      }
+
+      if (!reduced) requestAnimationFrame(frame);
+    }
+
+    if (reduced) frame();
+    else requestAnimationFrame(frame);
+  }
+
+  function init() {
+    document.querySelectorAll<ZEl>("canvas.z2").forEach(setup);
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+</script>

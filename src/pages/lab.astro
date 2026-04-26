@@ -1,11 +1,13 @@
 ---
 import Base from "@/layouts/Base.astro";
 import PolygonField from "@/components/PolygonField.astro";
+import Nake from "@/components/sketches/Nake.astro";
+import ZSquared from "@/components/sketches/ZSquared.astro";
 import { sketches } from "@/data/site";
 ---
 
 <Base title="Lab" description="Sketches, experiments and notebooks.">
-  <section class="hero" style="min-height:70vh;">
+  <section class="hero" style="min-height:60vh;">
     <div class="bg"></div>
     <div class="grid"></div>
     <div class="stage">
@@ -19,18 +21,57 @@ import { sketches } from "@/data/site";
         small <span class="marked">tools</span>.
       </h1>
       <p class="lede" style="margin-top:1.5rem; max-width:55ch;">
-        A growing index of generative experiments — some old, some new.
-        The hero on the homepage is a port of one of these:
-        <a href="https://observablehq.com/@venetanji/friendly-poligons"
-           style="color:var(--accent); border-bottom:1px solid currentColor;">Friendly Polygons</a>.
+        Generative experiments — some old, some new. Vintage p5.js sketches
+        ported to vanilla canvas; new pieces built directly in the browser.
       </p>
     </div>
   </section>
 
   <section class="section">
     <div class="wrap">
+      <p class="eyebrow">Inline sketches</p>
+
+      <div class="sketch-card">
+        <header>
+          <h2>Nake</h2>
+          <p class="kind">Generative grid · static · click to reseed</p>
+        </header>
+        <div class="canvas-slot">
+          <Nake />
+        </div>
+        <p class="note">
+          A 50×50 lattice. Each cell rolls a vertical line whose probability
+          falls off with distance from the diagonal; horizontal lines only
+          appear directly below empty cells. Result: a quiet, woven, almost
+          architectural pattern that re-composes itself with every seed.
+          Original p5 sketch
+          <a href="https://editor.p5js.org/venetanji/sketches/bQCUFuXc_s" target="_blank" rel="noopener">here</a>.
+        </p>
+      </div>
+
+      <div class="sketch-card">
+        <header>
+          <h2>Z-squared</h2>
+          <p class="kind">Iterated z² · animated · complex plane</p>
+        </header>
+        <div class="canvas-slot">
+          <ZSquared />
+        </div>
+        <p class="note">
+          Pick a point on the unit circle and square it, twenty times in a row.
+          Where it lands traces a spiral that collapses toward zero or escapes
+          to infinity, depending on the seed angle. The angle drifts each frame,
+          so the whole figure breathes. Original p5 sketch
+          <a href="https://editor.p5js.org/venetanji/sketches/8jfAE91dT" target="_blank" rel="noopener">here</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
       <p class="eyebrow">Index</p>
-      <h2 style="margin-bottom:3rem;">External sketches</h2>
+      <h2 style="margin-bottom:3rem;">External notebooks &amp; archive</h2>
       <div class="lab-grid">
         {sketches.map((s) => (
           <a class="lab" href={s.href} target="_blank" rel="noopener noreferrer">
@@ -46,16 +87,71 @@ import { sketches } from "@/data/site";
   <section class="section">
     <div class="wrap">
       <p class="eyebrow">Up next</p>
-      <h2 style="max-width:24ch;">Porting selected p5 sketches inline.</h2>
+      <h2 style="max-width:24ch;">Porting more sketches as native components.</h2>
       <p class="lede muted" style="margin-top:1.5rem; max-width:55ch;">
-        I’ll be moving the most interesting p5 sketches in here as native canvas
-        components — playable, embeddable, hackable. Send me your favourite from the
+        Send me URLs from the
         <a href="https://editor.p5js.org/venetanji/sketches/" style="color:var(--accent); border-bottom:1px solid currentColor;">archive</a>
-        and I’ll port that one first.
+        and I’ll port them next.
       </p>
     </div>
   </section>
 </Base>
+
+<style>
+  .sketch-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    margin-block: 3rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--rule);
+  }
+  .sketch-card:first-of-type {
+    border-top: none;
+    padding-top: 0;
+  }
+  .sketch-card header {
+    grid-column: 1 / -1;
+    margin-bottom: -1rem;
+  }
+  .sketch-card h2 {
+    margin: 0 0 .3rem;
+    font-family: var(--serif);
+  }
+  .sketch-card .kind {
+    font-family: var(--mono);
+    font-size: .76rem;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--fg-mute);
+    margin: 0;
+  }
+  .canvas-slot {
+    width: 100%;
+    max-width: 520px;
+    justify-self: end;
+  }
+  .sketch-card .note {
+    color: var(--fg-mute);
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 50ch;
+  }
+  .sketch-card .note a {
+    color: var(--accent);
+    border-bottom: 1px solid currentColor;
+  }
+  @media (max-width: 800px) {
+    .sketch-card {
+      grid-template-columns: 1fr;
+    }
+    .canvas-slot {
+      max-width: 100%;
+      justify-self: stretch;
+    }
+  }
+</style>
 
 <script>
   document.addEventListener("pointermove", (e) => {
