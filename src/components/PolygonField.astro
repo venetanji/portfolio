@@ -2,23 +2,23 @@
 // Friendly Polygons — vanilla Canvas port of
 // https://observablehq.com/@venetanji/friendly-poligons
 //
-// Faithful to the original math: every polygon in a ring shares the same
-// `sides` and `scale`, both driven by ONE simplex sample noise2D(t/1000, 1).
-// scale can go negative (mirroring). Hue per polygon, position around a
-// circle. This is what makes the polygons "breathe" together.
-//
-// Optional embellishment: `rings > 1` stacks concentric copies offset in
-// time so they cascade.
+// Faithful to the original math:
+// - all polygons in a frame share ONE noise sample for both `sides` and `scale`,
+// - `sides` is FRACTIONAL and used as the angle divisor — points are placed at
+//   2π·i/sides for i=0..ceil(sides)-1, so the closing edge of the polygon
+//   sweeps around as sides drifts, producing the signature breathing/morph.
+// - scale can go negative (mirror), as in the original.
+// - polygons are arranged on a circle (no per-poly rotation).
 interface Props {
-  /** Number of polygons in each ring. Original used `num_poly` slider. */
+  /** Number of polygons in the ring (the original `num_poly` slider). */
   count?: number;
-  /** Concentric rings. 1 = faithful to the original. */
+  /** Concentric rings — 1 keeps it faithful, more is decorative. */
   rings?: number;
   /** Stroke alpha multiplier. */
   intensity?: number;
-  /** Animation speed, multiplier on internal time. */
+  /** Speed multiplier on internal time. */
   speed?: number;
-  /** Apply additive blending for a glow look. */
+  /** Soft additive blend mode for a glow look. */
   glow?: boolean;
   class?: string;
 }
@@ -88,24 +88,30 @@ const {
       canvas.height = Math.max(1, Math.floor(height * dpr));
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
-
     resize();
     new ResizeObserver(resize).observe(canvas);
 
     let visible = true;
     new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(canvas);
 
+    /**
+     * Faithful port of make_polygon: places ceil(sides) points at angles
+     * 2π·i/sides — so when sides is fractional, the polygon doesn't close on
+     * the unit circle and the closing edge sweeps around as sides drifts.
+     */
     function polygon(cx: number, cy: number, scale: number, sides: number) {
-      // Faithful to original: points start at angle 0, no rotation offset.
-      const s = Math.max(3, Math.floor(sides));
+      const n = Math.ceil(sides);
+      if (n < 3) return; // matches _.range returning < 3 elements
+
       ctx!.beginPath();
-      for (let i = 0; i <= s; i++) {
-        const a = (TAU * i) / s;
+      for (let i = 0; i < n; i++) {
+        const a = (TAU * i) / sides; // FRACTIONAL divisor — the magic ingredient
         const x = cx + Math.cos(a) * scale;
         const y = cy + Math.sin(a) * scale;
         if (i === 0) ctx!.moveTo(x, y);
         else ctx!.lineTo(x, y);
       }
+      ctx!.closePath(); // SVG <polygon> auto-closes; mirror that here
       ctx!.stroke();
     }
 
@@ -119,8 +125,7 @@ const {
       lastFrame = now;
 
       if (visible) {
-        // The original uses `slow_iterator` which increments every 50ms.
-        // We track an equivalent in the same units so the noise scaling matches.
+        // `slow_iterator` increments by 1 every 50 ms — preserve those units.
         t += (dt / 50) * speed;
 
         ctx!.globalCompositeOperation = "source-over";
@@ -129,33 +134,29 @@ const {
 
         if (glow) ctx!.globalCompositeOperation = "lighter";
 
-        // Frame the ring inside the viewport. Original was 100px radius
-        // around (300, 200) on a 500-wide svg → ~20% of width.
         const cx = width * 0.5;
         const cy = height * 0.5;
         const ringRadius = Math.min(width, height) * 0.22;
-        const baseScale = Math.min(width, height) * 0.5;
+        const baseScale = Math.min(width, height) * 0.42;
 
-        ctx!.lineWidth = 1.4;
+        ctx!.lineWidth = 1.2;
 
         for (let r = 0; r < rings; r++) {
-          // For multi-ring mode, offset each ring in time so they breathe out of phase.
           const tr = t + r * 80;
 
-          // SHARED across the whole ring — this is the key insight.
+          // SHARED across the whole ring — this is the original's secret.
           const sample = noise(tr / 1000, 1);
-          const sides = sample * 7 + 6;          // [-1, 13] → clamped to ≥3 inside polygon()
-          const scale = baseScale * sample;       // can be negative (mirrors), looks great
+          const sides = sample * 7 + 6;       // [-1, 13] — fractional!
+          const scale = baseScale * sample;    // can be negative (mirrors)
 
           for (let d = 0; d < count; d++) {
             const px = cx + Math.cos((TAU * d) / count) * ringRadius;
             const py = cy + Math.sin((TAU * d) / count) * ringRadius;
 
-            // Original: h = slow_iterator + d*20/255 (visually wraps modulo 360).
             const hue = (tr + d * (360 / count)) % 360;
-            const sat = 60 + Math.abs(noise(d * 0.2, r)) * 30;
-            const lit = 55 + (rings > 1 ? r * 4 : 0);
-            const alpha = intensity * (rings > 1 ? 0.4 + 0.6 * (1 - r / rings) : 0.85);
+            const sat = 55 + Math.abs(noise(d * 0.2, r)) * 25;
+            const lit = 60 + (rings > 1 ? r * 4 : 0);
+            const alpha = intensity * (rings > 1 ? 0.4 + 0.6 * (1 - r / rings) : 0.78);
 
             ctx!.strokeStyle = `hsla(${hue.toFixed(1)}, ${sat.toFixed(0)}%, ${lit.toFixed(0)}%, ${alpha.toFixed(3)})`;
             polygon(px, py, scale, sides);

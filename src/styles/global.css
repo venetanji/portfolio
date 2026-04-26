@@ -208,7 +208,8 @@ img {
   position: relative;
   min-height: 100vh;
   display: grid;
-  align-items: center;
+  grid-template-rows: 1fr auto;
+  align-items: end;
   isolation: isolate;
   overflow: hidden;
 }
@@ -216,7 +217,7 @@ img {
 .hero .bg {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   background: radial-gradient(
       120% 80% at 60% 30%,
       rgba(124, 92, 255, 0.18),
@@ -234,13 +235,43 @@ img {
   position: absolute;
   inset: 0;
   z-index: -1;
-  opacity: 0.95;
+  /* Fade the canvas at the bottom so type sits on calm darkness. */
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 35%,
+    rgba(0, 0, 0, 0.35) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 1) 0%,
+    rgba(0, 0, 0, 1) 35%,
+    rgba(0, 0, 0, 0.35) 75%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.hero .scrim {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55%;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(8, 9, 14, 0.92) 0%,
+    rgba(8, 9, 14, 0.7) 35%,
+    rgba(8, 9, 14, 0) 100%
+  );
 }
 
 .hero .grid {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
@@ -251,13 +282,17 @@ img {
 .hero .content {
   width: var(--w);
   margin-inline: auto;
-  padding-block: 8rem 4rem;
+  padding-block: 4rem 6rem;
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
   margin: 0;
   font-weight: 400;
+  font-size: clamp(2.2rem, 5.5vw, 4.4rem);
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
 }
 
 .hero h1 .marked {
@@ -287,6 +322,7 @@ img {
 .hero .lede {
   margin-top: 1.2rem;
   max-width: 60ch;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
 }
 
 .hero .meta {
