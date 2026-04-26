@@ -2,11 +2,9 @@
 title: Working with Sophia
 subtitle: Life as a robot operator
 date: 2017-12-12T06:05:36.924Z
-summary: Working with Sophia the humanoid robot was an extraordinary experience
-  that allowed me to gain valuable insights into the world of robotics and
-  human-robot interaction. As a robot operator, I was responsible for animating
-  scripts, setting up the robot for events, and puppeteering the robot during
-  public appearances. [Read more...](/project/working-with-sophia/)
+summary: Two years as a robot operator for Sophia at Hanson Robotics —
+  animating scripts, setting up for events, and puppeteering during public
+  appearances at high-profile venues.
 draft: false
 featured: false
 image:
@@ -24,8 +22,3 @@ One of the most challenging moments of my experience was when we had to go on st
 Overall, working with Sophia taught me about human expressions and emotions and how to make robotic interactions more believable. It has been an enlightening experience that has helped me understand the potential of robotics in various fields, from entertainment to healthcare. I am grateful for this opportunity and look forward to continuing my journey in the exciting world of robotics and artificial intelligence.
 
 
-<!--StartFragment-->
-
-{{< gallery album="sophia" >}}
-
-<!--EndFragment-->

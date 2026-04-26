@@ -5,35 +5,66 @@ import type { ImageMetadata } from "astro";
 interface Props {
   images: ImageMetadata[];
   alt?: string;
+  title?: string;
 }
 
-const { images, alt = "Gallery image" } = Astro.props;
+const { images, alt = "Gallery image", title = "Gallery" } = Astro.props;
+
+// Asymmetric "bento" pattern of column/row spans. Cycles through the array.
+// Each entry: { c: cols, r: rows } where 1 ≤ c,r ≤ 2.
+const pattern: Array<{ c: number; r: number }> = [
+  { c: 2, r: 2 }, // hero
+  { c: 1, r: 1 },
+  { c: 1, r: 2 }, // tall
+  { c: 2, r: 1 }, // wide
+  { c: 1, r: 1 },
+  { c: 1, r: 1 },
+  { c: 1, r: 2 },
+  { c: 2, r: 1 },
+];
 ---
 
 {images.length > 0 && (
-  <section class="gallery" aria-label="Project gallery">
-    <ul>
-      {images.map((img, i) => (
-        <li style={`grid-row: span ${img.height > img.width ? 2 : 1};`}>
-          <button type="button" class="gallery-tile" data-index={i}>
-            <Image
-              src={img}
-              alt={`${alt} ${i + 1}`}
-              widths={[480, 800, 1200]}
-              sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
-              loading="lazy"
-            />
-          </button>
-        </li>
-      ))}
+  <section class="gallery2" aria-label={`${title} gallery`}>
+    <div class="g2-head">
+      <h3>{title}</h3>
+      <span class="g2-count">{String(images.length).padStart(2, "0")} images</span>
+    </div>
+
+    <ul class="g2-grid">
+      {images.map((img, i) => {
+        const cell = pattern[i % pattern.length];
+        return (
+          <li
+            class="g2-cell"
+            style={`--c:${cell.c}; --r:${cell.r}; --i:${i};`}
+          >
+            <button type="button" class="g2-tile" data-index={i}>
+              <Image
+                src={img}
+                alt={`${alt} ${i + 1}`}
+                widths={[480, 800, 1200]}
+                sizes="(max-width: 700px) 100vw, (max-width: 1100px) 50vw, 33vw"
+                loading="lazy"
+              />
+              <span class="g2-num">
+                {String(i + 1).padStart(2, "0")}
+                <span class="g2-of">/{String(images.length).padStart(2, "0")}</span>
+              </span>
+              <span class="g2-zoom" aria-hidden="true">⤢</span>
+            </button>
+          </li>
+        );
+      })}
     </ul>
   </section>
 
-  <dialog class="gallery-lightbox">
-    <button type="button" class="gl-close" aria-label="Close">×</button>
-    <button type="button" class="gl-prev" aria-label="Previous">‹</button>
-    <button type="button" class="gl-next" aria-label="Next">›</button>
-    <div class="gl-frame">
+  <dialog class="g2-lightbox">
+    <button type="button" class="g2-close" aria-label="Close">×</button>
+    <button type="button" class="g2-prev" aria-label="Previous">‹</button>
+    <button type="button" class="g2-next" aria-label="Next">›</button>
+
+    <div class="g2-stage">
       {images.map((img, i) => (
         <Image
           src={img}
@@ -45,31 +76,93 @@ const { images, alt = "Gallery image" } = Astro.props;
         />
       ))}
     </div>
+
+    <footer class="g2-foot">
+      <span class="g2-counter"><span class="g2-cur">01</span><span class="g2-total"> / {String(images.length).padStart(2, "0")}</span></span>
+      <ul class="g2-thumbs">
+        {images.map((img, i) => (
+          <li>
+            <button type="button" class="g2-thumb" data-jump={i}>
+              <Image src={img} alt="" widths={[120]} sizes="60px" loading="lazy" />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </footer>
   </dialog>
 )}
 
 <style>
-  .gallery {
+  .gallery2 {
     width: var(--w);
     margin-inline: auto;
-    margin-block: 4rem;
+    margin-block: 4rem 5rem;
   }
-  .gallery ul {
-    list-style: none;
-    padding: 0;
+
+  .g2-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .g2-head h3 {
     margin: 0;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 200px;
-    gap: 4px;
+    font-family: var(--mono);
+    font-size: .82rem;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--fg-mute);
   }
-  @media (max-width: 700px) {
-    .gallery ul {
+  .g2-count {
+    font-family: var(--mono);
+    font-size: .72rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--fg-dim);
+  }
+
+  .g2-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 180px;
+    gap: 6px;
+  }
+  @media (max-width: 800px) {
+    .g2-grid {
       grid-template-columns: repeat(2, 1fr);
       grid-auto-rows: 160px;
     }
   }
-  .gallery-tile {
+
+  .g2-cell {
+    grid-column: span var(--c, 1);
+    grid-row: span var(--r, 1);
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 600ms cubic-bezier(.2,.8,.2,1),
+                transform 600ms cubic-bezier(.2,.8,.2,1);
+    transition-delay: calc(var(--i) * 35ms);
+  }
+  .g2-cell.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  /* On small screens, force everything into the 2-col grid w/o spans. */
+  @media (max-width: 800px) {
+    .g2-cell {
+      grid-column: span 1 !important;
+      grid-row: span 1 !important;
+    }
+  }
+
+  .g2-tile {
+    position: relative;
     display: block;
     width: 100%;
     height: 100%;
@@ -78,81 +171,225 @@ const { images, alt = "Gallery image" } = Astro.props;
     background: var(--bg-elev);
     cursor: zoom-in;
     overflow: hidden;
+    isolation: isolate;
   }
-  .gallery-tile img {
+  .g2-tile img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1),
-      filter 400ms ease;
-    filter: saturate(0.85);
+    transition: transform 800ms cubic-bezier(.2,.8,.2,1),
+                filter 600ms ease,
+                opacity 600ms ease;
+    filter: saturate(.78) contrast(1.02);
   }
-  .gallery-tile:hover img {
-    transform: scale(1.04);
-    filter: saturate(1);
+  .g2-tile::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+      rgba(8,9,14,.0) 30%,
+      rgba(8,9,14,.55) 100%);
+    opacity: 0;
+    transition: opacity 400ms ease;
+    pointer-events: none;
+  }
+  .g2-tile:hover img {
+    transform: scale(1.05);
+    filter: saturate(1.05) contrast(1.05);
+  }
+  .g2-tile:hover::after { opacity: 1; }
+
+  .g2-num,
+  .g2-zoom {
+    position: absolute;
+    z-index: 1;
+    font-family: var(--mono);
+    color: #fff;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 280ms ease, transform 280ms ease;
+  }
+  .g2-num {
+    bottom: .9rem;
+    left: .9rem;
+    font-size: .76rem;
+    letter-spacing: .14em;
+  }
+  .g2-num .g2-of {
+    color: rgba(255,255,255,.5);
+  }
+  .g2-zoom {
+    top: .9rem;
+    right: .9rem;
+    font-size: 1.1rem;
+    letter-spacing: 0;
+  }
+  .g2-tile:hover .g2-num,
+  .g2-tile:hover .g2-zoom,
+  .g2-tile:focus-visible .g2-num,
+  .g2-tile:focus-visible .g2-zoom {
+    opacity: 1;
+    transform: translateY(0);
   }
 
-  .gallery-lightbox {
+  /* ---------- Lightbox ---------- */
+  .g2-lightbox {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     max-width: none;
     max-height: none;
     margin: 0;
     padding: 0;
     border: 0;
-    background: rgba(8, 9, 14, 0.96);
+    background: rgba(8,9,14,.97);
     color: var(--fg);
+    overflow: hidden;
   }
-  .gallery-lightbox::backdrop {
-    background: rgba(8, 9, 14, 0.96);
-  }
-  .gl-frame {
-    position: absolute;
-    inset: 0;
+  .g2-lightbox::backdrop { background: rgba(8,9,14,.97); }
+  .g2-lightbox[open] { display: grid; grid-template-rows: 1fr auto; }
+
+  .g2-stage {
+    position: relative;
     display: grid;
     place-items: center;
-    padding: 5rem 4rem;
+    padding: clamp(2rem, 5vw, 4rem);
+    overflow: hidden;
   }
-  .gl-frame img {
-    display: none;
+  .g2-stage img {
+    grid-area: 1 / 1;
     max-width: 100%;
     max-height: 100%;
+    width: auto;
+    height: auto;
     object-fit: contain;
+    opacity: 0;
+    transition: opacity 280ms ease;
   }
-  .gl-frame img.is-active {
-    display: block;
-  }
-  .gl-close,
-  .gl-prev,
-  .gl-next {
+  .g2-stage img.is-active { opacity: 1; }
+
+  .g2-close,
+  .g2-prev,
+  .g2-next {
     position: absolute;
     background: transparent;
     border: 0;
     color: var(--fg);
-    font-size: 2.5rem;
     cursor: pointer;
-    width: 3.5rem;
-    height: 3.5rem;
     display: grid;
     place-items: center;
-    transition: color 200ms;
+    transition: color 200ms, transform 200ms;
+    z-index: 2;
   }
-  .gl-close:hover,
-  .gl-prev:hover,
-  .gl-next:hover { color: var(--accent); }
-  .gl-close { top: .5rem; right: .5rem; font-size: 2rem; }
-  .gl-prev { top: 50%; left: .5rem; transform: translateY(-50%); }
-  .gl-next { top: 50%; right: .5rem; transform: translateY(-50%); }
+  .g2-close:hover,
+  .g2-prev:hover,
+  .g2-next:hover { color: var(--accent); }
+  .g2-close {
+    top: 1rem;
+    right: 1rem;
+    width: 2.6rem;
+    height: 2.6rem;
+    font-size: 1.6rem;
+    border-radius: 50%;
+    border: 1px solid var(--rule-strong);
+  }
+  .g2-prev,
+  .g2-next {
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2.6rem;
+    width: 3.4rem;
+    height: 3.4rem;
+  }
+  .g2-prev { left: .8rem; }
+  .g2-next { right: .8rem; }
+  .g2-prev:hover { transform: translate(-3px, -50%); }
+  .g2-next:hover { transform: translate(3px, -50%); }
+
+  .g2-foot {
+    border-top: 1px solid var(--rule);
+    padding: .9rem clamp(1rem, 4vw, 3rem);
+    background: rgba(8,9,14,.85);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  .g2-counter {
+    font-family: var(--mono);
+    font-size: .8rem;
+    letter-spacing: .18em;
+    color: var(--fg-mute);
+  }
+  .g2-counter .g2-cur { color: var(--accent); }
+
+  .g2-thumbs {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+  }
+  .g2-thumbs::-webkit-scrollbar { height: 4px; }
+  .g2-thumbs::-webkit-scrollbar-thumb { background: var(--rule-strong); }
+
+  .g2-thumb {
+    flex: 0 0 60px;
+    width: 60px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid transparent;
+    background: transparent;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 200ms, opacity 200ms;
+    opacity: .55;
+  }
+  .g2-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .g2-thumb:hover { opacity: 1; }
+  .g2-thumb.is-active {
+    opacity: 1;
+    border-color: var(--accent);
+  }
 </style>
 
 <script>
   function setupGallery() {
-    const lightbox = document.querySelector<HTMLDialogElement>(".gallery-lightbox");
+    // Reveal-on-scroll for grid cells.
+    const cells = document.querySelectorAll<HTMLElement>(".g2-cell");
+    if (cells.length > 0) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const e of entries) {
+            if (e.isIntersecting) {
+              e.target.classList.add("in");
+              io.unobserve(e.target);
+            }
+          }
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.05 }
+      );
+      cells.forEach((c) => io.observe(c));
+    }
+
+    // Lightbox.
+    const lightbox = document.querySelector<HTMLDialogElement>(".g2-lightbox");
     if (!lightbox) return;
 
     const slides = Array.from(
-      lightbox.querySelectorAll<HTMLImageElement>(".gl-frame img")
+      lightbox.querySelectorAll<HTMLImageElement>(".g2-stage img")
     );
+    const thumbs = Array.from(
+      lightbox.querySelectorAll<HTMLButtonElement>(".g2-thumb")
+    );
+    const counterEl = lightbox.querySelector<HTMLElement>(".g2-cur");
     if (slides.length === 0) return;
 
     let current = 0;
@@ -160,19 +397,28 @@ const { images, alt = "Gallery image" } = Astro.props;
     function show(i: number) {
       current = (i + slides.length) % slides.length;
       slides.forEach((s, idx) => s.classList.toggle("is-active", idx === current));
+      thumbs.forEach((t, idx) => t.classList.toggle("is-active", idx === current));
+      if (counterEl) {
+        counterEl.textContent = String(current + 1).padStart(2, "0");
+      }
+      const active = thumbs[current];
+      active?.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
     }
 
-    document.querySelectorAll<HTMLButtonElement>(".gallery-tile").forEach((tile) => {
+    document.querySelectorAll<HTMLButtonElement>(".g2-tile").forEach((tile) => {
       tile.addEventListener("click", () => {
-        const i = Number(tile.dataset.index ?? 0);
-        show(i);
+        show(Number(tile.dataset.index ?? 0));
         lightbox.showModal();
       });
     });
 
-    lightbox.querySelector(".gl-close")?.addEventListener("click", () => lightbox.close());
-    lightbox.querySelector(".gl-prev")?.addEventListener("click", () => show(current - 1));
-    lightbox.querySelector(".gl-next")?.addEventListener("click", () => show(current + 1));
+    thumbs.forEach((t) => {
+      t.addEventListener("click", () => show(Number(t.dataset.jump ?? 0)));
+    });
+
+    lightbox.querySelector(".g2-close")?.addEventListener("click", () => lightbox.close());
+    lightbox.querySelector(".g2-prev")?.addEventListener("click", () => show(current - 1));
+    lightbox.querySelector(".g2-next")?.addEventListener("click", () => show(current + 1));
 
     lightbox.addEventListener("click", (e) => {
       if (e.target === lightbox) lightbox.close();

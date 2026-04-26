@@ -2,11 +2,9 @@
 title: Featherman
 date: 2015-08-28T04:55:08.233Z
 url_pdf: docs/featherman.pdf
-summary: The Featherman game project is a mobile game designed to raise
-  awareness of environmental issues, specifically the importance of wetlands for
-  migratory birds. The team behind the project consists of international
-  students in Hong Kong who are passionate about local environmental issues.
-  [Read more...](/project/featherman)
+summary: A mobile game raising awareness of environmental issues — specifically
+  the importance of wetlands for migratory birds. Built in Hong Kong with WWF
+  Mai Po Reserve.
 image:
   filename: featured.jpeg
   focal_point: Smart
@@ -19,8 +17,3 @@ Through their research, the team discovered that wetlands are crucial habitats f
 
 Featherman aims not only to educate but also to empower NGOs with a new way to connect with younger generations through digital media entertainment. By using social media platforms for advertising, the team hopes to spread their environmental message far and wide and reach a larger audience than traditional methods of advertising these causes. Through this project, they hope to inspire others to take action towards protecting our planet's ecosystems.
 
-<!--StartFragment-->
-
-{{< gallery album="featherman" >}}
-
-<!--EndFragment-->

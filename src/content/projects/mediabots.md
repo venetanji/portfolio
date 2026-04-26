@@ -2,7 +2,9 @@
 title: Mediabots
 subtitle: A Discord server for generative AI
 date: 2022-09-05T04:55:08.233Z
-summary: Mediabots is a Discord server that provides access to the latest generative models to students and professionals, as integral component of my doctoral research. [Read more...](/project/mediabots)
+summary: A Discord server providing students and professionals with access to
+  the latest generative models — and the data backbone for doctoral research
+  into network effects in AI adoption.
 draft: false
 featured: false
 weight: 1

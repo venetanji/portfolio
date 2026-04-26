@@ -24,6 +24,6 @@ image:
 Brainmusic is a Max4Live device that generates midi notes using EEG power spectrum from Muse. 
 
 
-<div class="mb-3">
-  {{< youtube zqJo8rL9rkM >}}
+<div class="yt-embed">
+  <iframe src="https://www.youtube-nocookie.com/embed/zqJo8rL9rkM" title="Brainmusic demo" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

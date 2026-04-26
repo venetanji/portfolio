@@ -2,10 +2,9 @@
 title: 3DSND
 subtitle: A 32-speaker ambisonic installation
 date: 2017-04-05T04:55:08.233Z
-summary: 3DSND is a system that is capable of low-latency ambisonic rendering.
-  This platform is designed to provide an immersive sound experience to the
-  users, enabling them to hear sound from all directions. [Read
-  more...](/project/3dsnd/)
+summary: A 32-speaker low-latency ambisonic system for immersive sound —
+  built on Raspberry Pis, jackaudio and a 6-metre circular array. Shown at
+  Sonar+D Hong Kong.
 draft: false
 featured: false
 links:
@@ -25,8 +24,3 @@ The low-latency ambisonic rendering algorithms used by 3DSND allow for the creat
 
 The use of open-source software allows for easy customization and modification to suit specific user needs. Additionally, the raspberry pi-based design makes it cost-effective and energy-efficient, allowing for easy installation in various settings. The system was presented at [Sonar+D](https://sonarhongkong.com/en/2018/artists/the-immersive-sound-stage-marketlab-sonar-d) Hong Kong in 2017 and 2018.
 
-<!--StartFragment-->
-
-{{< gallery album="3dsnd" >}}
-
-<!--EndFragment-->

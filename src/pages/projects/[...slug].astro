@@ -49,12 +49,7 @@ const gallery = getGallery(project.id);
     </div>
 
     {gallery.length > 0 && (
-      <>
-        <div class="prose" style="margin-top:4rem;">
-          <h2>Gallery</h2>
-        </div>
-        <Gallery images={gallery} alt={project.data.title} />
-      </>
+      <Gallery images={gallery} alt={project.data.title} title="Gallery" />
     )}
   </article>
 </Base>
