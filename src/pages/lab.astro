@@ -101,20 +101,21 @@ import { sketches } from "@/data/site";
 <style>
   .sketch-card {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-    margin-block: 3rem;
-    padding-top: 3rem;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(1.5rem, 4vw, 3rem);
+    align-items: start;
+    margin-block: 4rem 0;
+    padding-block: 3rem 0;
     border-top: 1px solid var(--rule);
   }
   .sketch-card:first-of-type {
     border-top: none;
     padding-top: 0;
+    margin-top: 1rem;
   }
   .sketch-card header {
     grid-column: 1 / -1;
-    margin-bottom: -1rem;
+    margin-bottom: 0;
   }
   .sketch-card h2 {
     margin: 0 0 .3rem;
@@ -130,14 +131,16 @@ import { sketches } from "@/data/site";
   }
   .canvas-slot {
     width: 100%;
-    max-width: 520px;
-    justify-self: end;
+    max-width: 480px;
+    justify-self: start;
   }
   .sketch-card .note {
     color: var(--fg-mute);
     font-size: 1rem;
     line-height: 1.65;
-    max-width: 50ch;
+    max-width: 48ch;
+    justify-self: start;
+    margin: 0;
   }
   .sketch-card .note a {
     color: var(--accent);
@@ -146,6 +149,7 @@ import { sketches } from "@/data/site";
   @media (max-width: 800px) {
     .sketch-card {
       grid-template-columns: 1fr;
+      gap: 1.5rem;
     }
     .canvas-slot {
       max-width: 100%;
