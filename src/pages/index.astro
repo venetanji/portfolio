@@ -200,7 +200,7 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
       </h2>
       <p class="lede muted" style="margin-bottom:3rem;">
         A growing index of sketches, notebooks and small tools.
-        <a href="/lab" style="color:var(--accent); border-bottom:1px solid currentColor; margin-left:.4rem">See all →</a>
+        <a href="/lab" class="cta" style="margin-left:.4rem">See all →</a>
       </p>
       <div class="lab-grid">
         {sketches.map((s) => (
@@ -224,9 +224,7 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
         AI, design and live performance.
       </p>
       <p style="margin-top:2rem; font-family:var(--mono); font-size:1rem;">
-        <a href={`mailto:${site.email}`} style="color:var(--accent); border-bottom:1px solid currentColor; padding-bottom:2px;">
-          {site.email}
-        </a>
+        <a href={`mailto:${site.email}`} class="cta">{site.email}</a>
       </p>
     </div>
   </section>

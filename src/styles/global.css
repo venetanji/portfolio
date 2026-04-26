@@ -91,6 +91,19 @@ img {
   color: var(--bg);
 }
 
+/* Inline call-to-action / "more" link — used everywhere a link should
+   read as an action without dominating the page colour. */
+.cta {
+  color: var(--fg);
+  border-bottom: 1px solid var(--rule-strong);
+  padding-bottom: 2px;
+  transition: color 200ms ease, border-color 200ms ease;
+}
+.cta:hover {
+  color: var(--accent);
+  border-bottom-color: currentColor;
+}
+
 .wrap {
   width: var(--w);
   margin-inline: auto;
@@ -301,13 +314,6 @@ img {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-}
-
-.hero h1 .marked::after {
-  content: "·";
-  color: var(--accent);
-  -webkit-text-fill-color: var(--accent);
-  margin-left: 0.2em;
 }
 
 .hero .tag {
