@@ -1078,3 +1078,22 @@ h2 { text-transform: uppercase; letter-spacing: 0; font-size: clamp(1.4rem, 2.6v
 .hero .scrim { background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 35%, rgba(0, 0, 0, 0) 100%) !important; }
 .now-list li::before { background: var(--accent); }
 .site-footer { border-top: 2px solid var(--fg); }
+
+/* Brutalist palette + font override (re-declared at end so it wins) */
+:root {
+  --bg: #000000 !important;
+  --bg-elev: #0a0a0a !important;
+  --bg-soft: rgba(20, 20, 20, 0.5) !important;
+  --fg: #ffffff !important;
+  --fg-mute: #888888 !important;
+  --fg-dim: #555555 !important;
+  --rule: #2a2a2a !important;
+  --rule-strong: #555555 !important;
+  --accent: #00ff66 !important;
+  --accent-2: #ffffff !important;
+  --accent-3: #ff0033 !important;
+  --accent-4: #00ff66 !important;
+  --serif: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+  --sans: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace !important;
+}
