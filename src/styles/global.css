@@ -3,8 +3,8 @@
   --bg-elev: #0e1018;
   --bg-soft: #14172150;
   --fg: #e9eaf2;
-  --fg-mute: #9ea0b3;
-  --fg-dim: #6a6c7c;
+  --fg-mute: #adafc1;
+  --fg-dim: #7a7c8c;
   --rule: #1f2230;
   --rule-strong: #2d3142;
   --accent: #ffd166;
@@ -52,6 +52,13 @@ a {
 a:hover {
   color: var(--accent);
   border-bottom-color: currentColor;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 1px;
 }
 
 h1,
