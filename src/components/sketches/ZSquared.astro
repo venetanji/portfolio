@@ -23,8 +23,8 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
   .z2-wrap {
     position: relative;
     aspect-ratio: 1 / 1;
-    background: #1a1c25;
-    border: 1px solid var(--rule);
+    background: #F4F1EC;
+    border: 1px solid #111111;
     overflow: hidden;
   }
   .z2 {
@@ -76,7 +76,8 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
         // We bump it into the visible range while keeping the spiral feel.
         const r = -Math.PI / 4 + iter * 0.0009;
 
-        ctx!.fillStyle = "rgba(26, 28, 37, 0.18)"; // soft trail
+        // Bone trail — gently fades previous frames toward the paper colour.
+        ctx!.fillStyle = "rgba(244, 241, 236, 0.18)";
         ctx!.fillRect(0, 0, size, size);
 
         ctx!.save();
@@ -87,14 +88,14 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
         let zr = Math.cos(r);
         let zi = -Math.sin(r);
 
-        // Highlight dot at the seed.
-        ctx!.fillStyle = `hsl(20, 100%, 60%)`;
+        // Signal-red seed dot.
+        ctx!.fillStyle = "rgba(255, 59, 48, 0.95)";
         ctx!.beginPath();
         ctx!.arc(zr * scale, zi * scale, iterations * 0.6, 0, Math.PI * 2);
         ctx!.fill();
 
-        // Connecting line through landings.
-        ctx!.strokeStyle = `hsla(${(iter / 10) % 360}, 60%, 70%, 0.7)`;
+        // Connecting line through landings — ink black.
+        ctx!.strokeStyle = "rgba(17, 17, 17, 0.7)";
         ctx!.lineWidth = 1;
         ctx!.beginPath();
         ctx!.moveTo(zr * scale, zi * scale);
@@ -107,8 +108,12 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
           zi = nzi;
 
           const half = (iterations - i) * 0.4;
-          const hue = (iter / 10 + i * 4) % 360;
-          ctx!.fillStyle = `hsla(${hue}, 70%, 55%, 0.85)`;
+          // Alternate between ink and signal red as we land deeper.
+          const useRed = (i % 2) === 0;
+          const a = 0.85 - (i / iterations) * 0.35;
+          ctx!.fillStyle = useRed
+            ? `rgba(255, 59, 48, ${a.toFixed(3)})`
+            : `rgba(17, 17, 17, ${a.toFixed(3)})`;
           ctx!.fillRect(zr * scale - half, zi * scale - half, half * 2, half * 2);
 
           ctx!.lineTo(zr * scale, zi * scale);

@@ -128,11 +128,11 @@ const {
         // `slow_iterator` increments by 1 every 50 ms — preserve those units.
         t += (dt / 50) * speed;
 
+        // Swiss Grid: bone-coloured trail veil over the canvas, no additive
+        // blend — strokes read as ink on paper, not glow.
         ctx!.globalCompositeOperation = "source-over";
-        ctx!.fillStyle = "rgba(8, 9, 14, 0.16)";
+        ctx!.fillStyle = "rgba(244, 241, 236, 0.16)";
         ctx!.fillRect(0, 0, width, height);
-
-        if (glow) ctx!.globalCompositeOperation = "lighter";
 
         const cx = width * 0.5;
         const cy = height * 0.5;
@@ -153,12 +153,24 @@ const {
             const px = cx + Math.cos((TAU * d) / count) * ringRadius;
             const py = cy + Math.sin((TAU * d) / count) * ringRadius;
 
-            const hue = (tr + d * (360 / count)) % 360;
-            const sat = 55 + Math.abs(noise(d * 0.2, r)) * 25;
-            const lit = 60 + (rings > 1 ? r * 4 : 0);
-            const alpha = intensity * (rings > 1 ? 0.4 + 0.6 * (1 - r / rings) : 0.78);
+            // Three-tone palette: ink, signal red, mid grey — chosen by a
+            // stable hash of the polygon index so neighbours alternate.
+            const swatch = (d + Math.floor(tr / 60)) % 3;
+            const alpha = intensity * (rings > 1 ? 0.45 + 0.55 * (1 - r / rings) : 0.85);
 
-            ctx!.strokeStyle = `hsla(${hue.toFixed(1)}, ${sat.toFixed(0)}%, ${lit.toFixed(0)}%, ${alpha.toFixed(3)})`;
+            let stroke: string;
+            if (swatch === 0) {
+              // Near-black ink.
+              stroke = `rgba(17, 17, 17, ${alpha.toFixed(3)})`;
+            } else if (swatch === 1) {
+              // Signal red.
+              stroke = `rgba(255, 59, 48, ${alpha.toFixed(3)})`;
+            } else {
+              // Cool grey.
+              stroke = `rgba(136, 136, 136, ${alpha.toFixed(3)})`;
+            }
+
+            ctx!.strokeStyle = stroke;
             polygon(px, py, scale, sides);
           }
         }
