@@ -21,3 +21,6 @@ resources/
 go.sum
 _vendor/
 jsconfig.json
+
+# Local agent worktrees (do not commit)
+.claude/worktrees/
