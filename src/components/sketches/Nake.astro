@@ -33,7 +33,7 @@ const {
   .nake-wrap {
     position: relative;
     aspect-ratio: 1 / 1;
-    background: #f6f4ee;
+    background: #0A0E14;
     border: 1px solid var(--rule);
     overflow: hidden;
   }
@@ -49,17 +49,18 @@ const {
     width: 2.4rem;
     height: 2.4rem;
     border-radius: 50%;
-    border: 1px solid #1115;
-    background: #fffd;
-    color: #111;
+    border: 1px solid var(--rule-strong);
+    background: rgba(17, 21, 28, 0.85);
+    color: var(--accent);
     font-size: 1.1rem;
     cursor: pointer;
     backdrop-filter: blur(4px);
-    transition: transform 200ms, background 200ms;
+    transition: transform 200ms, background 200ms, color 200ms;
   }
   .reseed:hover {
     transform: rotate(90deg);
-    background: #fff;
+    background: rgba(17, 21, 28, 1);
+    color: var(--accent-2);
   }
 </style>
 
@@ -101,9 +102,9 @@ const {
       const gsize = size / grid;
       const rand = mulberry32(seed);
 
-      ctx!.fillStyle = "#f6f4ee";
+      ctx!.fillStyle = "#0A0E14";
       ctx!.fillRect(0, 0, size, size);
-      ctx!.strokeStyle = "#16161d";
+      ctx!.strokeStyle = "#A0A4AA";
       ctx!.lineWidth = 1.6;
       ctx!.lineCap = "square";
 

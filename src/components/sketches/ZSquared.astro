@@ -23,7 +23,7 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
   .z2-wrap {
     position: relative;
     aspect-ratio: 1 / 1;
-    background: #1a1c25;
+    background: #0A0E14;
     border: 1px solid var(--rule);
     overflow: hidden;
   }
@@ -76,7 +76,7 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
         // We bump it into the visible range while keeping the spiral feel.
         const r = -Math.PI / 4 + iter * 0.0009;
 
-        ctx!.fillStyle = "rgba(26, 28, 37, 0.18)"; // soft trail
+        ctx!.fillStyle = "rgba(10, 14, 20, 0.18)"; // soft trail on terminal black
         ctx!.fillRect(0, 0, size, size);
 
         ctx!.save();
@@ -87,14 +87,14 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
         let zr = Math.cos(r);
         let zi = -Math.sin(r);
 
-        // Highlight dot at the seed.
-        ctx!.fillStyle = `hsl(20, 100%, 60%)`;
+        // Amber highlight dot at the seed.
+        ctx!.fillStyle = "#FFB454";
         ctx!.beginPath();
         ctx!.arc(zr * scale, zi * scale, iterations * 0.6, 0, Math.PI * 2);
         ctx!.fill();
 
-        // Connecting line through landings.
-        ctx!.strokeStyle = `hsla(${(iter / 10) % 360}, 60%, 70%, 0.7)`;
+        // Phosphor green connecting line through landings.
+        ctx!.strokeStyle = "rgba(184, 204, 82, 0.7)";
         ctx!.lineWidth = 1;
         ctx!.beginPath();
         ctx!.moveTo(zr * scale, zi * scale);
@@ -107,8 +107,9 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
           zi = nzi;
 
           const half = (iterations - i) * 0.4;
-          const hue = (iter / 10 + i * 4) % 360;
-          ctx!.fillStyle = `hsla(${hue}, 70%, 55%, 0.85)`;
+          // Fade phosphor green to dim as iterations decay.
+          const a = 0.85 * (1 - i / iterations) + 0.15;
+          ctx!.fillStyle = `rgba(184, 204, 82, ${a.toFixed(3)})`;
           ctx!.fillRect(zr * scale - half, zi * scale - half, half * 2, half * 2);
 
           ctx!.lineTo(zr * scale, zi * scale);
