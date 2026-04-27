@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 import { Image } from "astro:assets";
 import Base from "@/layouts/Base.astro";
 import PolygonField from "@/components/PolygonField.astro";
-import { site, interests, education, experience, social, sketches, repos } from "@/data/site";
+import { site, interests, education, experience, sketches, repos } from "@/data/site";
 import { fmtRange, getYear, authorList, getProjectImage } from "@/lib/format";
 
 const projects = (await getCollection("projects", ({ data }) => !data.draft))
@@ -33,16 +33,16 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
     </div>
     <div class="scrim"></div>
     <div class="content">
-      <p class="tag">Researcher · Generative AI · Creative Code</p>
+      <p class="tag">Researcher · Generative AI · Creative code</p>
       <h1>
-        Giovanni <span class="marked">Lion</span> —<br />
-        building with code, agents and noise.
+        Giovanni <span class="marked">Lion</span><br />
+        builds with code, agents and noise.
       </h1>
       <p class="lede">{site.bio}</p>
       <div class="meta">
         <span>Hong Kong &nbsp;/&nbsp; Padova</span>
-        <a href="/#work">See the work →</a>
-        <a href="/lab">Visit the lab →</a>
+        <a href="/#work">Selected work →</a>
+        <a href="/lab">The lab →</a>
       </div>
     </div>
     <div class="hint">scroll</div>
@@ -53,15 +53,13 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
       <p class="eyebrow">About</p>
       <div class="split">
         <div class="bio-prose">
-          <p style="font-family:var(--serif); font-size:clamp(1.3rem,2.5vw,1.8rem); line-height:1.4;">
+          <p style="font-family:var(--serif); font-size:clamp(1.3rem,2.5vw,1.7rem); line-height:1.45;">
             {site.longBio}
           </p>
-          <p class="muted">
-            PhD in Design from The Hong Kong Polytechnic University (2025). I build
-            interactive AI installations, teach, and write about how generative
-            systems re-shape design practice. I also play Ultimate at international
-            level and write music with an OP-Z.
-          </p>
+          <p class="kicker" style="margin: 2.4rem 0 .8rem">Currently</p>
+          <ul class="now-list">
+            {site.currently.map((c) => <li>{c}</li>)}
+          </ul>
         </div>
         <aside>
           <p class="kicker" style="margin-bottom:.8rem">Interests</p>
@@ -88,8 +86,8 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
   <section class="section" id="work">
     <div class="wrap">
       <p class="eyebrow">Selected work</p>
-      <h2 style="max-width:18ch; margin-bottom:3rem;">
-        Installations, tools and games — built between research and practice.
+      <h2 style="max-width:20ch; margin-bottom:3rem;">
+        Installations, tools and games — built across research, teaching and practice.
       </h2>
       <div class="projects">
         {projects.map((p, i) => {
@@ -118,8 +116,8 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
   <section class="section" id="cv">
     <div class="wrap">
       <p class="eyebrow">CV</p>
-      <h2 style="max-width:22ch; margin-bottom:3rem;">
-        Across research, robotics, agencies and a few small companies.
+      <h2 style="max-width:24ch; margin-bottom:3rem;">
+        A working history across research, robotics, agencies and a handful of small companies.
       </h2>
       <div class="timeline">
         {experience.map((x) => (
@@ -150,8 +148,8 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
   <section class="section" id="teaching">
     <div class="wrap">
       <p class="eyebrow">Teaching &amp; open source</p>
-      <h2 style="max-width:22ch; margin-bottom:3rem;">
-        Course materials and tools, kept open.
+      <h2 style="max-width:24ch; margin-bottom:3rem;">
+        Course materials and small tools, kept open.
       </h2>
       <div class="repo-grid">
         {repos.map((r) => (
@@ -195,11 +193,11 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
   <section class="section" id="lab-preview">
     <div class="wrap">
       <p class="eyebrow">Lab</p>
-      <h2 style="max-width:20ch; margin-bottom:1rem;">
-        Sketches & experiments — generative geometry, sound, agents.
+      <h2 style="max-width:22ch; margin-bottom:1rem;">
+        Sketches and experiments — generative geometry, sound, agents.
       </h2>
       <p class="lede muted" style="margin-bottom:3rem;">
-        A growing index of sketches, notebooks and small tools.
+        An index of notebooks and small generative pieces.
         <a href="/lab" class="cta" style="margin-left:.4rem">See all →</a>
       </p>
       <div class="lab-grid">
@@ -217,11 +215,10 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
   <section class="section" id="contact">
     <div class="wrap">
       <p class="eyebrow">Contact</p>
-      <h2 style="max-width:18ch;">Open to collaborations and conversations.</h2>
+      <h2 style="max-width:20ch;">Open to collaborations and conversations.</h2>
       <p class="lede" style="margin-top:1.5rem; max-width:55ch;">
-        The fastest way to reach me is by email.
-        I’m especially keen on projects at the intersection of
-        AI, design and live performance.
+        Email is the fastest way through. I'm especially interested in
+        projects at the intersection of AI, design and live performance.
       </p>
       <p style="margin-top:2rem; font-family:var(--mono); font-size:1rem;">
         <a href={`mailto:${site.email}`} class="cta">{site.email}</a>

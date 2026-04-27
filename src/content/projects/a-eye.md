@@ -1,41 +1,32 @@
 ---
 title: A-Eye
-subtitle: Interactive AI installation reimagining audiences in realtime at Art Basel
+subtitle: An AI installation that reimagines the audience in real time
 date: 2024-03-01T04:55:08.233Z
 draft: false
 featured: true
 weight: 1
-summary: |-
-  A-Eye is an interactive installation that utilizes AI to reimagine the audience in realtime and projects it on a wall at the M+ private party for Art Basel.
-
-links:
-  - name: Learn More
-    url: /project/a-eye
-
+summary: An interactive installation premiered at the M+ private party for
+  Art Basel — capturing the audience and reimagining it on the gallery wall
+  through generative AI.
 image:
   filename: featured.png
   focal_point: Smart
   preview_only: false
 ---
 
-**A-Eye** is a groundbreaking interactive installation that debuted at the M+ private party for Art Basel. This innovative project demonstrates the intersection of artificial intelligence and live performance art, creating a unique experience that blurs the boundaries between audience and artwork.
+A-Eye is an interactive installation that premiered at the M+ private party for Art Basel. The piece treats the audience itself as raw material: cameras capture the room, and a generative AI system reinterprets what it sees into a continuous visual that is projected back on the gallery wall.
 
-## Concept
+## How it works
 
-The installation utilizes advanced AI technology to capture and reinterpret the audience in real-time. As viewers move and interact within the space, the AI system processes their movements, expressions, and interactions, transforming them into a dynamic visual narrative that is projected onto the gallery wall.
+A live capture pipeline feeds pose and motion data into a real-time diffusion model. The model transforms the scene frame by frame, holding loose continuity from one image to the next so the projection feels like a single, evolving picture rather than a sequence of edits. The result is a kind of mirror that doesn't quite mirror — recognisable enough that visitors find themselves in it, abstract enough that the room becomes a shared dream.
 
-## Technology
+## Stack
 
-A-Eye employs cutting-edge machine learning algorithms for:
 - Real-time computer vision and pose detection
-- Generative AI for visual transformation
+- TensorRT-accelerated diffusion for visual transformation
 - Live projection mapping
-- Interactive response systems
+- WebRTC for low-latency capture
 
-## Exhibition Context
+## Context
 
-Premiered at the prestigious M+ private party during Art Basel, A-Eye attracted attention from art collectors, curators, and technology enthusiasts. The installation successfully demonstrated how AI can create meaningful connections between technology and human expression, making the audience an integral part of the artistic experience.
-
-## Impact
-
-This project represents Giovanni's ongoing research into how AI agents and automation can transform creative practices. A-Eye exemplifies the potential for generative AI to create new forms of interactive art that respond dynamically to human presence and emotion.
+The installation was shown to art collectors, curators and technology audiences during Art Basel week. It is the most public outcome of doctoral research into how generative AI changes the relationship between makers, audiences and the artwork itself — and into what happens when an audience becomes both subject and co-author of a piece.

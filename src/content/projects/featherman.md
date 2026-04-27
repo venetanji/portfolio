@@ -1,19 +1,20 @@
 ---
 title: Featherman
+subtitle: A mobile game about wetlands and migratory birds
 date: 2015-08-28T04:55:08.233Z
-url_pdf: docs/featherman.pdf
-summary: A mobile game raising awareness of environmental issues — specifically
-  the importance of wetlands for migratory birds. Built in Hong Kong with WWF
-  Mai Po Reserve.
+draft: false
+featured: false
+summary: A mobile game built with international students in Hong Kong, raising
+  awareness about wetlands and migratory birds. Developed in partnership with
+  WWF Mai Po Nature Reserve.
 image:
   filename: featured.jpeg
   focal_point: Smart
   preview_only: false
 ---
 
-The Featherman game project is a mobile game designed to raise awareness of environmental issues, specifically the importance of wetlands for migratory birds. The team behind the project consists of international students in Hong Kong who are passionate about local environmental issues. The goal of the game is to use entertainment technology to educate and engage a younger generation in environmental protection.
+Featherman is a mobile game that uses entertainment as a vehicle for environmental education. Built by an international team of students in Hong Kong and developed in partnership with the WWF Mai Po Nature Reserve, the game focuses on a quietly urgent topic: the wetlands that migratory birds depend on, and the urban pressures slowly eroding them.
 
-Through their research, the team discovered that wetlands are crucial habitats for migratory birds, yet they face threats from non-stop urban development and human activities. With this knowledge, they decided to create a fun and engaging digital game that spreads awareness about wetland land management. The team collaborated with local experts and visited Mai Po wetland park for research purposes to ensure the authenticity of the game environment.
+The team visited Mai Po, worked with local conservation experts and wove the research findings into the game world — characters, missions and habitat depictions are grounded in actual ecology. The aim was twofold: reach a younger audience through a medium they already inhabit, and give an NGO a new channel to talk about wetland management without sounding like a campaign poster.
 
-Featherman aims not only to educate but also to empower NGOs with a new way to connect with younger generations through digital media entertainment. By using social media platforms for advertising, the team hopes to spread their environmental message far and wide and reach a larger audience than traditional methods of advertising these causes. Through this project, they hope to inspire others to take action towards protecting our planet's ecosystems.
-
+Featherman launched on iOS and Android and was promoted through social media outreach in collaboration with WWF. The project marked the foundation of Hagao Studio.

@@ -4,10 +4,19 @@ export const site = {
   lastName: "Lion",
   role: "Researcher · Generative AI · Creative Code",
   email: "giovanni.lion@gmail.com",
-  bio: "Giovanni's research focuses on generative AI and creativity — the topic of his PhD awarded in May 2025 from The Hong Kong Polytechnic University. Recent work explores agents, automation, and their transformative impact on design practices.",
-  longBio: `Giovanni is a researcher specialising in generative AI and creativity. His doctoral research explored diverse applications of generative AI within creative practices, with particular emphasis on understanding usage patterns and network effects in AI adoption within communities. He is technically fluent across Python, JavaScript, Max/MSP, Arduino, Docker, Linux, single-board computers, Leap Motion, Muse EEG, and openvibe. Off-screen he plays Ultimate Frisbee at international level, sails, and writes music with an OP-Z.`,
+  // Hero deck — short, scannable, no duplication with the About paragraph.
+  bio: "Researcher and builder working at the intersection of generative AI and creative practice. PhD in Design from The Hong Kong Polytechnic University, 2025.",
+  // About body — single paragraph, no overlap with the hero deck.
+  longBio:
+    "Giovanni's research investigates how generative AI reshapes creative practice — the way artists, designers and educators work when models, agents and automation become part of the studio. His doctoral work focused on adoption patterns and network effects inside creative communities, and continues into applied work on real-time AI systems, performance and teaching. He works fluently across Python, JavaScript, Max/MSP, Arduino, Docker and Linux, and is at home on hardware ranging from Raspberry Pi clusters to Muse EEG headbands.",
+  // Light "currently" block — complements the bio with present-tense activity.
+  currently: [
+    "Lecturing at PolyU School of Design.",
+    "Building real-time generative AI installations and tools.",
+    "Composing on an OP-Z; competing in Ultimate Frisbee.",
+  ],
   description:
-    "Giovanni Lion — researcher specialising in generative AI, creative automation and computational creativity.",
+    "Giovanni Lion — researcher and builder working at the intersection of generative AI and creative practice.",
 };
 
 export const interests = [

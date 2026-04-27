@@ -1,19 +1,17 @@
 ---
 title: Brainmusic
-subtitle: Generative music driven by your brain activity
+subtitle: Generative music driven by EEG
 date: 2020-12-14T04:55:08.233Z
-summary: Brainmusic is an experiment in generative music driven by brain activity using the Muse headband.
+summary: A Max4Live device that turns the EEG power spectrum from a Muse
+  headband into MIDI — generative music played by the wearer's own brain
+  activity.
 draft: false
 featured: false
 weight: 1
 links:
-  - icon: youtube
-    icon_pack: fab
-    name: Watch video
-    url: "https://youtube.com/watch?v=zqJo8rL9rkM"
-  - icon: github
-    icon_pack: fab
-    name: Code
+  - name: Watch on YouTube
+    url: https://youtube.com/watch?v=zqJo8rL9rkM
+  - name: Source on GitHub
     url: https://github.com/venetanji/brainmusic
 image:
   filename: featured.jpg
@@ -21,7 +19,7 @@ image:
   preview_only: false
 ---
 
-Brainmusic is a Max4Live device that generates midi notes using EEG power spectrum from Muse. 
+Brainmusic is a Max4Live device that maps the EEG power spectrum from a Muse headband to MIDI — turning attention, calm and meditation states into notes, rhythms and modulations.
 
 
 <div class="yt-embed">

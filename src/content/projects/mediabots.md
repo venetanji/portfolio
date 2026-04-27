@@ -1,30 +1,24 @@
 ---
 title: Mediabots
-subtitle: A Discord server for generative AI
+subtitle: A Discord server for generative AI — and a research instrument
 date: 2022-09-05T04:55:08.233Z
-summary: A Discord server providing students and professionals with access to
-  the latest generative models — and the data backbone for doctoral research
+summary: A Discord server giving students and professionals shared access to
+  the latest generative models — and a data backbone for doctoral research
   into network effects in AI adoption.
 draft: false
 featured: false
 weight: 1
 links:
-  - icon: discord
-    icon_pack: fab
-    name: Join Mediabots
-    url: "https://discord.gg/yAvXRk8k2N"
+  - name: Join Mediabots
+    url: https://discord.gg/yAvXRk8k2N
 image:
   filename: featured.jpg
   focal_point: Smart
   preview_only: false
 ---
 
-[Mediabots](https://discord.gg/yAvXRk8k2N) is a cutting-edge Discord server that has been established as part of a groundbreaking doctoral research project focused on generative AI. This platform provides its members with exclusive access to the latest models in AI technology, including Midjourney, Dalle, StableDiffusion, and GPT. 
+[Mediabots](https://discord.gg/yAvXRk8k2N) is a Discord server that exists for two reasons. The first is practical: a single place where students and professionals can use Midjourney, DALL·E, Stable Diffusion and GPT side by side, without each member having to assemble keys and infrastructure. The second is research: every prompt, response and reaction is data for a doctoral study on how generative AI is adopted inside a community.
 
-The primary objective of setting up Mediabots is to examine and understand the usage patterns of these advanced AI models in a social setting. By fostering an engaging community of participants, the server seeks to gather valuable insights into how these AI tools are utilized, what purposes they serve, and the impact they have on the community.
+The community runs regular workshops that walk through specific tools and techniques, so that less-confident members can learn from more experienced ones in public. The workshops also produce a steady stream of structured interactions — useful both as material for the participants and as observations for the research.
 
-To ensure that members can effectively utilize these powerful AI models, Mediabots organizes regular workshops that offer detailed explanations and demonstrations on how to make the most of these generative AI tools. These workshops empower participants with the skillset and knowledge required to unleash the full potential of these models for their own purposes.
-
-The data collected from the usage of these AI models within Mediabots has yielded intriguing findings, particularly regarding the influence of network effects. The research has revealed that the network effects play a significant role in encouraging and shaping the patterns of usage among the server members. These insights shed light on the social dynamics and collaborative nature of AI adoption within a community, highlighting the role of shared knowledge, inspiration, and collaborative learning.
-
-For a more in-depth exploration of the research project and its findings, additional information can be found in my PhD thesis. Currently awaiting defense, this thesis promises to offer comprehensive insights into the impact of generative AI models within a social context, providing valuable contributions to the field of AI research.
+The findings centre on network effects: who shares prompts, whose work gets remixed, and how an idea spreads from one corner of the server to the rest. The patterns are not always the obvious ones, and they form the backbone of the doctoral thesis on generative AI and creativity, awarded in May 2025.

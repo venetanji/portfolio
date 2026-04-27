@@ -1,10 +1,10 @@
 ---
 title: 3DSND
-subtitle: A 32-speaker ambisonic installation
+subtitle: A 32-speaker ambisonic system
 date: 2017-04-05T04:55:08.233Z
-summary: A 32-speaker low-latency ambisonic system for immersive sound —
-  built on Raspberry Pis, jackaudio and a 6-metre circular array. Shown at
-  Sonar+D Hong Kong.
+summary: A 32-speaker low-latency ambisonic installation for immersive sound,
+  built on Raspberry Pi nodes and JACK audio in a six-metre circular array.
+  Shown at Sonar+D Hong Kong.
 draft: false
 featured: false
 links:
@@ -16,11 +16,10 @@ image:
   preview_only: false
 ---
 
-3DSND is a system that is capable of low-latency ambisonic rendering. This platform is designed to provide an immersive sound experience to the users, enabling them to hear sound from all directions. It consists of a network of 32 distributed digital amplifiers arranged in a circular formation, covering an area of 6 meters in diameter. The system utilizes open-source software including jackaudio and raspberrypis to create a network of distributed receivers capable of processing complex audio signals.
+3DSND is a low-latency ambisonic rendering system built around 32 distributed amplifier nodes arranged in a six-metre circle. Each node is a Raspberry Pi running JACK audio, networked together to behave as a single spatial loudspeaker — so a sound source can be placed at any point in the listening area rather than being mapped to a fixed channel.
 
-The design and implementation of this system aims to address some important limitations associated with traditional stereo or surround sound systems. In these systems, sounds are limited to specific channels or locations within the listening space. With 3DSND, however, listeners can experience spatially accurate sound sources originating from any point within the six-meter radius, making it ideal for use in various applications such as music production, film post-production, virtual reality gaming and simulation environments.
+Where traditional stereo and surround systems pin sound to specific speaker positions, ambisonic rendering treats the room itself as the playback medium. That makes it well suited to music production, film post-production, immersive performance and VR — anywhere the spatial relationships between sounds matter as much as the sounds themselves.
 
-The low-latency ambisonic rendering algorithms used by 3DSND allow for the creation of three-dimensional soundscapes that accurately reproduce sounds from all directions, creating an immersive sonic experience for listeners. Users can interact with the sound field using their hands with Kinect or through integration with Vive VR environments, allowing for fully immersive experiences.The system is also highly scalable, making it possible to increase the number of speakers and extend the listening area if needed.
+The system is interactive. The sound field can be steered by hand through a Kinect sensor or by an HMD inside a Vive scene, so the listener moves through the audio rather than the audio being played at them. Because the architecture is distributed, the array scales: more nodes, larger circle, same software stack.
 
-The use of open-source software allows for easy customization and modification to suit specific user needs. Additionally, the raspberry pi-based design makes it cost-effective and energy-efficient, allowing for easy installation in various settings. The system was presented at [Sonar+D](https://sonarhongkong.com/en/2018/artists/the-immersive-sound-stage-marketlab-sonar-d) Hong Kong in 2017 and 2018.
-
+The system was presented at [Sonar+D](https://sonarhongkong.com/en/2018/artists/the-immersive-sound-stage-marketlab-sonar-d) Hong Kong in 2017 and 2018.

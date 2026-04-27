@@ -1,10 +1,10 @@
 ---
 title: Working with Sophia
-subtitle: Life as a robot operator
+subtitle: Two years operating a humanoid robot
 date: 2017-12-12T06:05:36.924Z
 summary: Two years as a robot operator for Sophia at Hanson Robotics —
   animating scripts, setting up for events, and puppeteering during public
-  appearances at high-profile venues.
+  appearances.
 draft: false
 featured: false
 image:
@@ -13,12 +13,12 @@ image:
   preview_only: false
 ---
 
-Working with Sophia the humanoid robot was an extraordinary experience that allowed me to gain valuable insights into the world of robotics and human-robot interaction. As a robot operator, I was responsible for animating scripts, setting up the robot for events, and puppeteering the robot during public appearances. 
+Between 2017 and 2019, Giovanni worked as a robot operator at Hanson Robotics — preparing performance scripts, setting up Sophia for events and puppeteering the robot during public appearances. The role spanned ROS, servo-motor calibration, computer vision tuning and chatbot scripting, but the most interesting work happened in the room: watching audiences negotiate the social space between curiosity and uncanny.
 
-Sophia's popularity as a speaker meant that I had the opportunity to accompany her to various high-profile events and encounters, including meetings with prime ministers, finance conferences, private parties, the World Economic Forum, the UN, and commercial shoots with soccer legend Ronaldo. Watching people interact with Sophia taught me a great deal about how humans perceive robots and how we can build better interactions between humans and machines.
+Sophia's profile meant the events were rarely small. The schedule included the World Investment Forum at the UN in Geneva, finance conferences, private receptions, meetings with heads of government and a commercial shoot with Cristiano Ronaldo. Each appearance was a controlled performance where small reliability problems became immediately visible, and the operator's job was to keep the experience legible to a non-technical audience.
 
-One of the most challenging moments of my experience was when we had to go on stage at Altice Arena. The pressure was high, and the stage was full of people eagerly waiting for Sophia's appearance. Unfortunately, while setting up, a plug came off accidentally, leading to a reboot of the robot. In such a situation, I learned how to remain calm under pressure and quickly resolve issues to keep the show going.
+The most useful thing the role taught was how to behave when something fails on stage with thousands of people watching — at one Altice Arena event, a power cable disconnected during setup and the robot rebooted minutes before the cue. The system came back; the show went on. The episode is now a steady reference point for thinking about reliability, theatre and the gap between a working demo and a working performance.
 
-Overall, working with Sophia taught me about human expressions and emotions and how to make robotic interactions more believable. It has been an enlightening experience that has helped me understand the potential of robotics in various fields, from entertainment to healthcare. I am grateful for this opportunity and look forward to continuing my journey in the exciting world of robotics and artificial intelligence.
+The two years informed much of the later research into how humans relate to AI agents — and how much of that relationship is performance, expectation and stagecraft rather than the underlying technology.
 
 
