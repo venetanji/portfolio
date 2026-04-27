@@ -32,8 +32,14 @@ const pageTitle = title ? `${title} · ${site.title}` : site.title;
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="theme-color" content="#08090e" />
+    <meta name="theme-color" content="#FAF7F2" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Inconsolata:wght@300..700&display=swap"
+    />
   </head>
   <body>
     {!hideHeader && <SiteHeader />}

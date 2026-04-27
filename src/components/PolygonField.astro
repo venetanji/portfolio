@@ -27,7 +27,7 @@ const {
   rings = 1,
   intensity = 1,
   speed = 1,
-  glow = true,
+  glow = false,
   class: className = "",
 } = Astro.props;
 ---
@@ -70,7 +70,6 @@ const {
     const rings = Number(canvas.dataset.rings ?? 1);
     const intensity = Number(canvas.dataset.intensity ?? 1);
     const speed = Number(canvas.dataset.speed ?? 1);
-    const glow = canvas.dataset.glow === "1";
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const noise = createNoise2D();
@@ -128,18 +127,32 @@ const {
         // `slow_iterator` increments by 1 every 50 ms — preserve those units.
         t += (dt / 50) * speed;
 
+        // Trail-fade with cream paper so polygons read as drying ink strokes.
         ctx!.globalCompositeOperation = "source-over";
-        ctx!.fillStyle = "rgba(8, 9, 14, 0.16)";
+        ctx!.fillStyle = "rgba(250, 247, 242, 0.12)";
         ctx!.fillRect(0, 0, width, height);
 
-        if (glow) ctx!.globalCompositeOperation = "lighter";
+        // No additive blend — ink does not glow. Always source-over.
+        ctx!.globalCompositeOperation = "source-over";
 
         const cx = width * 0.5;
         const cy = height * 0.5;
         const ringRadius = Math.min(width, height) * 0.22;
         const baseScale = Math.min(width, height) * 0.42;
 
-        ctx!.lineWidth = 1.2;
+        ctx!.lineWidth = 1.1;
+        ctx!.lineJoin = "round";
+        ctx!.lineCap = "round";
+
+        // Constrained warm-paper palette — deep teal, ink red, mustard, brown.
+        // Picked deterministically per polygon (by index), not the rainbow cycle.
+        const inkPalette = [
+          "42, 72, 88",     // deep teal  (--accent-2)
+          "164, 63, 63",    // ink red    (--accent)
+          "198, 139, 54",   // mustard    (--accent-3)
+          "107, 79, 47",    // warm brown (--accent-4)
+          "26, 24, 21",     // dark ink   (--fg)
+        ];
 
         for (let r = 0; r < rings; r++) {
           const tr = t + r * 80;
@@ -153,12 +166,11 @@ const {
             const px = cx + Math.cos((TAU * d) / count) * ringRadius;
             const py = cy + Math.sin((TAU * d) / count) * ringRadius;
 
-            const hue = (tr + d * (360 / count)) % 360;
-            const sat = 55 + Math.abs(noise(d * 0.2, r)) * 25;
-            const lit = 60 + (rings > 1 ? r * 4 : 0);
-            const alpha = intensity * (rings > 1 ? 0.4 + 0.6 * (1 - r / rings) : 0.78);
+            // Deterministic ink colour per polygon (stable across frames).
+            const inkRGB = inkPalette[d % inkPalette.length];
+            const alpha = 0.65 * intensity * (rings > 1 ? 0.5 + 0.5 * (1 - r / rings) : 1);
 
-            ctx!.strokeStyle = `hsla(${hue.toFixed(1)}, ${sat.toFixed(0)}%, ${lit.toFixed(0)}%, ${alpha.toFixed(3)})`;
+            ctx!.strokeStyle = `rgba(${inkRGB}, ${alpha.toFixed(3)})`;
             polygon(px, py, scale, sides);
           }
         }

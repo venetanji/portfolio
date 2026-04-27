@@ -1,20 +1,20 @@
 :root {
-  --bg: #08090e;
-  --bg-elev: #0e1018;
-  --bg-soft: #14172150;
-  --fg: #e9eaf2;
-  --fg-mute: #9ea0b3;
-  --fg-dim: #6a6c7c;
-  --rule: #1f2230;
-  --rule-strong: #2d3142;
-  --accent: #ffd166;
-  --accent-2: #ef476f;
-  --accent-3: #06d6a0;
-  --accent-4: #7c5cff;
-  --serif: ui-serif, "Source Serif Pro", Georgia, "Times New Roman", serif;
-  --sans: ui-sans-serif, "Inter", system-ui, -apple-system, "Segoe UI", Roboto,
-    Helvetica, Arial, sans-serif;
-  --mono: ui-monospace, "JetBrains Mono", "Fira Code", SFMono-Regular, Menlo,
+  /* Editorial Serif palette — cream paper, warm dark ink, ink-red accent. */
+  --bg: #FAF7F2;
+  --bg-elev: #F1ECE3;
+  --bg-soft: #EFE9DD80;
+  --fg: #1A1815;
+  --fg-mute: #5A5650;
+  --fg-dim: #8B857C;
+  --rule: #DAD3C7;
+  --rule-strong: #B7AE9F;
+  --accent: #A43F3F;        /* ink red */
+  --accent-2: #2A4858;      /* deep teal */
+  --accent-3: #C68B36;      /* mustard */
+  --accent-4: #6B4F2F;      /* warm brown */
+  --serif: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  --sans: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  --mono: "Inconsolata", ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo,
     Consolas, monospace;
   --w: min(1200px, 92vw);
   --w-prose: min(72ch, 92vw);
@@ -30,15 +30,16 @@ body {
   padding: 0;
   background: var(--bg);
   color: var(--fg);
-  font-family: var(--sans);
+  font-family: var(--serif);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
 }
 
 body {
   min-height: 100vh;
   line-height: 1.55;
-  font-size: 17px;
+  font-size: 18px;
   overflow-x: hidden;
 }
 
@@ -59,22 +60,28 @@ h2,
 h3,
 h4 {
   font-family: var(--serif);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+  line-height: 1.05;
   margin: 0 0 0.4em;
+  font-feature-settings: "kern" 1, "liga" 1, "dlig" 1;
 }
 
 h1 {
   font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 300;
 }
 
 h2 {
-  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-size: clamp(2rem, 4.4vw, 3.4rem);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.018em;
 }
 
 h3 {
-  font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+  font-size: clamp(1.25rem, 2.4vw, 1.6rem);
+  font-weight: 500;
 }
 
 p {
@@ -120,14 +127,16 @@ img {
 
 .eyebrow {
   font-family: var(--mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--fg-mute);
+  color: var(--accent);
   margin: 0 0 1.4rem;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
+  font-variant: small-caps;
 }
 
 .eyebrow::before {
@@ -167,9 +176,10 @@ img {
   backdrop-filter: blur(8px);
   background: linear-gradient(
     to bottom,
-    rgba(8, 9, 14, 0.6),
-    rgba(8, 9, 14, 0)
+    rgba(250, 247, 242, 0.86),
+    rgba(250, 247, 242, 0)
   );
+  border-bottom: 1px solid transparent;
 }
 
 .site-header .row {
@@ -181,14 +191,22 @@ img {
 
 .brand {
   font-family: var(--mono);
-  font-size: 0.82rem;
-  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   border: none !important;
+  color: var(--fg);
 }
 
 .brand span {
   color: var(--accent);
+  font-style: italic;
+  font-family: var(--serif);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1.05rem;
+  font-weight: 500;
 }
 
 .nav {
@@ -232,13 +250,13 @@ img {
   inset: 0;
   z-index: -2;
   background: radial-gradient(
-      120% 80% at 60% 30%,
-      rgba(124, 92, 255, 0.18),
+      120% 80% at 70% 25%,
+      rgba(164, 63, 63, 0.06),
       transparent 60%
     ),
     radial-gradient(
-      80% 60% at 20% 80%,
-      rgba(6, 214, 160, 0.12),
+      80% 60% at 15% 85%,
+      rgba(42, 72, 88, 0.05),
       transparent 60%
     ),
     var(--bg);
@@ -275,9 +293,9 @@ img {
   pointer-events: none;
   background: linear-gradient(
     to top,
-    rgba(8, 9, 14, 0.92) 0%,
-    rgba(8, 9, 14, 0.7) 35%,
-    rgba(8, 9, 14, 0) 100%
+    rgba(250, 247, 242, 0.94) 0%,
+    rgba(250, 247, 242, 0.72) 35%,
+    rgba(250, 247, 242, 0) 100%
   );
 }
 
@@ -286,8 +304,8 @@ img {
   inset: 0;
   z-index: -2;
   background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    linear-gradient(to right, rgba(26, 24, 21, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(26, 24, 21, 0.035) 1px, transparent 1px);
   background-size: 80px 80px;
   mask-image: radial-gradient(ellipse at center, black 20%, transparent 80%);
 }
@@ -302,33 +320,61 @@ img {
 
 .hero h1 {
   margin: 0;
-  font-weight: 400;
-  font-size: clamp(2.2rem, 5.5vw, 4.4rem);
-  letter-spacing: -0.02em;
-  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
+  font-style: italic;
+  font-weight: 300;
+  font-size: clamp(3rem, 9.5vw, 8rem);
+  letter-spacing: -0.025em;
+  line-height: 0.98;
+  font-feature-settings: "kern" 1, "liga" 1, "dlig" 1, "salt" 1;
+  color: var(--fg);
 }
 
 .hero h1 .marked {
   font-style: italic;
-  background: linear-gradient(120deg, var(--accent), var(--accent-2) 60%, var(--accent-4));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: var(--accent);
+  font-weight: 400;
+}
+
+.hero h1 .slash {
+  display: inline-block;
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 300;
+  margin: 0 0.18em;
+  opacity: 0.8;
 }
 
 .hero .tag {
   font-family: var(--mono);
-  font-size: 0.85rem;
-  letter-spacing: 0.18em;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
-  color: var(--fg-mute);
-  margin: 0 0 2rem;
+  color: var(--accent);
+  margin: 0 0 2.4rem;
+  font-variant: small-caps;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+.hero .tag::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
 }
 
 .hero .lede {
-  margin-top: 1.2rem;
-  max-width: 60ch;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.7);
+  margin-top: 2rem;
+  max-width: 56ch;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(1.2rem, 1.7vw, 1.45rem);
+  line-height: 1.5;
+  color: var(--fg);
 }
 
 .hero .meta {
@@ -408,7 +454,7 @@ img {
     text-shadow: none;
   }
   .hero h1 {
-    font-size: clamp(2rem, 9vw, 3rem);
+    font-size: clamp(2.4rem, 11vw, 4rem);
   }
   .hero .meta {
     margin-top: 2rem;
@@ -554,12 +600,12 @@ img {
   object-fit: cover;
   transition: transform 800ms cubic-bezier(0.2, 0.8, 0.2, 1),
     filter 600ms ease;
-  filter: saturate(0.85) contrast(1.05);
+  filter: sepia(0.06) saturate(0.92) contrast(1.02);
 }
 
 .project:hover img {
   transform: scale(1.04);
-  filter: saturate(1) contrast(1);
+  filter: sepia(0) saturate(1) contrast(1);
 }
 
 .project .meta-row {
@@ -567,22 +613,28 @@ img {
   justify-content: space-between;
   margin-bottom: 1rem;
   font-family: var(--mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--fg-mute);
+  font-variant: small-caps;
 }
 
 .project h3 {
   margin: 1rem 0 0.4rem;
   font-family: var(--serif);
-  font-weight: 500;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.012em;
 }
 
 .project p {
   color: var(--fg-mute);
-  font-size: 0.95rem;
+  font-size: 1rem;
+  font-style: normal;
   margin: 0;
+  line-height: 1.5;
 }
 
 .project.size-lg { grid-column: span 12; }
@@ -691,20 +743,25 @@ img {
   font-family: var(--mono);
   font-size: 0.85rem;
   color: var(--accent);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.12em;
+  font-weight: 500;
 }
 
 .pub-title {
   font-family: var(--serif);
-  font-size: 1.15rem;
+  font-size: 1.3rem;
+  font-style: italic;
   margin: 0 0 0.3rem;
   font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
 }
 
 .pub-authors {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--fg-mute);
   margin: 0 0 0.4rem;
+  font-style: normal;
 }
 
 .pub-venue {
@@ -743,7 +800,7 @@ img {
   gap: .5rem;
   padding: 1.8rem;
   border: 1px solid var(--rule);
-  background: linear-gradient(180deg, rgba(124, 92, 255, 0.05), transparent 50%);
+  background: linear-gradient(180deg, rgba(164, 63, 63, 0.04), transparent 60%);
   text-decoration: none;
   color: inherit;
   border-bottom: 1px solid var(--rule);
@@ -752,25 +809,29 @@ img {
 }
 
 .repo:hover {
-  border-color: var(--accent-4);
+  border-color: var(--accent);
   transform: translateY(-2px);
+  background: linear-gradient(180deg, rgba(164, 63, 63, 0.07), transparent 60%);
 }
 
 .repo-tag {
   font-family: var(--mono);
   font-size: .7rem;
-  letter-spacing: .18em;
+  font-weight: 500;
+  letter-spacing: .22em;
   text-transform: uppercase;
   color: var(--accent-4);
+  font-variant: small-caps;
 }
 
 .repo h3 {
   margin: .2rem 0 .4rem;
-  font-family: var(--mono);
-  font-size: 1.4rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.55rem;
   font-weight: 500;
-  letter-spacing: -.01em;
-  color: var(--accent);
+  letter-spacing: -.012em;
+  color: var(--accent-2);
 }
 
 .repo p {
@@ -820,7 +881,7 @@ img {
   inset: 0;
   background: radial-gradient(
     220px 120px at var(--mx, 30%) var(--my, 30%),
-    rgba(255, 209, 102, 0.12),
+    rgba(164, 63, 63, 0.08),
     transparent 70%
   );
   opacity: 0;
@@ -869,7 +930,11 @@ img {
 }
 
 .single header h1 {
-  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-size: clamp(2.2rem, 6vw, 4.6rem);
+  font-style: italic;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
   margin: 1rem 0 0.6rem;
 }
 
@@ -891,18 +956,34 @@ img {
 .prose {
   width: var(--w-prose);
   margin: 0 auto;
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   line-height: 1.7;
+  font-feature-settings: "kern" 1, "liga" 1, "onum" 1;
+}
+
+.prose > p:first-of-type::first-letter {
+  font-family: var(--serif);
+  font-size: 4.4em;
+  font-weight: 400;
+  font-style: normal;
+  float: left;
+  line-height: 0.85;
+  margin: 0.08em 0.08em 0 0;
+  color: var(--accent);
 }
 
 .prose h2 {
   margin-top: 2.5em;
-  font-size: 1.7rem;
+  font-size: 1.9rem;
+  font-style: italic;
+  font-weight: 400;
 }
 
 .prose h3 {
   margin-top: 1.8em;
-  font-size: 1.25rem;
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 500;
 }
 
 .prose ul {
@@ -983,9 +1064,11 @@ img {
 /* ---------- Footer ---------- */
 
 .site-footer {
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--rule-strong);
   padding-block: 4rem;
   margin-top: 4rem;
+  background: var(--bg-elev);
+  color: var(--fg-mute);
 }
 
 .site-footer .row {

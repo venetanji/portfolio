@@ -23,7 +23,7 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
   .z2-wrap {
     position: relative;
     aspect-ratio: 1 / 1;
-    background: #1a1c25;
+    background: #f6f4ee;
     border: 1px solid var(--rule);
     overflow: hidden;
   }
@@ -76,7 +76,8 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
         // We bump it into the visible range while keeping the spiral feel.
         const r = -Math.PI / 4 + iter * 0.0009;
 
-        ctx!.fillStyle = "rgba(26, 28, 37, 0.18)"; // soft trail
+        // Cream paper trail-fade — drying ink on cream.
+        ctx!.fillStyle = "rgba(246, 244, 238, 0.16)";
         ctx!.fillRect(0, 0, size, size);
 
         ctx!.save();
@@ -87,17 +88,27 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
         let zr = Math.cos(r);
         let zi = -Math.sin(r);
 
-        // Highlight dot at the seed.
-        ctx!.fillStyle = `hsl(20, 100%, 60%)`;
+        // Highlight dot at the seed — ink red.
+        ctx!.fillStyle = "rgba(164, 63, 63, 0.92)";
         ctx!.beginPath();
         ctx!.arc(zr * scale, zi * scale, iterations * 0.6, 0, Math.PI * 2);
         ctx!.fill();
 
-        // Connecting line through landings.
-        ctx!.strokeStyle = `hsla(${(iter / 10) % 360}, 60%, 70%, 0.7)`;
+        // Connecting line through landings — deep teal ink.
+        ctx!.strokeStyle = "rgba(42, 72, 88, 0.7)";
         ctx!.lineWidth = 1;
+        ctx!.lineCap = "round";
+        ctx!.lineJoin = "round";
         ctx!.beginPath();
         ctx!.moveTo(zr * scale, zi * scale);
+
+        // Constrained ink palette for the landing rectangles.
+        const inks = [
+          "42, 72, 88",   // deep teal
+          "107, 79, 47",  // warm brown
+          "198, 139, 54", // mustard
+          "26, 24, 21",   // dark ink
+        ];
 
         for (let i = 0; i < iterations; i++) {
           // z = z * z  for complex z.
@@ -107,8 +118,9 @@ const { iterations = 20, speed = 1, class: className = "" } = Astro.props;
           zi = nzi;
 
           const half = (iterations - i) * 0.4;
-          const hue = (iter / 10 + i * 4) % 360;
-          ctx!.fillStyle = `hsla(${hue}, 70%, 55%, 0.85)`;
+          const ink = inks[i % inks.length];
+          const a = 0.55 + 0.35 * (1 - i / iterations);
+          ctx!.fillStyle = `rgba(${ink}, ${a.toFixed(3)})`;
           ctx!.fillRect(zr * scale - half, zi * scale - half, half * 2, half * 2);
 
           ctx!.lineTo(zr * scale, zi * scale);
