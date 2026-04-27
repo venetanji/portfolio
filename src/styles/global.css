@@ -1037,3 +1037,75 @@ img {
     transition: none !important;
   }
 }
+
+/* === SOFT PASTEL VARIANT === */
+:root {
+  --bg: #0F1023 !important;
+  --bg-elev: #1A1B33 !important;
+  --bg-soft: rgba(26, 27, 51, 0.5) !important;
+  --fg: #ECEAFF !important;
+  --fg-mute: #9D9BC4 !important;
+  --fg-dim: #6E6C92 !important;
+  --rule: #2D2E47 !important;
+  --rule-strong: #43446A !important;
+  --accent: #FFB68A !important;
+  --accent-2: #B5A0FF !important;
+  --accent-3: #88E0BF !important;
+  --accent-4: #FFE0B5 !important;
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif !important;
+  --serif: "Newsreader", ui-serif, Georgia, "Times New Roman", serif !important;
+  --mono: ui-monospace, "JetBrains Mono", "Fira Code", SFMono-Regular, monospace !important;
+}
+
+/* Display headings in italic Newsreader, body in Geist */
+h1, h2, h3, h4 { font-family: var(--serif); font-style: italic; font-weight: 500; }
+.hero h1 { font-style: italic; }
+.hero h1 .marked { background: linear-gradient(120deg, var(--accent), var(--accent-2) 60%, var(--accent-3)) !important; }
+
+/* Rounded corners on all cards */
+.project, .lab, .repo, .gallery2-cell .gallery2-tile, .nake-wrap, .z2-wrap {
+  border-radius: 14px !important;
+  overflow: hidden;
+}
+.project { border-top: none !important; border: 1px solid var(--rule); padding: 0; }
+.project .img { border-radius: 14px 14px 0 0; }
+.project:hover { box-shadow: 0 18px 44px rgba(181, 160, 255, 0.18); border-color: var(--accent-2); }
+.project h3, .project p, .project .meta-row { padding: 0 1.2rem; }
+.project h3 { padding-top: 1rem; }
+.project p { padding-bottom: 1.2rem; }
+
+.lab, .repo {
+  background: var(--bg-elev) !important;
+  border: 1px solid var(--rule);
+}
+.lab:hover, .repo:hover { box-shadow: 0 14px 32px rgba(181, 160, 255, 0.12); border-color: var(--accent-2); }
+
+.tag-cloud span { border-radius: 999px !important; border: 1px solid var(--rule-strong); }
+.tag-cloud span:hover { color: var(--accent-2); border-color: var(--accent-2); }
+
+.cta { color: var(--fg); border-bottom: 1px solid var(--rule-strong); }
+.cta:hover { color: var(--accent); }
+a:hover { color: var(--accent); }
+.eyebrow { color: var(--accent-2); }
+.eyebrow::before { background: var(--accent-2); }
+.brand span { color: var(--accent); }
+
+/* Hero scrim color match */
+.hero .bg {
+  background:
+    radial-gradient(120% 80% at 60% 30%, rgba(181, 160, 255, 0.16), transparent 60%),
+    radial-gradient(80% 60% at 20% 80%, rgba(255, 182, 138, 0.10), transparent 60%),
+    var(--bg) !important;
+}
+.hero .scrim {
+  background: linear-gradient(to top, rgba(15, 16, 35, 0.92) 0%, rgba(15, 16, 35, 0.7) 35%, rgba(15, 16, 35, 0) 100%) !important;
+}
+
+.hero .meta a:hover { color: var(--accent); }
+
+/* Now-list bullet warm accent */
+.now-list li::before { background: var(--accent); }
+
+/* Pubs accent */
+.pub .yr { color: var(--accent-2) !important; }
+.pub-title { font-style: italic; }

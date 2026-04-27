@@ -1,182 +1,93 @@
 ---
-// Friendly Polygons — vanilla Canvas port of
-// https://observablehq.com/@venetanji/friendly-poligons
-//
-// Faithful to the original math:
-// - all polygons in a frame share ONE noise sample for both `sides` and `scale`,
-// - `sides` is FRACTIONAL and used as the angle divisor — points are placed at
-//   2π·i/sides for i=0..ceil(sides)-1, so the closing edge of the polygon
-//   sweeps around as sides drifts, producing the signature breathing/morph.
-// - scale can go negative (mirror), as in the original.
-// - polygons are arranged on a circle (no per-poly rotation).
-interface Props {
-  /** Number of polygons in the ring (the original `num_poly` slider). */
-  count?: number;
-  /** Concentric rings — 1 keeps it faithful, more is decorative. */
-  rings?: number;
-  /** Stroke alpha multiplier. */
-  intensity?: number;
-  /** Speed multiplier on internal time. */
-  speed?: number;
-  /** Soft additive blend mode for a glow look. */
-  glow?: boolean;
-  class?: string;
-}
-const {
-  count = 20,
-  rings = 1,
-  intensity = 1,
-  speed = 1,
-  glow = true,
-  class: className = "",
-} = Astro.props;
+interface Props { count?: number; rings?: number; intensity?: number; speed?: number; glow?: boolean; class?: string; }
+const { count = 20, rings = 1, intensity = 0.7, speed = 1, glow = true, class: className = "" } = Astro.props;
 ---
-
-<canvas
-  class:list={["polygon-field", className]}
-  data-count={count}
-  data-rings={rings}
-  data-intensity={intensity}
-  data-speed={speed}
-  data-glow={glow ? "1" : "0"}
-></canvas>
-
-<style>
-  .polygon-field {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    pointer-events: none;
-  }
-</style>
-
+<canvas class:list={["polygon-field", className]} data-count={count} data-rings={rings} data-intensity={intensity} data-speed={speed} data-glow={glow ? "1" : "0"}></canvas>
+<style>.polygon-field { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; }</style>
 <script>
   import { createNoise2D } from "simplex-noise";
-
   type FieldEl = HTMLCanvasElement & { __polyFieldInit?: boolean };
-
   const TAU = Math.PI * 2;
-
   function setup(canvas: FieldEl) {
     if (canvas.__polyFieldInit) return;
     canvas.__polyFieldInit = true;
-
     const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
-
     const count = Number(canvas.dataset.count ?? 20);
     const rings = Number(canvas.dataset.rings ?? 1);
-    const intensity = Number(canvas.dataset.intensity ?? 1);
+    const intensity = Number(canvas.dataset.intensity ?? 0.7);
     const speed = Number(canvas.dataset.speed ?? 1);
     const glow = canvas.dataset.glow === "1";
-
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const noise = createNoise2D();
-
-    let dpr = Math.min(window.devicePixelRatio || 1, 2);
-    let width = 0;
-    let height = 0;
-
+    let dpr = Math.min(window.devicePixelRatio || 1, 2), width = 0, height = 0;
     function resize() {
-      const rect = canvas.getBoundingClientRect();
+      const r = canvas.getBoundingClientRect();
       dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = rect.width;
-      height = rect.height;
+      width = r.width; height = r.height;
       canvas.width = Math.max(1, Math.floor(width * dpr));
       canvas.height = Math.max(1, Math.floor(height * dpr));
       ctx!.setTransform(dpr, 0, 0, dpr, 0, 0);
     }
     resize();
     new ResizeObserver(resize).observe(canvas);
-
     let visible = true;
     new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(canvas);
-
-    /**
-     * Faithful port of make_polygon: places ceil(sides) points at angles
-     * 2π·i/sides — so when sides is fractional, the polygon doesn't close on
-     * the unit circle and the closing edge sweeps around as sides drifts.
-     */
     function polygon(cx: number, cy: number, scale: number, sides: number) {
       const n = Math.ceil(sides);
-      if (n < 3) return; // matches _.range returning < 3 elements
-
+      if (n < 3) return;
       ctx!.beginPath();
       for (let i = 0; i < n; i++) {
-        const a = (TAU * i) / sides; // FRACTIONAL divisor — the magic ingredient
+        const a = (TAU * i) / sides;
         const x = cx + Math.cos(a) * scale;
         const y = cy + Math.sin(a) * scale;
         if (i === 0) ctx!.moveTo(x, y);
         else ctx!.lineTo(x, y);
       }
-      ctx!.closePath(); // SVG <polygon> auto-closes; mirror that here
+      ctx!.closePath();
       ctx!.stroke();
     }
-
-    let t = 0;
-    let lastFrame = performance.now();
-
+    let t = 0, lastFrame = performance.now();
     function frame(now: number) {
       if (!document.body.contains(canvas)) return;
-
       const dt = Math.min(64, now - lastFrame);
       lastFrame = now;
-
       if (visible) {
-        // `slow_iterator` increments by 1 every 50 ms — preserve those units.
         t += (dt / 50) * speed;
-
         ctx!.globalCompositeOperation = "source-over";
-        ctx!.fillStyle = "rgba(8, 9, 14, 0.16)";
+        ctx!.fillStyle = "rgba(15, 16, 35, 0.16)";
         ctx!.fillRect(0, 0, width, height);
-
         if (glow) ctx!.globalCompositeOperation = "lighter";
-
-        const cx = width * 0.5;
-        const cy = height * 0.5;
+        const cx = width * 0.5, cy = height * 0.5;
         const ringRadius = Math.min(width, height) * 0.22;
         const baseScale = Math.min(width, height) * 0.42;
-
         ctx!.lineWidth = 1.2;
-
         for (let r = 0; r < rings; r++) {
           const tr = t + r * 80;
-
-          // SHARED across the whole ring — this is the original's secret.
           const sample = noise(tr / 1000, 1);
-          const sides = sample * 7 + 6;       // [-1, 13] — fractional!
-          const scale = baseScale * sample;    // can be negative (mirrors)
-
+          const sides = sample * 7 + 6;
+          const scale = baseScale * sample;
           for (let d = 0; d < count; d++) {
             const px = cx + Math.cos((TAU * d) / count) * ringRadius;
             const py = cy + Math.sin((TAU * d) / count) * ringRadius;
-
-            const hue = (tr + d * (360 / count)) % 360;
-            const sat = 55 + Math.abs(noise(d * 0.2, r)) * 25;
-            const lit = 60 + (rings > 1 ? r * 4 : 0);
-            const alpha = intensity * (rings > 1 ? 0.4 + 0.6 * (1 - r / rings) : 0.78);
-
-            ctx!.strokeStyle = `hsla(${hue.toFixed(1)}, ${sat.toFixed(0)}%, ${lit.toFixed(0)}%, ${alpha.toFixed(3)})`;
+            // Pastel hue range: pinks/purples (280-360) wrapping into peaches (0-80).
+            // Map full hue cycle into [-80, 80] then add 320 and modulo 360.
+            const raw = (tr + d * (360 / count)) % 360;
+            const hue = ((raw - 180) * 80 / 180 + 320 + 360) % 360;
+            const sat = 65;
+            const lit = 70;
+            const alpha = intensity * 0.7;
+            ctx!.strokeStyle = `hsla(${hue.toFixed(1)}, ${sat}%, ${lit}%, ${alpha.toFixed(3)})`;
             polygon(px, py, scale, sides);
           }
         }
       }
-
       if (!reduced) requestAnimationFrame(frame);
     }
-
     if (reduced) frame(performance.now());
     else requestAnimationFrame(frame);
   }
-
-  function init() {
-    document.querySelectorAll<FieldEl>("canvas.polygon-field").forEach(setup);
-  }
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
+  function init() { document.querySelectorAll<FieldEl>("canvas.polygon-field").forEach(setup); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 </script>
