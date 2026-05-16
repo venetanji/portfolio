@@ -18,7 +18,7 @@ image:
 ---
 
 <div class="yt-embed">
-  <iframe src="https://www.youtube-nocookie.com/embed/R8RX_ydu4p8" title="Spacerat" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/R8RX_ydu4p8" title="Spacerat" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 An earlier music-video experiment produced with the

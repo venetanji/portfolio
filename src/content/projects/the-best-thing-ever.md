@@ -23,7 +23,7 @@ image:
 ---
 
 <div class="yt-embed">
-  <iframe src="https://www.youtube-nocookie.com/embed/QNU6dc4j6i4" title="The Best Thing Ever" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+  <iframe src="https://www.youtube-nocookie.com/embed/QNU6dc4j6i4" title="The Best Thing Ever" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
 A 3:22 music video for an original Suno song, produced end-to-end with my
