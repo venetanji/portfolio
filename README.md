@@ -65,7 +65,7 @@ cp src/content/projects/the-best-thing-ever.md src/content/projects/<slug>.md
 curl -L -o src/assets/projects/<slug>.jpg \
   https://i.ytimg.com/vi/<VIDEO_ID>/maxresdefault.jpg
 
-# 3. Commit; Netlify rebuilds.
+# 3. Commit; Cloudflare Pages rebuilds.
 git add . && git commit -m "projects: add <title>" && git push
 ```
 
@@ -74,4 +74,11 @@ in to a video hero by setting it. See `src/pages/projects/[...slug].astro`.
 
 ## Deploy
 
-`netlify.toml` is configured for Netlify (`npm run build` → `dist`).
+Hosted on **Cloudflare Pages**, auto-deployed from `main`. Pages auto-detects
+`npm run build` → `dist` and serves the static output via Cloudflare's CDN.
+Cloudflare Pages reads `public/_headers` and `public/_redirects` natively
+(same syntax as Netlify).
+
+`netlify.toml` is legacy from the Hugo era and is no longer used by the
+deploy — kept around as a no-op fallback in case the project ever moves
+back to Netlify.
