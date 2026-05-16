@@ -49,6 +49,26 @@ public/                   # static assets served as-is (favicon, docs, images/*)
 - **Lab sketches** → append to `sketches` in `src/data/site.ts`. To inline a
   sketch, add a new component under `src/components/` and use it on `/lab`.
 
+### Adding a new music video
+
+Two-file convention, mirrored across the `the-best-thing-ever.md` and
+`spacerat.md` projects:
+
+1. Copy one of those project files to `src/content/projects/<slug>.md` and
+   replace the title, summary, YouTube ID (in both `links` and the `<iframe>`
+   `src`), and dates.
+2. Download the YouTube cover:
+   ```bash
+   curl -L -o src/assets/projects/<slug>.jpg \
+     https://i.ytimg.com/vi/<VIDEO_ID>/maxresdefault.jpg
+   ```
+3. Commit; Netlify rebuilds.
+
+The body template (front-matter + iframe + a short paragraph linking to
+[creative-skills](https://github.com/venetanji/creative-skills) and the
+relevant `creative-scripts/music-videos/<slug>/song.yaml`) is the same for
+every video — just swap titles and IDs.
+
 ## Deploy
 
 `netlify.toml` is configured for Netlify (`npm run build` → `dist`).
