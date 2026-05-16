@@ -51,23 +51,26 @@ public/                   # static assets served as-is (favicon, docs, images/*)
 
 ### Adding a new music video
 
-Two-file convention, mirrored across the `the-best-thing-ever.md` and
-`spacerat.md` projects:
+The `the-best-thing-ever.md` and `spacerat.md` projects are the templates.
+Each is a normal project with one extra front-matter field, `youtube: <id>`,
+which makes the project detail page render the video as the hero (iframe in
+the hero slot, no thumbnail). The thumbnail at `src/assets/projects/<slug>.*`
+is still used as the homepage tile preview.
 
-1. Copy one of those project files to `src/content/projects/<slug>.md` and
-   replace the title, summary, YouTube ID (in both `links` and the `<iframe>`
-   `src`), and dates.
-2. Download the YouTube cover:
-   ```bash
-   curl -L -o src/assets/projects/<slug>.jpg \
-     https://i.ytimg.com/vi/<VIDEO_ID>/maxresdefault.jpg
-   ```
-3. Commit; Netlify rebuilds.
+```bash
+# 1. Copy a template; edit title, summary, dates, youtube ID, links
+cp src/content/projects/the-best-thing-ever.md src/content/projects/<slug>.md
 
-The body template (front-matter + iframe + a short paragraph linking to
-[creative-skills](https://github.com/venetanji/creative-skills) and the
-relevant `creative-scripts/music-videos/<slug>/song.yaml`) is the same for
-every video — just swap titles and IDs.
+# 2. Drop a thumbnail (used on the homepage tile)
+curl -L -o src/assets/projects/<slug>.jpg \
+  https://i.ytimg.com/vi/<VIDEO_ID>/maxresdefault.jpg
+
+# 3. Commit; Netlify rebuilds.
+git add . && git commit -m "projects: add <title>" && git push
+```
+
+The `youtube:` field is a generic project frontmatter — any project can opt
+in to a video hero by setting it. See `src/pages/projects/[...slug].astro`.
 
 ## Deploy
 

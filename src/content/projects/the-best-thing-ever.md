@@ -5,6 +5,7 @@ date: 2026-05-17T00:00:00.000Z
 draft: false
 featured: true
 weight: 1
+youtube: QNU6dc4j6i4
 summary: An AI-generated 3:22 music video for the original song "The Best Thing Ever",
   styled as a faux 1976 Italian late-night variety show. Song written and sung in
   Suno; per-scene visuals composed with flux2 and animated with LTX-2.3 via my
@@ -22,10 +23,6 @@ image:
   preview_only: false
 ---
 
-<div class="yt-embed">
-  <iframe src="https://www.youtube-nocookie.com/embed/QNU6dc4j6i4" title="The Best Thing Ever" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-
 A 3:22 music video for an original Suno song, produced end-to-end with my
 [creative-skills](https://github.com/venetanji/creative-skills) pipeline.
 
@@ -35,8 +32,7 @@ A faux 1976 Italian late-night variety show. *The Operator* hosts; the studio
 audience is the partner he's begging for engagement from. Twenty-six scenes,
 three set zones (main stage, intimate verse perch, b-stage armchair), four
 backup dancers, a featured copper-haired duet partner. Cuts are bar-aligned
-to the 123 BPM beat; the verse-end "I know you do" lands cleanly inside its
-scene instead of bleeding across the cut.
+to the 123 BPM beat.
 
 ## The pipeline
 

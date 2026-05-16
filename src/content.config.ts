@@ -12,6 +12,11 @@ const projects = defineCollection({
     featured: z.boolean().default(false),
     weight: z.number().optional(),
     tags: z.array(z.string()).optional(),
+    // YouTube video ID — when set, the project detail page renders the
+    // YouTube iframe in the hero slot instead of the thumbnail image. The
+    // image (src/assets/projects/<slug>.{jpg,png}) is still used as the
+    // homepage tile preview.
+    youtube: z.string().optional(),
     image: z
       .union([
         z.string(),

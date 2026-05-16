@@ -27,7 +27,18 @@ const gallery = getGallery(project.id);
       {project.data.subtitle && <p class="lede">{project.data.subtitle}</p>}
     </header>
 
-    {img && (
+    {project.data.youtube ? (
+      <div class="hero-video">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${project.data.youtube}`}
+          title={project.data.title}
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
+    ) : img && (
       <div class="hero-img">
         <Image src={img} alt={project.data.title} widths={[800, 1200, 1800]} sizes="(max-width: 1200px) 100vw, 1200px" />
       </div>
