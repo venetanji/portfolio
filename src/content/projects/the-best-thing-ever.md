@@ -16,7 +16,7 @@ links:
   - name: Pipeline source (creative-skills)
     url: https://github.com/venetanji/creative-skills
   - name: Project spec / scenes YAML
-    url: https://github.com/venetanji/creative-scripts/tree/main/music-videos/the-best-thing-ever
+    url: https://github.com/venetanji/creative-scripts/blob/main/music-videos/the-best-thing-ever.yaml
 image:
   filename: featured.jpg
   focal_point: Smart
@@ -46,7 +46,7 @@ to the 123 BPM beat.
 - **Final assembly** — ffmpeg concat with the clean Suno mix overlaid
 
 The full scene spec (timings, prompts, camera LoRAs, anchor references) lives at
-[`creative-scripts/music-videos/the-best-thing-ever/song.yaml`](https://github.com/venetanji/creative-scripts/tree/main/music-videos/the-best-thing-ever).
+[`creative-scripts/music-videos/the-best-thing-ever.yaml`](https://github.com/venetanji/creative-scripts/blob/main/music-videos/the-best-thing-ever.yaml).
 
 ## Open-source skill
 
