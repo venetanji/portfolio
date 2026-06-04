@@ -37,8 +37,35 @@ src/
     publications/[...slug].astro
   styles/global.css
 public/                   # static assets served as-is (favicon, docs, images/*)
+scripts/bundle-thesis.mjs # copies the thesis web edition into dist/thesis
+vendor/thesis/            # git submodule: the PhD thesis repo (pre-built site/)
 .legacy-hugo/             # archived Hugo source (reference only — not built)
 ```
+
+## The thesis at `/thesis/`
+
+The PhD dissertation *Concept Formation in Computational Creativity* lives in
+its own repo and is pinned here as a **git submodule** at `vendor/thesis`. It is
+served as a **subdirectory** (`venetanji.com/thesis/`), not a subdomain — a
+subdirectory consolidates SEO authority onto the main domain. The thesis ships
+its own pre-built static site (pandoc) under `vendor/thesis/site`, themed to
+match this portfolio; `scripts/bundle-thesis.mjs` copies it into `dist/thesis`
+after `astro build` (wired into `npm run build`).
+
+```bash
+# First checkout / CI: pull the submodule
+git submodule update --init --recursive
+
+# Update to the latest thesis (bump the pinned commit, then commit the bump)
+git submodule update --remote vendor/thesis
+git add vendor/thesis && git commit -m "thesis: bump submodule"
+```
+
+**Cloudflare Pages:** enable *"Include submodules"* (Settings → Builds) so the
+build can fetch `vendor/thesis`. The submodule URL is the public GitHub HTTPS
+URL, so the runner can clone it without extra credentials. If the submodule is
+ever missing at build time, the bundle step warns and skips rather than failing
+the deploy.
 
 ## Adding content
 

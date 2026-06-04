@@ -167,7 +167,22 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
   <section class="section" id="publications">
     <div class="wrap">
       <p class="eyebrow">Writing</p>
-      <h2 style="margin-bottom:3rem;">Publications</h2>
+      <h2 style="margin-bottom:2rem;">Publications</h2>
+
+      <div class="thesis-feature">
+        <span class="repo-tag">PhD Dissertation · PolyU · 2025</span>
+        <h3><a href="/thesis/">Concept Formation in Computational Creativity</a></h3>
+        <p>
+          How rule-based and data-driven AI shape creative practice — read
+          through post-phenomenology and theories of concepts, across three
+          studies in music, image and text-to-image generation.
+        </p>
+        <span class="thesis-cta">
+          <a href="/thesis/">Read the web edition →</a>
+          <a href="/thesis/thesis.pdf">PDF</a>
+        </span>
+      </div>
+
       <div class="pubs">
         {publications.map((p) => (
           <article class="pub">
@@ -225,6 +240,59 @@ const sizePattern = ["size-lg", "size-md", "size-md", "size-sm", "size-sm", "siz
       </p>
     </div>
   </section>
+
+  <style>
+    /* Featured dissertation card — sits atop the Writing list, links to the
+       full web edition served at /thesis/ (thesis repo, git submodule). */
+    .thesis-feature {
+      display: block;
+      padding: 1.8rem;
+      margin-bottom: 2.5rem;
+      border: 1px solid var(--rule-strong);
+      background: linear-gradient(180deg, rgba(255, 180, 84, 0.05), transparent 55%);
+      transition: border-color 200ms ease;
+    }
+    .thesis-feature:hover {
+      border-color: var(--accent);
+    }
+    .thesis-feature h3 {
+      margin: 0.5rem 0 0.6rem;
+      font-family: var(--mono);
+      font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+      font-weight: 500;
+      letter-spacing: -0.01em;
+    }
+    .thesis-feature h3 a {
+      color: var(--accent);
+      border: none;
+    }
+    .thesis-feature h3 a:hover {
+      color: var(--fg);
+    }
+    .thesis-feature p {
+      color: var(--fg-mute);
+      margin: 0 0 1.2rem;
+      max-width: 62ch;
+      font-size: 0.98rem;
+    }
+    .thesis-cta {
+      display: inline-flex;
+      flex-wrap: wrap;
+      gap: 0.8rem 1.6rem;
+      font-family: var(--mono);
+      font-size: 0.74rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .thesis-cta a {
+      color: var(--accent);
+      border-bottom: 1px solid var(--rule-strong);
+      padding-bottom: 2px;
+    }
+    .thesis-cta a:hover {
+      border-bottom-color: currentColor;
+    }
+  </style>
 </Base>
 
 <script>
