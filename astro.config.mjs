@@ -1,7 +1,7 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://venetanji.com",
+  site: "https://giovannilion.link",
   trailingSlash: "ignore",
   build: {
     format: "directory",

@@ -46,7 +46,7 @@ vendor/thesis/            # git submodule: the PhD thesis repo (pre-built site/)
 
 The PhD dissertation *Concept Formation in Computational Creativity* lives in
 its own repo and is pinned here as a **git submodule** at `vendor/thesis`. It is
-served as a **subdirectory** (`venetanji.com/thesis/`), not a subdomain — a
+served as a **subdirectory** (`giovannilion.link/thesis/`), not a subdomain — a
 subdirectory consolidates SEO authority onto the main domain. The thesis ships
 its own pre-built static site (pandoc) under `vendor/thesis/site`, themed to
 match this portfolio; `scripts/bundle-thesis.mjs` copies it into `dist/thesis`

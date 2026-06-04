@@ -2,7 +2,7 @@
 //
 // The thesis lives in its own repo, pinned here as a git submodule at
 // vendor/thesis. Its `site/` directory is a self-contained, pre-built static
-// site (pandoc chunkedhtml). We serve it as a subdirectory of venetanji.com —
+// site (pandoc chunkedhtml). We serve it as a subdirectory of giovannilion.link —
 // not a subdomain — so its SEO authority consolidates on the main domain.
 //
 // Runs after `astro build`. If the submodule hasn't been checked out (e.g. a
