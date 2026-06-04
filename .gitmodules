@@ -1,4 +1,4 @@
 [submodule "vendor/thesis"]
 	path = vendor/thesis
 	url = https://github.com/venetanji/concept-formation-computational-creativity.git
-	branch = claude/thesis-feedback-nz0qG
+	branch = main
